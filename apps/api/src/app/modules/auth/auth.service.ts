@@ -6,8 +6,8 @@ import {
 import { CreateUserDto } from '../../shared/dto/create-user.dto';
 import { User } from '../../shared/entities/user.entity';
 import { JwtService } from '@nestjs/jwt';
+import { environment } from '../../../environments/environment';
 import { UserService } from '../user/user.service';
-import { environment } from 'apps/api/src/environments/environment';
 //import { UpdateAuthDto } from './dto/update-auth.dto';
 
 @Injectable()

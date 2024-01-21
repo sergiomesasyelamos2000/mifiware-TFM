@@ -4,12 +4,18 @@ import { SignUpComponent } from './views/sign-up/sign-up.component';
 import { LogInComponent } from './views/log-in/log-in.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [LogInComponent, SignUpComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    CardModule,
+    InputTextModule,
+    ButtonModule,
     RouterModule.forChild([
       {
         path: 'log-in',

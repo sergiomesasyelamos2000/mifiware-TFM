@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './modules/home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './modules/auth/auth.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,7 @@ import { AuthModule } from './modules/auth/auth.module';
     BrowserAnimationsModule,
     AuthModule,
     HomeModule,
+    AppRoutingModule,
     HttpClientModule,
   ],
   providers: [],

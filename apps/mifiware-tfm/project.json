@@ -19,7 +19,14 @@
           "apps/mifiware-tfm/src/favicon.ico",
           "apps/mifiware-tfm/src/assets"
         ],
-        "styles": ["apps/mifiware-tfm/src/styles.scss"],
+        "styles": [
+          "apps/mifiware-tfm/src/styles.scss",
+          "node_modules/font-awesome/css/font-awesome.min.css",
+          "node_modules/primeng/resources/primeng.min.css",
+          "node_modules/primeng/resources/themes/saga-blue/theme.css",
+          "node_modules/primeicons/primeicons.css",
+          "node_modules/primeflex/primeflex.css"
+        ],
         "scripts": []
       },
       "configurations": {

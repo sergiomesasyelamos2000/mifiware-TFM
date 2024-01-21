@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,8 +8,9 @@ import { MessageService } from 'primeng/api';
   selector: 'mifiware-tfm-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss'],
+  providers: [MessageService],
 })
-export class LogInComponent {
+export class LogInComponent implements OnInit {
   error = '';
   loginForm!: FormGroup;
   loading = false;
@@ -19,15 +20,26 @@ export class LogInComponent {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
+    private messageService: MessageService,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {
     /* if (this.authService.userValue) {
       this.router.navigate(['pages/home']);
     } */
   }
 
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
+
+  get email() {
+    return this.loginForm.controls['email'];
+  }
+
+  get password() {
+    return this.loginForm.controls['password'];
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -36,17 +48,26 @@ export class LogInComponent {
     }
     this.loading = true;
 
-    const response = this.authService.login(this.f['username'].value, this.f['password'].value);
+    const response = this.authService.login(
+      this.f['username'].value,
+      this.f['password'].value
+    );
 
     if (response) {
-      /* this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Signin Successful' });
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Signin Successful',
+      });
       setTimeout(() => {
         this.router.navigate(['pages/home']);
-      }, 2000); */
-
-    }
-    else {
-      //this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Signin Failed' });
+      }, 2000);
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Signin Failed',
+      });
     }
     this.loading = false;
     // .subscribe(() => {
@@ -61,12 +82,10 @@ export class LogInComponent {
     // );
   }
 
-
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
     });
   }
-
 }

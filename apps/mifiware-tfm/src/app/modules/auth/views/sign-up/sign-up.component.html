@@ -1,23 +1,62 @@
 <form [formGroup]="signUpForm">
   <p-card header="SIGN UP" [style]="{ width: '360px' }">
     <div class="field">
-      <label for="fullName">Fullname</label>
+      <label for="name">Name</label>
       <input
         type="text"
         pInputText
         class="w-full"
-        name="fullName"
-        formControlName="fullName"
-        placeholder="Type your fullName"
+        name="name"
+        formControlName="name"
+        placeholder="Type your name"
       />
       <small
-        *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
+        *ngIf="name.invalid && (name.dirty || name.touched)"
         class="block p-error"
       >
-        <div *ngIf="fullName.errors?.['required']">fullName is required</div>
-        <div *ngIf="fullName.errors?.['pattern']">fullName should be valid</div>
+        <div *ngIf="name.errors?.['required']">name is required</div>
+        <div *ngIf="name.errors?.['pattern']">name should be valid</div>
       </small>
     </div>
+
+    <div class="field">
+      <label for="surname">Surname</label>
+      <input
+        type="text"
+        pInputText
+        class="w-full"
+        name="surname"
+        formControlName="surname"
+        placeholder="Type your surname"
+      />
+      <small
+        *ngIf="surname.invalid && (surname.dirty || surname.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="surname.errors?.['required']">surname is required</div>
+        <div *ngIf="surname.errors?.['pattern']">surname should be valid</div>
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        pInputText
+        class="w-full"
+        name="email"
+        formControlName="email"
+        placeholder="Type your email"
+      />
+      <small
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="email.errors?.['required']">Email is required</div>
+        <div *ngIf="email.errors?.['email']">Email should be valid</div>
+      </small>
+    </div>
+
     <div class="field">
       <label for="password">Password</label>
       <input
@@ -67,6 +106,7 @@
     <p-button
       label="SIGN UP"
       styleClass="w-full"
+      (onClick)="onSubmit()"
       [disabled]="signUpForm.invalid"
     ></p-button>
     <div class="mt-2">

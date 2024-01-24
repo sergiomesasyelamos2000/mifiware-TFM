@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-
+import { NotificationService } from '../../../../core/services/notification.service';
+import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
+import { AppStoreService } from '../../../../core/services/app-store.service';
 @Component({
   selector: 'mifiware-tfm-log-in',
   templateUrl: './log-in.component.html',
@@ -21,8 +23,10 @@ export class LogInComponent implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
+    private notificationService: NotificationService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private appStoreService: AppStoreService
   ) {
     /* if (this.authService.userValue) {
       this.router.navigate(['pages/home']);
@@ -41,7 +45,7 @@ export class LogInComponent implements OnInit {
     return this.loginForm.controls['password'];
   }
 
-  onSubmit() {
+  /* onSubmit() {
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
@@ -70,22 +74,29 @@ export class LogInComponent implements OnInit {
       });
     }
     this.loading = false;
-    // .subscribe(() => {
-    //   this.messageService.add({severity:'success', summary: 'Success', detail: 'Signin Successful'});
-    //   this.router.navigate([this.returnUrl]);
-    // },
-    //   (error: any) => {
-    //     this.error = error;
-    //     this.loading = false;
-    //     this.messageService.add({severity:'error', summary: 'Error', detail: 'Signin Failed'});
-    //   }
-    // );
-  }
+  } */
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
+    });
+  }
+
+  onSubmit() {
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res) => {
+        this.appStoreService.setMe(res);
+        this.notificationService.showToast({
+          severity: MessageSeverity.SUCCESS,
+          summary: 'Login',
+          detail: 'Login successful',
+        });
+      },
+      error: (error) => console.error(error),
+      complete: () => {
+        this.router.navigate(['/dashboard']);
+      },
     });
   }
 }

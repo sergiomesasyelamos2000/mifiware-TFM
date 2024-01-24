@@ -1,7 +1,7 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { ROLES_KEY } from '../decorators/roles.decorator';
-import { Role } from '../../shared/enum/role.enum';
+import { Role } from '@mifiware-tfm/entity-data-models';
 
 @Injectable()
 export class RolesGuard implements CanActivate {
@@ -13,7 +13,7 @@ export class RolesGuard implements CanActivate {
       context.getClass(),
     ]);
 
-    console.log("Rol requerido", requiredRoles);
+    console.log('Rol requerido', requiredRoles);
 
     if (!requiredRoles) {
       return true;

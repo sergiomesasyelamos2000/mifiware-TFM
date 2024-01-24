@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { passwordMatchValidator } from '../../../../shared/password-match.directive';
-
+import { AuthService } from '../../auth.service';
+import { NotificationService } from '../../../../core/services/notification.service';
+import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
 @Component({
   selector: 'mifiware-tfm-sign-up',
   templateUrl: './sign-up.component.html',
@@ -10,16 +12,44 @@ import { passwordMatchValidator } from '../../../../shared/password-match.direct
 export class SignUpComponent implements OnInit {
   signUpForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private notificationService: NotificationService
+  ) {}
+
+  get name() {
+    return this.signUpForm.controls['name'];
+  }
+  get surname() {
+    return this.signUpForm.controls['surname'];
+  }
+  get email() {
+    return this.signUpForm.controls['email'];
+  }
+
+  get password() {
+    return this.signUpForm.controls['password'];
+  }
+  get confirmPassword() {
+    return this.signUpForm.controls['confirmPassword'];
+  }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group(
       {
-        fullName: [
+        name: [
           '',
           [
             Validators.required,
             Validators.pattern(/^[a-zA-Z ]+(?:[a-zA-Z ]+)*$/),
+          ],
+        ],
+        surname: [
+          '',
+          [
+            Validators.required,
+            /* Validators.pattern(/^[a-zA-Z ]+(?:[a-zA-Z ]+)*$/), */
           ],
         ],
         email: ['', [Validators.required, Validators.email]],
@@ -32,17 +62,22 @@ export class SignUpComponent implements OnInit {
     );
   }
 
-  get fullName() {
-    return this.signUpForm.controls['fullName'];
-  }
-  get email() {
-    return this.signUpForm.controls['email'];
-  }
-
-  get password() {
-    return this.signUpForm.controls['password'];
-  }
-  get confirmPassword() {
-    return this.signUpForm.controls['confirmPassword'];
+  onSubmit() {
+    this.authService.signUp(this.signUpForm.value).subscribe({
+      next: () => {
+        this.notificationService.showToast({
+          severity: MessageSeverity.SUCCESS,
+          summary: 'Sign Up',
+          detail: 'Sign Up successful',
+        });
+      },
+      error: (error) => {
+        this.notificationService.showToast({
+          severity: MessageSeverity.ERROR,
+          summary: 'Sign Up',
+          detail: error.error.message,
+        });
+      },
+    });
   }
 }

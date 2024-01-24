@@ -1,0 +1,471 @@
+[1m[33mWarning: This is a simple server for use in testing or debugging Angular applications[39m[22m
+[1m[33mlocally. It hasn't been reviewed for security issues.[39m[22m
+[1m[33m[39m[22m
+[1m[33mBinding this server to an open connection can result in compromising your application or[39m[22m
+[1m[33mcomputer. Using a different host than the one passed to the "--host" flag might result in[39m[22m
+[1m[33mwebsocket connection issues. You might need to use "--disable-host-check" if that's the[39m[22m
+[1m[33mcase.[39m[22m
+[36m⠋[39m Generating browser application bundles (phase: setup)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: setup)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                               [2m | [22m[1mNames[22m                             [2m | [22m [1mRaw Size[22m[0m[39m
+[37m[0m[92mvendor.js[39m[37m                                                         [2m | [22mvendor                            [2m | [22m  [96m5.25 MB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mstyles.css, styles.js[39m[37m                                             [2m | [22mstyles                            [2m | [22m[96m882.95 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mpolyfills.js[39m[37m                                                      [2m | [22mpolyfills                         [2m | [22m[96m318.66 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mmain.js[39m[37m                                                           [2m | [22mmain                              [2m | [22m [96m96.08 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                        [2m | [22mruntime                           [2m | [22m [96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1m [22m                                                                 [2m | [22m[1mInitial Total[22m                     [2m | [22m  [1m6.53 MB[22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                  [2m | [22m[1mNames[22m                             [2m | [22m [1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_mifiware-tfm_src_app_modules_dashboard_dashboard_module_ts.js[39m[37m[2m | [22mmodules-dashboard-dashboard-module[2m | [22m  [96m3.97 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T10:40:49.867Z[39m[37m[22m - Hash: [1m[37m2b51b2d98a67a695[39m[37m[22m - Time: [1m[37m6573[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/common/IsLatLong.js depends on 'validator/lib/isLatLong'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/number/IsDivisibleBy.js depends on 'validator/lib/isDivisibleBy'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/Contains.js depends on 'validator/lib/contains'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsAlpha.js depends on 'validator/lib/isAlpha'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsAlphanumeric.js depends on 'validator/lib/isAlphanumeric'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm201[39m[22m[1m[33m5/decorator/string/IsAscii.js depends on 'validator/lib/isAscii'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsBIC.js depends on 'validator/lib/isBIC'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsBase32.js depends on 'validator/lib/isBase32'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsBase58.js depends on 'validator/lib/isBase58'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsBase64.js depends on 'validator/lib/isBase64'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsBooleanString.js depends on 'validator/lib/isBoolean'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsBtcAddress.js depends on 'validator/lib/isBtcAddress'. CommonJS or AMD dependencies can cause o[39m[22m[1m[33mptimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsByteLength.js depends on 'validator/lib/isByteLength'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsCreditCard.js depends on 'validator/lib/isCreditCard'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsCurrency.js depends on 'validator/lib/isCurrency'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsDataURI.js depends on 'validator/lib/isDataURI'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsDecimal.js depends on 'validator/lib/isDecimal'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsEAN.js depends on 'validator/lib/isEAN'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-depen[39m[22m[1m[33mdencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsEmail.js depends on 'validator/lib/isEmail'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsEthereumAddress.js depends on 'validator/lib/isEthereumAddress'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsFQDN.js depends on 'validator/lib/isFQDN'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsFullWidth.js depends on 'validator/lib/isFullWidth'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsHSL.js depends on 'validator/lib/isHSL'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsHalfWidth.js depends on 'validator/lib/isHalfWidth'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-valida[39m[22m[1m[33mtor/esm2015/decorator/string/IsHash.js depends on 'validator/lib/isHash'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsHexColor.js depends on 'validator/lib/isHexColor'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsHexadecimal.js depends on 'validator/lib/isHexadecimal'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsIBAN.js depends on 'validator/lib/isIBAN'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsIP.js depends on 'validator/lib/isIP'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsISBN.js depends on 'validator/lib/isISBN'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsISIN.js depends on 'validator/lib/isISIN'. CommonJS or AMD dependencies can cause optimizat[39m[22m[1m[33mion bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsISO8601.js depends on 'validator/lib/isISO8601'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsISO31661Alpha2.js depends on 'validator/lib/isISO31661Alpha2'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsISO31661Alpha3.js depends on 'validator/lib/isISO31661Alpha3'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsISRC.js depends on 'validator/lib/isISRC'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsISSN.js depends on 'validator/lib/isISSN'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsIdentityCard.js depends on 'validator/lib/isIdentityCard'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-co[39m[22m[1m[33mmmonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsJSON.js depends on 'validator/lib/isJSON'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsJWT.js depends on 'validator/lib/isJWT'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsLocale.js depends on 'validator/lib/isLocale'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsLowercase.js depends on 'validator/lib/isLowercase'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsMacAddress.js depends on 'validator/lib/isMACAddress'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsMagnetURI.js depends on 'validator/lib/isMagnetURI'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-va[39m[22m[1m[33mlidator/esm2015/decorator/string/IsMimeType.js depends on 'validator/lib/isMimeType'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsMobilePhone.js depends on 'validator/lib/isMobilePhone'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsMongoId.js depends on 'validator/lib/isMongoId'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsMultibyte.js depends on 'validator/lib/isMultibyte'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsNumberString.js depends on 'validator/lib/isNumeric'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsOctal.js depends on 'validator/lib/isOctal'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsPassportNumber.js depends on 'validator/lib/isPassport[39m[22m[1m[33mNumber'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsPort.js depends on 'validator/lib/isPort'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsPostalCode.js depends on 'validator/lib/isPostalCode'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsRFC3339.js depends on 'validator/lib/isRFC3339'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsRgbColor.js depends on 'validator/lib/isRgbColor'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsSemVer.js depends on 'validator/lib/isSemVer'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsStrongPassword.js depends on 'validator'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/gu[39m[22m[1m[33mide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsSurrogatePair.js depends on 'validator/lib/isSurrogatePair'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsUUID.js depends on 'validator/lib/isUUID'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsUppercase.js depends on 'validator/lib/isUppercase'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsUrl.js depends on 'validator/lib/isURL'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/IsVariableWidth.js depends on 'validator/lib/isVariableWidth'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/Length.js depends on 'validator/lib/isLength'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritori[39m[22m[1m[33mo/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/Matches.js depends on 'validator/lib/matches'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/is-iso4217-currency-code.js depends on 'validator/lib/isISO4217'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/class-validator/esm2015/decorator/string/is-tax-id.js depends on 'validator/lib/isTaxID'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/logger/DebugLogger.js depends on 'debug'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/platform/BrowserPlatformTools.js depends on 'buffer/'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/util/StringUtils.js depends on 'sha.js'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[37m[39m
+[37m** Angular Live Development Server is listening on 0.0.0.0:4200, open your browser on http://localhost:4200/ **[39m
+[37m[39m
+[37m[39m
+[37m[92m✔[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mvendor.js[39m[37m          [2m | [22mvendor [2m | [22m [96m5.30 MB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m96.34 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m3 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T10:41:57.505Z[39m[37m[22m - Hash: [1m[37m25449b6f6839d6f0[39m[37m[22m - Time: [1m[37m1671[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[37m[39m
+[37m[92m✔[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m96.34 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m4 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T11:00:27.568Z[39m[37m[22m - Hash: [1m[37me78d34b8c0838fed[39m[37m[22m - Time: [1m[37m800[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[37m[39m
+[37m[92m✔[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m98.27 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m4 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T11:02:49.491Z[39m[37m[22m - Hash: [1m[37m5726342a7655187f[39m[37m[22m - Time: [1m[37m1470[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[37m[39m
+[37m[92m✔[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m98.27 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m4 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T11:06:31.190Z[39m[37m[22m - Hash: [1m[37me1675156c58173b0[39m[37m[22m - Time: [1m[37m748[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/mifiware-tfm/src/app/core/store/reducers/auth.reducer.ts[0m:[93m6[0m:[93m3[0m - [91merror[0m[90m TS2322: [0mType '{ accessTOken: string; refreshToken: string; tokenType: string; name: string; surname: string; email: string; role: null; }' is not assignable to type 'IAuthState'.[39m[22m
+[1m[31m  Object literal may only specify known properties, but 'accessTOken' does not exist in type 'IAuthState'. Did you mean to write 'accessToken'?[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m6[0m   accessTOken: '',[39m[22m
+[1m[31m[7m [0m [91m  ~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m✖[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m98.27 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m4 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T11:06:41.681Z[39m[37m[22m - Hash: [1m[37me42b65853ba3db4b[39m[37m[22m - Time: [1m[37m546[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[37m[39m
+[37m[92m✔[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m98.32 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m4 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T11:06:45.470Z[39m[37m[22m - Hash: [1m[37m1c8e2be36337d84d[39m[37m[22m - Time: [1m[37m507[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[37m[39m
+[37m[92m✔[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m98.32 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m4 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T11:09:06.259Z[39m[37m[22m - Hash: [1m[37m51e20365a359722e[39m[37m[22m - Time: [1m[37m518[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[37m[39m
+[37m[92m✔[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m98.32 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m4 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T11:12:19.824Z[39m[37m[22m - Hash: [1m[37m4406126f3c344edd[39m[37m[22m - Time: [1m[37m485[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/mifiware-tfm/src/app/core/store/reducers/auth.reducer.ts[0m:[93m17[0m:[93m3[0m - [91merror[0m[90m TS2345: [0mArgument of type 'ReducerTypes<{ me: IAuthState; accessToken?: string; refreshToken?: string; tokenType?: string; name?: string; surname?: string; email?: string; role?: Role; }, [ActionCreator<"[Me] Set Me", (props: { me: IAuthState; }) => { ...; } & TypedAction<...>>]>' is not assignable to parameter of type 'ReducerTypes<IAuthState, readonly ActionCreator<string, Creator<any[], object>>[]>'.[39m[22m
+[1m[31m  Types of property 'reducer' are incompatible.[39m[22m
+[1m[31m    Type 'OnReducer<{ me: IAuthState; accessToken?: string; refreshToken?: string; tokenType?: string; name?: string; surname?: string; email?: string; role?: Role; }, [ActionCreator<"[Me] Set Me", (props: { me: IAuthState; }) => { ...; } & TypedAction<...>>], { ...; }, { ...; }>' is not assignable to type 'OnReducer<IAuthState, readonly ActionCreator<string, Creator<any[], object>>[], IAuthState, IAuthState>'.[39m[22m
+[1m[31m      Types of parameters 'state' and 'state' are incompatible.[39m[22m
+[1m[31m        Type 'IAuthState' is not assignable to type '{ me: IAuthState; accessToken?: string; refreshToken?: string; tokenType?: string; name?: string; surname?: string; email?: string; role?: Role; }'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m17[0m   on(coreActions.setMe, (state, { me }) => ({[39m[22m
+[1m[31m[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[7m18[0m     ...state,[39m[22m
+[1m[31m[7m  [0m [91m~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[7m19[0m     me: me,[39m[22m
+[1m[31m[7m  [0m [91m~~~~~~~~~~~[0m[39m[22m
+[1m[31m[7m20[0m   })),[39m[22m
+[1m[31m[7m  [0m [91m~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m✖[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m98.33 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m4 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T11:13:21.974Z[39m[37m[22m - Hash: [1m[37mb497013ab7eedd63[39m[37m[22m - Time: [1m[37m467[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[37m[39m
+[37m[92m✔[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m98.32 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m4 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T11:23:41.265Z[39m[37m[22m - Hash: [1m[37mdd99a297118f1502[39m[37m[22m - Time: [1m[37m1389[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/mifiware-tfm/src/app/core/services/app-store.service.ts[0m:[93m18[0m:[93m34[0m - [91merror[0m[90m TS2345: [0mArgument of type 'IAuthState' is not assignable to parameter of type '{ me: IAuthState; }'.[39m[22m
+[1m[31m  Property 'me' is missing in type 'IAuthState' but required in type '{ me: IAuthState; }'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m18[0m     this.appStore.dispatch(setMe(me));[39m[22m
+[1m[31m[7m  [0m [91m                                 ~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/mifiware-tfm/src/app/core/store/actions/auth.actions.ts[0m:[93m6[0m:[93m11[0m[39m[22m
+[1m[31m    [7m6[0m   props<{ me: IAuthState | null }>()[39m[22m
+[1m[31m    [7m [0m [96m          ~~[0m[39m[22m
+[1m[31m    'me' is declared here.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m✖[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m98.32 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m4 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T11:23:41.955Z[39m[37m[22m - Hash: [1m[37m897d4ce54a01b411[39m[37m[22m - Time: [1m[37m580[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/mifiware-tfm/src/app/core/services/app-store.service.ts[0m:[93m18[0m:[93m34[0m - [91merror[0m[90m TS2345: [0mArgument of type 'IAuthState' is not assignable to parameter of type '{ me: IAuthState; }'.[39m[22m
+[1m[31m  Property 'me' is missing in type 'IAuthState' but required in type '{ me: IAuthState; }'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m18[0m     this.appStore.dispatch(setMe(me));[39m[22m
+[1m[31m[7m  [0m [91m                                 ~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/mifiware-tfm/src/app/core/store/actions/auth.actions.ts[0m:[93m6[0m:[93m11[0m[39m[22m
+[1m[31m    [7m6[0m   props<{ me: IAuthState | null }>()[39m[22m
+[1m[31m    [7m [0m [96m          ~~[0m[39m[22m
+[1m[31m    'me' is declared here.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m✖[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m98.32 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.63 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m4 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2024-01-24T11:23:43.079Z[39m[37m[22m - Hash: [1m[37m8446caa92bd08d1a[39m[37m[22m - Time: [1m[37m1028[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[36m./node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js[39m[33m[0m:[0m[93m699:44-82[39m[33m[0m - [0m[33mWarning: [39m[33m[0mModule not found: Error: Can't resolve 'react-native-sqlite-storage' in '/home/sergio/Escritorio/mifiware-tfm/node_modules/typeorm/browser/driver/react-native'[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[37m[39m
+[37m[92m✔[39m[37m Compiled successfully.[39m

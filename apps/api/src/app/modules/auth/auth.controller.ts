@@ -8,29 +8,64 @@ import {
   Delete,
   UseGuards,
   Req,
+  HttpCode,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { CreateUserDto } from '../../shared/dto/create-user.dto';
 import { UserService } from '../user/user.service';
 import { AuthGuard } from '../../core/guards/auth.guard';
 import { Roles } from '../../core/decorators/roles.decorator';
-import { Role } from '../../shared/enum/role.enum';
 import { RolesGuard } from '../../core/guards/roles.guard';
-import { RequestWithUser } from '../../shared/dto/get-user.dto';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  JwtTokenDto,
+  LogInDto,
+  SignUpDto,
+} from '@mifiware-tfm/entity-data-models';
+import {
+  AUTH_ERROR_EMAIL_ALREADY_EXISTS,
+  AUTH_ERROR_EMAIL_OR_PASSWORD_INVALID,
+  AUTH_ERROR_USER_NOT_VALIDATED,
+} from './auth.constants';
 //import { UpdateAuthDto } from './dto/update-auth.dto';
 
-@Controller()
+@Controller(`auth`)
+@ApiTags(`auth`)
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
     private userService: UserService
   ) {}
 
-  @Post('login')
-  async login(@Body() createUserDto: CreateUserDto) {
-    const user = await this.userService.validateUser(createUserDto);
+  @Post('signup')
+  @ApiResponse({ status: 204, description: 'Empty response' })
+  @ApiResponse({ status: 400, description: 'Bad request' })
+  @ApiResponse({ status: 409, description: AUTH_ERROR_EMAIL_ALREADY_EXISTS })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  @HttpCode(204)
+  async signUp(@Body() signUpDto: SignUpDto) {
+    return this.authService.signUp(signUpDto);
+  }
 
-    return this.authService.login(user);
+  @Post('login')
+  @ApiResponse({
+    status: 200,
+    type: JwtTokenDto,
+    description: 'JWT Sesion Token',
+  })
+  @ApiResponse({
+    status: 404,
+    description: AUTH_ERROR_EMAIL_OR_PASSWORD_INVALID,
+  })
+  @ApiResponse({ status: 601, description: AUTH_ERROR_USER_NOT_VALIDATED })
+  @HttpCode(200)
+  async login(@Body() logInDto: LogInDto) {
+    console.log('entra en la api', logInDto);
+
+    return this.authService.login(logInDto).then((res) => {
+      console.log('res', res);
+
+      return res;
+    });
   }
 
   @Post('logout')
@@ -38,33 +73,10 @@ export class AuthController {
     return 'This action removes a # auth';
   }
 
-  
-  @Get('profile')
+  /* @Get('profile')
   @Roles(Role.SUPER_ADMIN)
   @UseGuards(AuthGuard, RolesGuard)
-  getProfile(@Req() req: RequestWithUser) {    
+  getProfile(@Req() req: RequestWithUser) {
     return this.authService.validateUser(req.user);
-  }
-
-
-
-  @Get()
-  findAll() {
-    return this.authService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.authService.findOne(+id);
-  }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateAuthDto: UpdateAuthDto) {
-  //   return this.authService.update(+id, updateAuthDto);
-  // }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.authService.remove(+id);
-  }
+  } */
 }

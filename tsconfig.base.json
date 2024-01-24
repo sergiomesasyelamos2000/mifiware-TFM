@@ -3,7 +3,8 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
-    "declaration": false,
+    "strictNullChecks": false,
+    "declaration": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -14,8 +15,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "outDir": "./dist",
     "paths": {
-      "@mifiware-tfm/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@mifiware-tfm/entity-data-models": [
+        "libs/entity-data-models/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -84,20 +84,13 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "apps/mifiware-tfm/**/*.ts",
-          "apps/mifiware-tfm/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/mifiware-tfm/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/mifiware-tfm/jest.config.ts"
       }
     }
   },

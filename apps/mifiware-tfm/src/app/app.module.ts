@@ -12,6 +12,22 @@ import { MetaReducer, StoreModule } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { NgrxStoreIdbModule } from 'ngrx-store-idb';
+import { AppLayoutModule } from './modules/layout/views/app.layout.module';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { RippleModule } from 'primeng/ripple';
+import { MultiSelectModule } from 'primeng/multiselect';
+
+import { TableModule } from 'primeng/table';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { DropdownModule } from 'primeng/dropdown';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ToastModule } from 'primeng/toast';
+import { SliderModule } from 'primeng/slider';
+import { RatingModule } from 'primeng/rating';
 
 export const metaReducers: MetaReducer<any>[] = isDevMode()
   ? [storeFreeze]
@@ -34,6 +50,35 @@ export const metaReducers: MetaReducer<any>[] = isDevMode()
       maxAge: 25,
       logOnly: isDevMode(),
     }),
+    NgrxStoreIdbModule.forRoot({
+      keys: [
+        {
+          core: ['auth'],
+        },
+      ],
+      concurrency: {
+        allowed: true,
+        failInitialisationIfNoLock: false,
+        refreshRate: 2000,
+      },
+      saveOnChange: true,
+      rehydrate: true,
+      debugInfo: false,
+    }),
+    AppLayoutModule,
+    TableModule,
+    CommonModule,
+    RatingModule,
+    ButtonModule,
+    SliderModule,
+    InputTextModule,
+    ToggleButtonModule,
+    RippleModule,
+    MultiSelectModule,
+    DropdownModule,
+    ProgressBarModule,
+    ToastModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

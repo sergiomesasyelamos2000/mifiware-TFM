@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { AppLayoutComponent } from './modules/layout/views/app.layout.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: AppLayoutComponent,
+  },
+  /* {
+    path: '',
     loadChildren: () =>
       import('./modules/home/home.module').then((m) => m.HomeModule),
-  },
+  }, */
   {
     path: 'auth',
     loadChildren: () =>
@@ -21,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'dashboard',
+    redirectTo: 'home',
   },
 ];
 

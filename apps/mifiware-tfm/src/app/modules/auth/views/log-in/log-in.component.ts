@@ -87,6 +87,7 @@ export class LogInComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
         this.appStoreService.setMe(res);
+        sessionStorage.setItem('email', res.accessToken);
         this.notificationService.showToast({
           severity: MessageSeverity.SUCCESS,
           summary: 'Login',

@@ -1,0 +1,14 @@
+<div class="layout-wrapper" [ngClass]="containerClass">
+  <mifiware-tfm-topbar></mifiware-tfm-topbar>
+  <div class="layout-sidebar">
+    <mifiware-tfm-sidebar></mifiware-tfm-sidebar>
+  </div>
+  <div class="layout-main-container">
+    <div class="layout-main">
+      <router-outlet></router-outlet>
+    </div>
+    <mifiware-tfm-footer></mifiware-tfm-footer>
+  </div>
+  <!-- <app-config></app-config> -->
+  <div class="layout-mask"></div>
+</div>

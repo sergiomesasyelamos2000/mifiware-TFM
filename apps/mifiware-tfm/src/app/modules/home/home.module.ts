@@ -3,7 +3,7 @@ import { HomeComponent } from './views/home.component';
 import { AuthModule } from '../auth/auth.module';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
-import { authGuard } from '../../core/guards/auth.guard';
+import { AuthGuard } from '../../core/guards/auth.guard';
 
 @NgModule({
   imports: [
@@ -15,14 +15,13 @@ import { authGuard } from '../../core/guards/auth.guard';
         component: HomeComponent,
         data: { breadcrumb: 'MENU.LOGIN' },
         //canActivate: [IsNotAuthenticatedGuard],
-        canActivate: [authGuard],
+        canActivate: [],
       },
       {
         path: '',
         component: HomeComponent,
-        data: { breadcrumb: 'MENU.LOGIN' },
-        //canActivate: [IsNotAuthenticatedGuard],
-        canActivate: [authGuard],
+        data: {},
+        canActivate: [],
       },
     ]),
   ],

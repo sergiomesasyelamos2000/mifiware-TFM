@@ -1,9 +1,9 @@
 import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
-import { AppSidebarComponent } from '../../sidebar/views/app.sidebar.component';
 import { LayoutService } from '../../../core/services/app.layout.service';
-import { AppTopBarComponent } from '../../topbar/views/app.topbar.component';
+import { AppTopBarComponent } from '../../../shared/topbar/views/app.topbar.component';
+import { AppSidebarComponent } from '../../../shared/sidebar/views/app.sidebar.component';
 
 @Component({
   selector: 'mifiware-tfm-layout',

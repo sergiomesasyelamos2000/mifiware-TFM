@@ -19,8 +19,8 @@ import {
 } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { LayoutService } from '../../core/services/app.layout.service';
-import { MenuService } from '../../core/services/app.menu.service';
+import { LayoutService } from '../../../core/services/app.layout.service';
+import { MenuService } from '../../../core/services/app.menu.service';
 
 @Component({
   selector: '[mifiware-tfm-menuitem]',

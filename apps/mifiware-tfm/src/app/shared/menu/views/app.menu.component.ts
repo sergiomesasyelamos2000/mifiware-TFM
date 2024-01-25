@@ -1,6 +1,6 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
-import { LayoutService } from '../../core/services/app.layout.service';
+import { LayoutService } from '../../../core/services/app.layout.service';
 
 @Component({
   selector: 'mifiware-tfm-menu',

@@ -11,12 +11,12 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { RippleModule } from 'primeng/ripple';
 import { RouterModule } from '@angular/router';
 import { AppLayoutComponent } from './app.layout.component';
-import { AppSidebarComponent } from '../../sidebar/views/app.sidebar.component';
-import { AppFooterComponent } from '../../footer/views/app.footer.component';
-import { AppTopBarComponent } from '../../topbar/views/app.topbar.component';
 import { CommonModule } from '@angular/common';
-import { AppMenuitemComponent } from '../../menu/app.menuitem.component';
-import { AppMenuComponent } from '../../menu/app.menu.component';
+import { AppFooterComponent } from '../../../shared/footer/views/app.footer.component';
+import { AppMenuComponent } from '../../../shared/menu/views/app.menu.component';
+import { AppMenuitemComponent } from '../../../shared/menu/views/app.menuitem.component';
+import { AppSidebarComponent } from '../../../shared/sidebar/views/app.sidebar.component';
+import { AppTopBarComponent } from '../../../shared/topbar/views/app.topbar.component';
 
 @NgModule({
   declarations: [

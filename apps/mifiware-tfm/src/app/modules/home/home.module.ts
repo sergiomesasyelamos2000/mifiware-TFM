@@ -10,13 +10,13 @@ import { AuthGuard } from '../../core/guards/auth.guard';
     AuthModule,
     ButtonModule,
     RouterModule.forChild([
-      {
+      /* {
         path: 'home',
         component: HomeComponent,
         data: { breadcrumb: 'MENU.LOGIN' },
         //canActivate: [IsNotAuthenticatedGuard],
         canActivate: [],
-      },
+      }, */
       {
         path: '',
         component: HomeComponent,

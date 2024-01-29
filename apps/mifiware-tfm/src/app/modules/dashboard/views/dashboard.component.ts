@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
       this.userId = auth.userId;
       this.token = auth.accessToken;
     });
-    this.profileService.getProfile(this.userId, this.token).subscribe({
+    /* this.profileService.getProfile(this.userId, this.token).subscribe({
       next: (res) => {
         this.appStoreService.setMe(res);
         this.notificationService.showToast({
@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
       error: (error) => {
         console.log('error', error);
       },
-    });
+    }); */
   }
 
   show() {

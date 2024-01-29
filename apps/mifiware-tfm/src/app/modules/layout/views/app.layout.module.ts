@@ -17,6 +17,7 @@ import { AppMenuComponent } from '../../../shared/menu/views/app.menu.component'
 import { AppMenuitemComponent } from '../../../shared/menu/views/app.menuitem.component';
 import { AppSidebarComponent } from '../../../shared/sidebar/views/app.sidebar.component';
 import { AppTopBarComponent } from '../../../shared/topbar/views/app.topbar.component';
+import { AuthModule } from '../../auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AppTopBarComponent } from '../../../shared/topbar/views/app.topbar.comp
     RippleModule,
     RouterModule,
     CommonModule,
+    AuthModule,
   ],
   exports: [AppLayoutComponent],
 })

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NavigationEnd, RouteConfigLoadEnd, Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { LayoutService } from './core/services/app.layout.service';
+import { AppStoreService } from './core/services/app-store.service';
 
 @Component({
   selector: 'mifiware-tfm-root',
@@ -10,13 +11,14 @@ import { LayoutService } from './core/services/app.layout.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  //hello$ = this.http.get<Message>('/api/hello');
+  isAuthenticate = false;
   isInHomePath = false;
   constructor(
     private http: HttpClient,
     private router: Router,
     private primengConfig: PrimeNGConfig,
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    private appStoreService: AppStoreService
   ) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -52,6 +54,9 @@ export class AppComponent implements OnInit {
 
   checkUrl(url: string) {
     this.isInHomePath = this.router.url === '/';
-    console.log('this.isInHomePath', this.isInHomePath);
+    this.appStoreService.loadAuth$().subscribe((auth) => {
+      this.isAuthenticate = !!auth.accessToken;
+    });
+    console.log('this.isInHomePath', this.isInHomePath, this.isAuthenticate);
   }
 }

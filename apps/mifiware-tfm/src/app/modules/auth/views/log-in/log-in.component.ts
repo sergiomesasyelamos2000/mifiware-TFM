@@ -10,7 +10,7 @@ import { AppStoreService } from '../../../../core/services/app-store.service';
   selector: 'mifiware-tfm-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss'],
-  providers: [MessageService],
+  providers: [],
 })
 export class LogInComponent implements OnInit {
   error = '';
@@ -22,9 +22,7 @@ export class LogInComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private messageService: MessageService,
     private notificationService: NotificationService,
-    private route: ActivatedRoute,
     private router: Router,
     private appStoreService: AppStoreService
   ) {}

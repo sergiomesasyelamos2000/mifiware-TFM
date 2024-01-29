@@ -27,8 +27,8 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    this.appStoreService.loadMe$().subscribe((me) => {
-      this.accessToken = me.accessToken;
+    this.appStoreService.loadAuth$().subscribe((auth) => {
+      this.accessToken = auth.accessToken;
     });
     console.log('this.accessToken', this.accessToken);
 

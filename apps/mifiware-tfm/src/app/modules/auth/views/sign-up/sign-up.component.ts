@@ -67,14 +67,14 @@ export class SignUpComponent implements OnInit {
       next: () => {
         this.notificationService.showToast({
           severity: MessageSeverity.SUCCESS,
-          summary: 'Sign Up',
+          summary: 'Se ha registrado correctamente',
           detail: 'Sign Up successful',
         });
       },
       error: (error) => {
         this.notificationService.showToast({
           severity: MessageSeverity.ERROR,
-          summary: 'Sign Up',
+          summary: 'Se ha producido un error al registrarse',
           detail: error.error.message,
         });
       },

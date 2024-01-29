@@ -27,6 +27,11 @@ export class AppMenuComponent implements OnInit {
             icon: 'pi pi-fw pi-id-card',
             routerLink: ['/dashboard'],
           },
+          {
+            label: 'PROFILE',
+            icon: 'pi pi-fw pi-id-card',
+            routerLink: ['/profile'],
+          },
         ],
       },
     ];

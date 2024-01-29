@@ -97,11 +97,11 @@ export class AuthService {
     if (!isPasswordValid) {
       throw new NotFoundException(AUTH_ERROR_EMAIL_OR_PASSWORD_INVALID);
     }
-    return this.createJwtToken({ id: user.uuid, date: new Date() });
+    return this.createJwtToken(user.uuid, { id: user.uuid, date: new Date() });
   }
 
   /* Create a new session */
-  private createJwtToken(jwtPayload: JwtPayload): JwtTokenDto {
+  private createJwtToken(id: string, jwtPayload: JwtPayload): JwtTokenDto {
     return {
       accessToken: this.generateJwtToken(
         jwtPayload,
@@ -114,6 +114,7 @@ export class AuthService {
         environment.auth.refreshToken.expiresIn
       ),
       tokenType: environment.auth.tokenType,
+      userId: id,
     };
   }
   /* Create a new JWT Token */

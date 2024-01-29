@@ -4,6 +4,7 @@ import { MessageModule } from 'primeng/message';
 import * as fromState from './store';
 import { ConfirmationService, MessageService, Message } from 'primeng/api';
 import { StoreModule } from '@ngrx/store';
+import { NotificationService } from './services/notification.service';
 
 @NgModule({
   declarations: [],
@@ -12,7 +13,7 @@ import { StoreModule } from '@ngrx/store';
     MessageModule,
     StoreModule.forFeature('core', fromState.reducers),
   ],
-  providers: [MessageService, ConfirmationService],
+  providers: [MessageService, ConfirmationService, NotificationService],
   exports: [],
 })
 export class CoreModule {}

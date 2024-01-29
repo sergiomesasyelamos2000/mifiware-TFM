@@ -6,23 +6,20 @@ export const initialState: IAuthState = {
   accessToken: '',
   refreshToken: '',
   tokenType: '',
-  name: '',
-  surname: '',
-  email: '',
-  role: null,
+  userId: '',
 };
 
 export const authReducer = createReducer(
   initialState,
   on(
-    coreActions.setMe,
+    coreActions.setAuth,
     (state, action): IAuthState => ({
       ...state,
       ...action,
     })
   ),
   on(
-    coreActions.resetMe,
+    coreActions.resetAuth,
     (state): IAuthState => ({
       ...state,
       ...initialState,

@@ -19,6 +19,7 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import {
   JwtTokenDto,
   LogInDto,
+  Role,
   SignUpDto,
 } from '@mifiware-tfm/entity-data-models';
 import {
@@ -62,7 +63,7 @@ export class AuthController {
     console.log('entra en la api', logInDto);
 
     return this.authService.login(logInDto).then((res) => {
-      console.log('res', res);
+      console.log('login', res);
 
       return res;
     });

@@ -28,6 +28,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { RatingModule } from 'primeng/rating';
+import { ProfileModule } from './modules/profile/profile.module';
 
 export const metaReducers: MetaReducer<any>[] = isDevMode()
   ? [storeFreeze]
@@ -41,6 +42,7 @@ export const metaReducers: MetaReducer<any>[] = isDevMode()
     AuthModule,
     HomeModule,
     CoreModule,
+    ProfileModule,
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({}, { metaReducers }),
@@ -53,7 +55,7 @@ export const metaReducers: MetaReducer<any>[] = isDevMode()
     NgrxStoreIdbModule.forRoot({
       keys: [
         {
-          core: ['auth'],
+          core: ['auth', 'user'],
         },
       ],
       concurrency: {

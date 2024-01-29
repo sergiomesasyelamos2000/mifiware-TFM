@@ -10,9 +10,13 @@ export class JwtTokenDto {
   @Column({ type: 'varchar' })
   tokenType: string;
 
+  @Column({ type: 'varchar' })
+  userId: string;
+
   constructor() {
     this.accessToken = null;
     this.refreshToken = null;
     this.tokenType = null;
+    this.userId = null;
   }
 }

@@ -38,4 +38,12 @@ export class UserService {
   findByUsername(name: string): Promise<User> {
     return this.usersRepository.findOne({ where: { name } });
   }
+
+  async findById(uuid: string): Promise<User> {
+    const user = this.usersRepository.findOne({ where: { uuid } });
+    if (!user) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+    return user;
+  }
 }

@@ -6,8 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
+  HttpCode,
 } from '@nestjs/common';
 import { UserService } from './user.service';
+import { Roles } from '../../core/decorators/roles.decorator';
+import { Role } from '@mifiware-tfm/entity-data-models';
+import { AuthGuard } from '../../core/guards/auth.guard';
 //import { UpdateAuthDto } from './dto/update-auth.dto';
 
 @Controller('users')
@@ -18,4 +23,11 @@ export class UserController {
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   } */
+
+  @Get(':id')
+  @UseGuards(AuthGuard)
+  @HttpCode(200)
+  async findOne(@Param('id') userId: string) {
+    return this.userService.findById(userId);
+  }
 }

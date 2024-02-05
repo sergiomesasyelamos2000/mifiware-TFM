@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../../core/guards/auth.guard';
 import { CommonModule } from '@angular/common';
+import { IsNotAuthenticatedAuthGuard } from '../../core/guards/is-not-authenticated.guard';
 
 @NgModule({
   imports: [
@@ -21,9 +22,9 @@ import { CommonModule } from '@angular/common';
       }, */
       {
         path: '',
+        data: { breadcrumb: 'MENU.LOGIN' },
         component: HomeComponent,
-        data: {},
-        canActivate: [],
+        canActivate: [IsNotAuthenticatedAuthGuard],
       },
     ]),
   ],

@@ -12,6 +12,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
+  data!: any;
 
   showLogin: boolean = false;
   constructor(
@@ -26,6 +27,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe((auth) => {
         this.showLogin = !!auth;
       });
+  }
+
+  goToLogin() {
+    this.router.navigate(['auth', 'log-in']);
   }
 
   ngOnDestroy(): void {

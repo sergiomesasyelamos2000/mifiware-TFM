@@ -2,8 +2,9 @@
 <mifiware-tfm-home *ngIf="!isAuthenticate"></mifiware-tfm-home>
 
 <!-- Si está autenticado, mostrar el componente Layout y el router-outlet -->
-<mifiware-tfm-layout *ngIf="isAuthenticate">
-  <router-outlet></router-outlet>
-</mifiware-tfm-layout>
+<mifiware-tfm-layout *ngIf="isAuthenticate"> </mifiware-tfm-layout>
 
 <p-toast></p-toast>
+
+<!-- Esto me da problemas, ya que se muestra dos veces en el dashboard, pero si no lo pongo, no se muestra el login en el home -->
+<!-- <router-outlet></router-outlet> -->

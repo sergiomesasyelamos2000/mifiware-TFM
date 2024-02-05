@@ -8,7 +8,9 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
+import { CheckboxModule } from 'primeng/checkbox';
 import { AuthGuard } from '../../core/guards/auth.guard';
+import { IsNotAuthenticatedAuthGuard } from '../../core/guards/is-not-authenticated.guard';
 
 @NgModule({
   declarations: [LogInComponent, SignUpComponent],
@@ -19,18 +21,19 @@ import { AuthGuard } from '../../core/guards/auth.guard';
     InputTextModule,
     ButtonModule,
     MessagesModule,
+    CheckboxModule,
     RouterModule.forChild([
       {
         path: 'log-in',
         component: LogInComponent,
         data: { breadcrumb: 'MENU.LOGIN' },
-        canActivate: [!AuthGuard],
+        canActivate: [IsNotAuthenticatedAuthGuard],
       },
       {
         path: 'sign-up',
         component: SignUpComponent,
         data: { breadcrumb: 'MENU.SIGNUP' },
-        canActivate: [!AuthGuard],
+        canActivate: [IsNotAuthenticatedAuthGuard],
       },
     ]),
   ],

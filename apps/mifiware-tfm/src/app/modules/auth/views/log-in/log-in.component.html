@@ -1,8 +1,7 @@
-<form [formGroup]="loginForm" class="form-container">
+<!-- <form [formGroup]="loginForm" class="form-container">
   <p-card class="card">
     <header class="head-form">
       <h2>Log In</h2>
-      <!--     A welcome message or an explanation of the login form -->
       <p>login here using your username and password</p>
     </header>
     <div class="field">
@@ -56,4 +55,111 @@
       Not a member? <a routerLink="/auth/sign-up"> Register</a>
     </div>
   </p-card>
+</form>
+ -->
+
+<form
+  [formGroup]="loginForm"
+  class="surface-card p-4 shadow-2 border-round w-full lg:w-6"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="text-center mb-5">
+    <img
+      src="assets/layout/images/logo-white.png"
+      alt="Image"
+      height="50"
+      class="mb-3"
+    />
+    <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
+  </div>
+
+  <div>
+    <label for="email1" class="block text-900 font-medium mb-2">Email</label>
+    <input
+      id="email1"
+      type="text"
+      placeholder="Email address"
+      pInputText
+      class="w-full mb-3"
+      formControlName="email"
+    />
+
+    <small
+      *ngIf="
+        loginForm.get('email').invalid &&
+        (loginForm.get('email').dirty || loginForm.get('email').touched)
+      "
+      class="block p-error"
+    >
+      <div *ngIf="loginForm.get('email').errors?.['required']">
+        Email is required
+      </div>
+      <div *ngIf="loginForm.get('email').errors?.['email']">
+        Email should be valid
+      </div>
+    </small>
+
+    <label for="password1" class="block text-900 font-medium mb-2"
+      >Password</label
+    >
+    <input
+      id="password1"
+      type="password"
+      placeholder="Password"
+      pInputText
+      class="w-full mb-3"
+      formControlName="password"
+    />
+
+    <small
+      *ngIf="
+        loginForm.get('password').invalid &&
+        (loginForm.get('password').dirty || loginForm.get('password').touched)
+      "
+      class="block p-error"
+    >
+      <div *ngIf="loginForm.get('password').errors?.['required']">
+        Password is required
+      </div>
+    </small>
+
+    <div class="flex align-items-center justify-content-between mb-6">
+      <div class="flex align-items-center">
+        <p-checkbox
+          id="rememberme"
+          [binary]="true"
+          styleClass="mr-2"
+        ></p-checkbox>
+        <label for="rememberme1">Remember me</label>
+      </div>
+      <a
+        class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer"
+        >Forgot password?</a
+      >
+    </div>
+    <div class="mb-4">
+      <span class="text-600 font-medium line-height-3"
+        >Don't have an account?</span
+      >
+      <a
+        class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
+        routerLink="/auth/sign-up"
+        >Create account!</a
+      >
+    </div>
+
+    <button
+      pButton
+      pRipple
+      label="Sign In"
+      icon="pi pi-user"
+      class="w-full"
+      (onClick)="onSubmit()"
+      type="submit"
+      [disabled]="loginForm.invalid"
+    ></button>
+
+    <a routerLink="/auth/log-in">Log In</a>
+    <a routerLink="/auth/sign-up">Sign Up</a>
+  </div>
 </form>

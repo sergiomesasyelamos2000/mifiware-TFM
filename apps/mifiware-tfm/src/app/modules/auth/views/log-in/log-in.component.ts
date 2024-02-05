@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { NotificationService } from '../../../../core/services/notification.service';
 import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
 import { AppStoreService } from '../../../../core/services/app-store.service';
+import { log } from 'console';
 @Component({
   selector: 'mifiware-tfm-log-in',
   templateUrl: './log-in.component.html',
@@ -47,6 +48,7 @@ export class LogInComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('onSubmit');
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
         this.appStoreService.setAuth(res);

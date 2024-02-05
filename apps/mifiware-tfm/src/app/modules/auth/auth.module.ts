@@ -8,6 +8,7 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
+import { AuthGuard } from '../../core/guards/auth.guard';
 
 @NgModule({
   declarations: [LogInComponent, SignUpComponent],
@@ -23,13 +24,13 @@ import { MessagesModule } from 'primeng/messages';
         path: 'log-in',
         component: LogInComponent,
         data: { breadcrumb: 'MENU.LOGIN' },
-        //canActivate: [IsNotAuthenticatedGuard],
+        canActivate: [!AuthGuard],
       },
       {
         path: 'sign-up',
         component: SignUpComponent,
         data: { breadcrumb: 'MENU.SIGNUP' },
-        //canActivate: [IsNotAuthenticatedGuard],
+        canActivate: [!AuthGuard],
       },
     ]),
   ],

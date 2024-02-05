@@ -1,1 +1,95 @@
-<p>profile works!</p>
+<form [formGroup]="profileForm" class="card flex justify-content-center">
+  <div class="formgrid grid">
+    <div class="field col-12">
+      <span class="p-float-label">
+        <input
+          pInputText
+          id="uuid"
+          formControlName="uuid"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+        <label htmlFor="uuid">UUID</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-6">
+      <span class="p-float-label">
+        <input
+          pInputText
+          id="name"
+          formControlName="name"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+        <label htmlFor="name">Username</label>
+      </span>
+      <small
+        *ngIf="name.invalid && (name.dirty || name.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="name.errors?.['required']">name is required</div>
+        <div *ngIf="name.errors?.['pattern']">name should be valid</div>
+      </small>
+    </div>
+    <div class="field col-12 md:col-6">
+      <span class="p-float-label">
+        <input
+          pInputText
+          id="surname"
+          formControlName="surname"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+        <label htmlFor="surname">Surname</label>
+      </span>
+      <small
+        *ngIf="surname.invalid && (surname.dirty || surname.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="surname.errors?.['required']">surname is required</div>
+        <div *ngIf="surname.errors?.['pattern']">surname should be valid</div>
+      </small>
+    </div>
+
+    <div class="field col-12 md:col-6">
+      <span class="p-float-label">
+        <input
+          pInputText
+          id="email"
+          formControlName="email"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+        <label htmlFor="email">Email</label>
+      </span>
+      <small
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="email.errors?.['required']">Email is required</div>
+        <div *ngIf="email.errors?.['email']">Email should be valid</div>
+      </small>
+    </div>
+    <div class="field col-12 md:col-6">
+      <span class="p-float-label">
+        <p-dropdown
+          formControlName="role"
+          [options]="roles"
+          placeholder="Select a role"
+          optionLabel="label"
+          inputId="float-label"
+        ></p-dropdown>
+        <label for="float-label">Select a Role</label>
+      </span>
+
+      <small
+        *ngIf="role.invalid && (role.dirty || role.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="role.errors?.['required']">role is required</div>
+      </small>
+    </div>
+    <p-button
+      label="SAVE"
+      styleClass="w-full"
+      (onClick)="onSubmit()"
+      [disabled]="profileForm.invalid"
+    ></p-button>
+  </div>
+</form>

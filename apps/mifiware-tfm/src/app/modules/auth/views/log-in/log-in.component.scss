@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -247,4 +247,50 @@ footer i {
 footer a {
   color: #3c97bf;
   text-decoration: none;
+}
+ */
+form {
+  width: 50vw;
+  min-height: 500px;
+  height: auto;
+  border-radius: 5px;
+  margin: 2% auto;
+  //box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+  padding: 2%;
+  //background-image: linear-gradient(-225deg, #e3fdf5 50%, #ffe6fa 50%);
+}
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.card {
+  width: 100%;
+  max-width: 35vw;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+  }
+}
+::ng-deep .login-button .p-button {
+  background-color: red !important;
+}
+/* the header form form */
+header {
+  margin: 2% auto 10% auto;
+  text-align: center;
+}
+/* Login title form form */
+header h2 {
+  font-size: 250%;
+  font-family: 'Playfair Display', serif;
+  color: #3e403f;
+}
+/*  A welcome message or an explanation of the login form */
+header p {
+  letter-spacing: 0.05em;
 }

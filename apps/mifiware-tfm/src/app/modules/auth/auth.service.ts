@@ -18,8 +18,6 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(loginDto: LogInDto): Observable<JwtTokenDto> {
-    console.log('ENTRA EN EL SERVICIO', loginDto);
-
     return this.http.post<JwtTokenDto>(
       `${environment.apiUrl}/auth/login`,
       loginDto

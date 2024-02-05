@@ -1,15 +1,23 @@
-<form [formGroup]="loginForm">
-  <p-card header="Login" [style]="{ width: '360px' }">
+<form [formGroup]="loginForm" class="form-container">
+  <p-card class="card">
+    <header class="head-form">
+      <h2>Log In</h2>
+      <!--     A welcome message or an explanation of the login form -->
+      <p>login here using your username and password</p>
+    </header>
     <div class="field">
-      <label for="email">Email</label>
-      <input
-        type="text"
-        pInputText
-        class="w-full"
-        name="email"
-        formControlName="email"
-        placeholder="Type your email"
-      />
+      <span class="w-full p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input
+          type="text"
+          pInputText
+          class="w-full"
+          name="email"
+          formControlName="email"
+          placeholder="Type your email"
+        />
+      </span>
+
       <small
         *ngIf="email.invalid && (email.dirty || email.touched)"
         class="block p-error"
@@ -19,15 +27,18 @@
       </small>
     </div>
     <div class="field">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        pInputText
-        formControlName="password"
-        class="w-full"
-        name="password"
-        placeholder="Type your password"
-      />
+      <span class="w-full p-input-icon-left">
+        <i class="pi pi-key"></i>
+        <input
+          type="password"
+          pInputText
+          formControlName="password"
+          class="w-full"
+          name="password"
+          placeholder="Type your password"
+        />
+      </span>
+
       <small
         *ngIf="password.invalid && (password.dirty || password.touched)"
         class="block p-error"
@@ -37,7 +48,7 @@
     </div>
     <p-button
       label="SIGN IN"
-      styleClass="w-full"
+      styleClass="login-button w-full"
       (onClick)="onSubmit()"
       [disabled]="loginForm.invalid"
     ></p-button>

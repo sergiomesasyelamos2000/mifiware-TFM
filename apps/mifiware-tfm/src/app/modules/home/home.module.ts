@@ -4,9 +4,11 @@ import { AuthModule } from '../auth/auth.module';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../../core/guards/auth.guard';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
+    CommonModule,
     AuthModule,
     ButtonModule,
     RouterModule.forChild([

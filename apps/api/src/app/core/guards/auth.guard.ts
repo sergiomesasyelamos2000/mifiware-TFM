@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
     private jwtService: JwtService
   ) {}
 
-  a; /* sync canActivate(context: ExecutionContext): Promise<boolean> {
+  /* sync canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
     if (!token) {
@@ -49,6 +49,8 @@ export class AuthGuard implements CanActivate {
       request.headers.authorization &&
       request.headers.authorization.split(' ').length === 2
     ) {
+      console.log('entra en if');
+
       const jwtTokenType = request.headers.authorization.split(' ')[0];
       const jwtToken = request.headers.authorization.split(' ')[1];
       if (
@@ -72,20 +74,22 @@ export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const jwtPayload = this.getJwtPayloadFromRequest(request);
+    console.log('user', jwtPayload);
     if (jwtPayload) {
       request.jwtPayload = jwtPayload;
       if (!jwtPayload.id) {
         throw new UnauthorizedException();
       }
       if (!request.user) {
-        /* const user = await this.userRepository.findOne(jwtPayload.id, {
-          relations: ['profile', 'distributor', 'comertialParent'],
+        const user = await this.userRepository.findOne({
+          where: { uuid: jwtPayload.id },
         });
         if (user) {
           request.user = user;
+          console.log('user', user);
         } else {
           throw new UnauthorizedException();
-        } */
+        }
       }
       return true;
     }

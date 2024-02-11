@@ -4,6 +4,7 @@ import { AppStoreService } from '../../../core/services/app-store.service';
 import { NotificationService } from '../../../core/services/notification.service';
 import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
 import { MessageService } from 'primeng/api';
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'mifiware-tfm-dashboard',
@@ -16,7 +17,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private profileService: ProfileService,
     private appStoreService: AppStoreService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private dashboardService: DashboardService
   ) {}
 
   ngOnInit(): void {
@@ -25,6 +27,15 @@ export class DashboardComponent implements OnInit {
       this.userId = auth.userId;
       this.token = auth.accessToken;
     });
+    const userId = 'A';
+
+    this.dashboardService
+      .getGrafanaDashboardUrl(userId, this.token)
+      .subscribe((grafanaUrl) => {
+        //this.router.navigateByUrl(grafanaUrl.toString());
+        console.log('grafanaUrl', grafanaUrl);
+      });
+
     /* this.profileService.getProfile(this.userId, this.token).subscribe({
       next: (res) => {
         this.appStoreService.setMe(res);

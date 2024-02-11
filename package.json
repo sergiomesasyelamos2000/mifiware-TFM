@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js",
-    "serve:app": "nx serve mifiware-tfm --port 4200 --host 0.0.0.0 --open --configuration=dev",
+    "serve:app": "nx serve mifiware-tfm --port 4600 --host 0.0.0.0 --open --configuration=dev",
     "build": "nx build",
     "test": "nx test",
     "serve:api": "nx serve api --configuration=dev"

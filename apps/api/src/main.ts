@@ -11,7 +11,7 @@ import * as swStats from 'swagger-stats';
 import { environment } from './environments/environment';
 import * as compression from 'compression';
 import * as rateLimit from 'express-rate-limit';
-import * as helmet from 'helmet';
+import helmet from 'helmet';
 import * as morgan from 'morgan';
 import * as rfs from 'rotating-file-stream';
 import { join } from 'path';
@@ -162,7 +162,15 @@ export async function bootstrap(app?: NestExpressApplication) {
   // Create NestJS app
   if (environment.environment !== 'TEST') {
     app = await NestFactory.create<NestExpressApplication>(AppModule, {
-      cors: environment.secure.enableCors,
+      cors: environment.secure.enableCors, // { origin: ['http://localhost:4600'], methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', credentials: true },
+    });
+
+    // Agrega más opciones de CORS si lo deseas
+    app.enableCors({
+      origin: environment.secure.enableCors.origin,
+      methods: environment.secure.enableCors.methods,
+      allowedHeaders: 'Content-Type, Authorization, X-Requested-With',
+      credentials: true,
     });
   }
   // Add a global prefix to the API
@@ -172,7 +180,7 @@ export async function bootstrap(app?: NestExpressApplication) {
 
   // Configure security middlewares
   app.use(compression());
-  //app.use(helmet({ contentSecurityPolicy: false }));
+  app.use(helmet({ contentSecurityPolicy: false }));
   //app.use(rateLimit(environment.secure.rateLimitConfig));
   app.use(json({ limit: environment.secure.payloadSizeLimit }));
 

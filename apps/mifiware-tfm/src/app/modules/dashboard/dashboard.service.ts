@@ -15,7 +15,7 @@ export class DashboardService {
     });
     return this.http.get(`${environment.apiUrl}/users/${userId}/dashboard`, {
       headers,
-      withCredentials: true,
+      responseType: 'text',
     });
   }
 }

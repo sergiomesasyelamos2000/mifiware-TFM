@@ -89,7 +89,12 @@ export const environment = {
       windowMs: 5 * 60 * 1000, // 5 minutes
       max: 500, // limit each IP to 500 requests per windowMs
     },
-    enableCors: true, // Enable cross origin
+    enableCors: {
+      origin: ['http://localhost:4600'], // Reemplaza con tu dominio de producción en producción
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+      credentials: true,
+      allowedHeaders: ['Content-Type', 'Authorization'],
+    },
     payloadSizeLimit: '10mb', // 10MB
   },
   secretKey: 'secretKey',

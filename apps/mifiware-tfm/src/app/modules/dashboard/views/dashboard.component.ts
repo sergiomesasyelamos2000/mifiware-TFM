@@ -5,6 +5,7 @@ import { NotificationService } from '../../../core/services/notification.service
 import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
 import { MessageService } from 'primeng/api';
 import { DashboardService } from '../dashboard.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'mifiware-tfm-dashboard',
@@ -12,13 +13,16 @@ import { DashboardService } from '../dashboard.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  userId!: string;
-  token!: string;
+  protected userId!: string;
+  protected token!: string;
+  protected grafanaUrl!: SafeResourceUrl;
+
   constructor(
     private profileService: ProfileService,
     private appStoreService: AppStoreService,
     private notificationService: NotificationService,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private domSanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -26,15 +30,8 @@ export class DashboardComponent implements OnInit {
       console.log('auth', auth);
       this.userId = auth.userId;
       this.token = auth.accessToken;
+      this.getGrafanaDashboardUrl();
     });
-    const userId = 'A';
-
-    this.dashboardService
-      .getGrafanaDashboardUrl(userId, this.token)
-      .subscribe((grafanaUrl) => {
-        //this.router.navigateByUrl(grafanaUrl.toString());
-        console.log('grafanaUrl', grafanaUrl);
-      });
 
     /* this.profileService.getProfile(this.userId, this.token).subscribe({
       next: (res) => {
@@ -49,6 +46,16 @@ export class DashboardComponent implements OnInit {
         console.log('error', error);
       },
     }); */
+  }
+
+  getGrafanaDashboardUrl(): void {
+    const userId = 'A';
+    this.dashboardService
+      .getGrafanaDashboardUrl(userId, this.token)
+      .subscribe((grafanaUrl) => {
+        this.grafanaUrl =
+          this.domSanitizer.bypassSecurityTrustResourceUrl(grafanaUrl);
+      });
   }
 
   show() {

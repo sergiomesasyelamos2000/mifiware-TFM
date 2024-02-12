@@ -46,4 +46,8 @@ export class UserService {
     }
     return user;
   }
+
+  getGrafanaUrl(userId: string): string {
+    return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a4/sensores-de-localizacion?orgId=1&var-user_id=${userId}&from=1707636483388&to=1707658083388`;
+  }
 }

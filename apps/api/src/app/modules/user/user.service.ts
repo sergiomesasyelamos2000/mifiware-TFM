@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from '@mifiware-tfm/entity-data-models';
+import { Role, User } from '@mifiware-tfm/entity-data-models';
 //import { UpdateAuthDto } from './dto/update-auth.dto';
 
 @Injectable()
@@ -47,7 +47,16 @@ export class UserService {
     return user;
   }
 
-  getGrafanaUrl(userId: string): string {
-    return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a4/sensores-de-localizacion?orgId=1&var-user_id=${userId}&from=1707636483388&to=1707658083388`;
+  getGrafanaUrl(user: User): string {
+    console.log('entra en getGrafanaUrl API', user);
+    const userId = 'A';
+
+    // Determina si el usuario es administrador
+    const isAdmin = user.role === 'ADMIN';
+    if (isAdmin) {
+      return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a4/sensores-de-localizacion?orgId=1&from=1707636483388&to=1707658083388&kiosk=tv`;
+    } else {
+      return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a4/sensores-de-localizacion?orgId=1&var-user_id=${userId}&from=1707636483388&to=1707658083388&kiosk`;
+    }
   }
 }

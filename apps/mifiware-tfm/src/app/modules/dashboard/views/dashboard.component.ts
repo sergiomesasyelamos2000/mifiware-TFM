@@ -48,7 +48,17 @@ export class DashboardComponent implements OnInit {
     }); */
   }
 
+  ngAfterViewInit() {
+    window.addEventListener('blur', (e) => {
+      setTimeout(() => {
+        window.focus();
+      }, 0);
+    });
+  }
+
   getGrafanaDashboardUrl(): void {
+    console.log('getGrafanaDashboardUrl');
+
     const userId = 'A';
     this.dashboardService
       .getGrafanaDashboardUrl(userId, this.token)

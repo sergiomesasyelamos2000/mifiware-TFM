@@ -49,8 +49,6 @@ export class AuthGuard implements CanActivate {
       request.headers.authorization &&
       request.headers.authorization.split(' ').length === 2
     ) {
-      console.log('entra en if');
-
       const jwtTokenType = request.headers.authorization.split(' ')[0];
       const jwtToken = request.headers.authorization.split(' ')[1];
       if (
@@ -74,7 +72,6 @@ export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const jwtPayload = this.getJwtPayloadFromRequest(request);
-    console.log('user', jwtPayload);
     if (jwtPayload) {
       request.jwtPayload = jwtPayload;
       if (!jwtPayload.id) {
@@ -86,7 +83,6 @@ export class AuthGuard implements CanActivate {
         });
         if (user) {
           request.user = user;
-          console.log('user', user);
         } else {
           throw new UnauthorizedException();
         }

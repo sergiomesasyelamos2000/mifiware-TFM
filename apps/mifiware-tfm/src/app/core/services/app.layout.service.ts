@@ -27,7 +27,7 @@ export class LayoutService {
     ripple: false,
     inputStyle: 'outlined',
     menuMode: 'static',
-    colorScheme: 'light',
+    colorScheme: 'dark',
     theme: 'lara-light-indigo',
     scale: 14,
   };
@@ -67,10 +67,6 @@ export class LayoutService {
         this.overlayOpen.next(null);
       }
     }
-  }
-
-  onOverlaySubmenuOpen() {
-    this.overlayOpen.next(null);
   }
 
   showProfileSidebar() {

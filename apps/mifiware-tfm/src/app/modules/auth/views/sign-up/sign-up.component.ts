@@ -4,6 +4,7 @@ import { passwordMatchValidator } from '../../../../shared/password-match.direct
 import { AuthService } from '../../auth.service';
 import { NotificationService } from '../../../../core/services/notification.service';
 import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
+import { LayoutService } from 'apps/mifiware-tfm/src/app/core/services/app.layout.service';
 @Component({
   selector: 'mifiware-tfm-sign-up',
   templateUrl: './sign-up.component.html',
@@ -15,7 +16,8 @@ export class SignUpComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    public layoutService: LayoutService
   ) {}
 
   get name() {

@@ -1,122 +1,185 @@
-<!-- <form [formGroup]="signUpForm">
-  <p-card header="SIGN UP" [style]="{ width: '360px' }">
-    <div class="field">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        pInputText
-        class="w-full"
-        name="name"
-        formControlName="name"
-        placeholder="Type your name"
-      />
-      <small
-        *ngIf="name.invalid && (name.dirty || name.touched)"
-        class="block p-error"
+<div
+  class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"
+>
+  <div class="flex flex-column align-items-center justify-content-center">
+    <img
+      src="assets/layout/images/{{
+        layoutService.config.colorScheme === 'light'
+          ? 'logo-dark'
+          : 'logo-white'
+      }}.svg"
+      alt="Sakai logo"
+      class="mb-5 w-6rem flex-shrink-0"
+    />
+    <div
+      style="
+        border-radius: 56px;
+        padding: 0.3rem;
+        background: linear-gradient(
+          180deg,
+          var(--primary-color) 10%,
+          rgba(33, 150, 243, 0) 30%
+        );
+      "
+    >
+      <div
+        class="w-full surface-card py-8 px-5 sm:px-8"
+        style="border-radius: 53px"
       >
-        <div *ngIf="name.errors?.['required']">name is required</div>
-        <div *ngIf="name.errors?.['pattern']">name should be valid</div>
-      </small>
-    </div>
-
-    <div class="field">
-      <label for="surname">Surname</label>
-      <input
-        type="text"
-        pInputText
-        class="w-full"
-        name="surname"
-        formControlName="surname"
-        placeholder="Type your surname"
-      />
-      <small
-        *ngIf="surname.invalid && (surname.dirty || surname.touched)"
-        class="block p-error"
-      >
-        <div *ngIf="surname.errors?.['required']">surname is required</div>
-        <div *ngIf="surname.errors?.['pattern']">surname should be valid</div>
-      </small>
-    </div>
-
-    <div class="field">
-      <label for="email">Email</label>
-      <input
-        type="text"
-        pInputText
-        class="w-full"
-        name="email"
-        formControlName="email"
-        placeholder="Type your email"
-      />
-      <small
-        *ngIf="email.invalid && (email.dirty || email.touched)"
-        class="block p-error"
-      >
-        <div *ngIf="email.errors?.['required']">Email is required</div>
-        <div *ngIf="email.errors?.['email']">Email should be valid</div>
-      </small>
-    </div>
-
-    <div class="field">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        pInputText
-        formControlName="password"
-        class="w-full"
-        name="password"
-        formControlName="password"
-        placeholder="Type your password"
-      />
-      <small
-        *ngIf="password.invalid && (password.dirty || password.touched)"
-        class="block p-error"
-      >
-        <div *ngIf="password.errors?.['required']">Password is required</div>
-      </small>
-    </div>
-    <div class="field">
-      <label for="confirmPassword">confirmPassword</label>
-      <input
-        type="password"
-        pInputText
-        formControlName="confirmPassword"
-        class="w-full"
-        name="confirmPassword"
-        placeholder="Type your confirmPassword"
-      />
-      <small
-        *ngIf="
-          confirmPassword.invalid &&
-          (confirmPassword.dirty || confirmPassword.touched)
-        "
-        class="block p-error"
-      >
-        <div *ngIf="confirmPassword.errors?.['required']">
-          confirmPassword is required
+        <div class="text-center mb-5">
+          <img
+            src="assets/demo/images/login/avatar.png"
+            alt="Image"
+            height="50"
+            class="mb-3"
+          />
+          <div class="text-900 text-3xl font-medium mb-3">Welcome, Isabel!</div>
+          <span class="text-600 font-medium">Sign in to continue</span>
         </div>
-      </small>
-      <small
-        class="block p-error"
-        *ngIf="signUpForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid"
-      >
-        Password should match
-      </small>
-    </div>
-    <p-button
-      label="SIGN UP"
-      styleClass="w-full"
-      (onClick)="onSubmit()"
-      [disabled]="signUpForm.invalid"
-    ></p-button>
-    <div class="mt-2">
-      Already a member? <a routerLink="/auth/log-in"> Login</a>
-    </div>
-  </p-card>
-</form>
- -->
 
-<form
+        <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+          <div>
+            <!-- Campo para NAME -->
+            <label for="name" class="block text-900 text-xl font-medium mb-2"
+              >Name</label
+            >
+            <input
+              id="name"
+              type="text"
+              placeholder="Type your name"
+              formControlName="name"
+              pInputText
+              class="w-full md:w-30rem mb-2"
+              style="padding: 1rem"
+            />
+            <small
+              *ngIf="name.invalid && (name.dirty || name.touched)"
+              class="mb-5 block p-error"
+            >
+              <div *ngIf="name.errors?.['required']">name is required</div>
+              <div *ngIf="name.errors?.['pattern']">name should be valid</div>
+            </small>
+
+            <!-- Campo para SURNAME -->
+            <label for="surname" class="block text-900 text-xl font-medium mb-2"
+              >Surname</label
+            >
+            <input
+              id="surname"
+              type="text"
+              placeholder="Type your surname"
+              formControlName="surname"
+              pInputText
+              class="w-full md:w-30rem mb-2"
+              style="padding: 1rem"
+            />
+            <small
+              *ngIf="surname.invalid && (surname.dirty || surname.touched)"
+              class="mb-5 block p-error"
+            >
+              <div *ngIf="surname.errors?.['required']">
+                surname is required
+              </div>
+              <div *ngIf="surname.errors?.['pattern']">
+                surname should be valid
+              </div>
+            </small>
+
+            <!-- Campo para EMAIL -->
+
+            <label for="email1" class="block text-900 text-xl font-medium mb-2"
+              >Email</label
+            >
+            <input
+              id="email1"
+              type="text"
+              placeholder="Email address"
+              formControlName="email"
+              pInputText
+              class="w-full md:w-30rem mb-2"
+              style="padding: 1rem"
+            />
+            <small
+              *ngIf="email.invalid && (email.dirty || email.touched)"
+              class="mb-5 block p-error"
+            >
+              <div *ngIf="email.errors?.['required']">Email is required</div>
+              <div *ngIf="email.errors?.['email']">Email should be valid</div>
+            </small>
+
+            <!-- Campo para PASSWORD -->
+
+            <label
+              for="password"
+              class="block text-900 font-medium text-xl mb-2"
+              >Password</label
+            >
+            <p-password
+              id="password"
+              formControlName="password"
+              placeholder="Password"
+              [toggleMask]="true"
+              styleClass="mb-2"
+              inputStyleClass="w-full p-3 md:w-30rem"
+            ></p-password>
+            <small
+              *ngIf="password.invalid && (password.dirty || password.touched)"
+              class="mb-5 block p-error"
+            >
+              <div *ngIf="password.errors?.['required']">
+                Password is required
+              </div>
+            </small>
+
+            <!-- Campo para REPEAT PASSWORD -->
+
+            <label
+              for="confirmPassword"
+              class="block text-900 font-medium text-xl mb-2"
+              >Confirm Password</label
+            >
+            <p-password
+              id="confirmPassword"
+              formControlName="confirmPassword"
+              placeholder="Confirm Password"
+              [toggleMask]="true"
+              styleClass="mb-2"
+              inputStyleClass="w-full p-3 md:w-30rem"
+            ></p-password>
+            <small
+              *ngIf="
+                confirmPassword.invalid &&
+                (confirmPassword.dirty || confirmPassword.touched)
+              "
+              class="mb-5 block p-error"
+            >
+              <div *ngIf="confirmPassword.errors?.['required']">
+                Confirm Password is required
+              </div>
+            </small>
+
+            <div class="mb-5 gap-5">
+              <button
+                type="submit"
+                pButton
+                pRipple
+                label="Sign In"
+                class="w-full p-3 text-xl mt-5"
+                (onClick)="onSubmit()"
+                [disabled]="signUpForm.invalid"
+              ></button>
+            </div>
+            <div class="mt-2">
+              Already a member? <a routerLink="/auth/log-in"> Login</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <form
   [formGroup]="signUpForm"
   class="surface-card p-4 shadow-2 border-round w-full lg:w-6"
 >
@@ -202,3 +265,4 @@
   </div>
 </form>
 aut
+ -->

@@ -7,6 +7,7 @@ import { NotificationService } from '../../../../core/services/notification.serv
 import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
 import { AppStoreService } from '../../../../core/services/app-store.service';
 import { log } from 'console';
+import { LayoutService } from 'apps/mifiware-tfm/src/app/core/services/app.layout.service';
 @Component({
   selector: 'mifiware-tfm-log-in',
   templateUrl: './log-in.component.html',
@@ -20,12 +21,15 @@ export class LogInComponent implements OnInit {
   returnUrl!: string;
   submitted!: boolean;
 
+  valCheck: string[] = ['remember'];
+
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private notificationService: NotificationService,
     private router: Router,
-    private appStoreService: AppStoreService
+    private appStoreService: AppStoreService,
+    public layoutService: LayoutService
   ) {}
 
   get f() {

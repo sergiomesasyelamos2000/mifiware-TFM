@@ -1,12 +1,12 @@
 import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
-import { LayoutService } from '../../../core/services/app.layout.service';
-import { AppTopBarComponent } from '../../../shared/topbar/views/app.topbar.component';
 import { AppSidebarComponent } from '../../../shared/sidebar/views/app.sidebar.component';
+import { AppTopBarComponent } from '../../../shared/topbar/views/app.topbar.component';
+import { LayoutService } from '../../../core/services/app.layout.service';
 
 @Component({
-  selector: 'mifiware-tfm-layout',
+  selector: 'app-layout',
   templateUrl: './app.layout.component.html',
 })
 export class AppLayoutComponent implements OnDestroy {
@@ -131,8 +131,6 @@ export class AppLayoutComponent implements OnDestroy {
       'layout-theme-dark': this.layoutService.config.colorScheme === 'dark',
       'layout-overlay': this.layoutService.config.menuMode === 'overlay',
       'layout-static': this.layoutService.config.menuMode === 'static',
-      'layout-slim': this.layoutService.config.menuMode === 'slim',
-      'layout-horizontal': this.layoutService.config.menuMode === 'horizontal',
       'layout-static-inactive':
         this.layoutService.state.staticMenuDesktopInactive &&
         this.layoutService.config.menuMode === 'static',

@@ -8,20 +8,4 @@ $gutter: 1rem; //for primeflex grid system
 
 @import '~primeicons/primeicons.css';
 @import '~primeflex/primeflex.scss';
-@import '~primeng/resources/themes/saga-blue/theme.css';
-
-body {
-  //background: #fecdd3;
-}
-
-$pastel-pink-50: #fff1f3;
-$pastel-pink-100: #ffe4e7;
-$pastel-pink-200: #fecdd3;
-$pastel-pink-300: #fda4af;
-$pastel-pink-400: #fb7182;
-$pastel-pink-500: #f43f55;
-$pastel-pink-600: #e11d35;
-$pastel-pink-700: #be1227;
-$pastel-pink-800: #9f1223;
-$pastel-pink-900: #881321;
-$pastel-pink-950: #4c050e;
+@import '~primeng/resources/primeng.min.css';

@@ -35,9 +35,9 @@
         layoutService.state.profileSidebarVisible
     }"
   >
-    <button class="p-link layout-topbar-button">
-      <i class="pi pi-calendar"></i>
-      <span>Calendar</span>
+    <button class="p-link layout-topbar-button" (click)="changeColor()">
+      <i [ngClass]="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"></i>
+      <span>Theme</span>
     </button>
     <button class="p-link layout-topbar-button" [routerLink]="'/profile'">
       <i class="pi pi-user"></i>

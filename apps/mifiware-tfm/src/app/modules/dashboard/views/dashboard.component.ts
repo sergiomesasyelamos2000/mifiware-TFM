@@ -6,6 +6,7 @@ import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
 import { MessageService } from 'primeng/api';
 import { DashboardService } from '../dashboard.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { LayoutService } from '../../../core/services/app.layout.service';
 
 @Component({
   selector: 'mifiware-tfm-dashboard',
@@ -22,7 +23,8 @@ export class DashboardComponent implements OnInit {
     private appStoreService: AppStoreService,
     private notificationService: NotificationService,
     private dashboardService: DashboardService,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    public layoutService: LayoutService
   ) {}
 
   ngOnInit(): void {

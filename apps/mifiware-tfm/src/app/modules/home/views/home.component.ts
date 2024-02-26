@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AppStoreService } from '../../../core/services/app-store.service';
 import { Subject, takeUntil } from 'rxjs';
+import { LayoutService } from '../../../core/services/app.layout.service';
 
 @Component({
   selector: 'mifiware-tfm-home',
@@ -17,7 +18,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   showLogin: boolean = false;
   constructor(
     private router: Router,
-    private appStoreService: AppStoreService
+    private appStoreService: AppStoreService,
+    public layoutService: LayoutService
   ) {}
 
   ngOnInit(): void {

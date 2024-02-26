@@ -29,20 +29,17 @@ import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { RatingModule } from 'primeng/rating';
 import { ProfileModule } from './modules/profile/profile.module';
+import { NotfoundComponent } from './shared/notfound/notfound.component';
 
 export const metaReducers: MetaReducer<any>[] = isDevMode()
   ? [storeFreeze]
   : [];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NotfoundComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AuthModule,
-    HomeModule,
-    CoreModule,
-    ProfileModule,
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({}, { metaReducers }),
@@ -68,19 +65,8 @@ export const metaReducers: MetaReducer<any>[] = isDevMode()
       debugInfo: false,
     }),
     AppLayoutModule,
-    TableModule,
-    CommonModule,
-    RatingModule,
-    ButtonModule,
-    SliderModule,
-    InputTextModule,
-    ToggleButtonModule,
-    RippleModule,
-    MultiSelectModule,
-    DropdownModule,
-    ProgressBarModule,
+
     ToastModule,
-    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

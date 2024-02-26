@@ -3,18 +3,9 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './views/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../../core/guards/auth.guard';
+import { DashboardsRoutingModule } from './dashboard-routing.module';
 @NgModule({
   declarations: [DashboardComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: DashboardComponent,
-        data: { breadcrumb: 'MENU.LOGIN' },
-        canActivate: [AuthGuard],
-      },
-    ]),
-  ],
+  imports: [CommonModule, DashboardsRoutingModule],
 })
 export class DashboardModule {}

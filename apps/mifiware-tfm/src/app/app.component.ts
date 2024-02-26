@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  /* ngOnInit(): void {
     this.primengConfig.ripple = true; //enables core ripple functionality
     document.documentElement.style.fontSize = '14px';
 
@@ -50,6 +50,10 @@ export class AppComponent implements OnInit {
 
       scale: 14, //size of the body font size to scale the whole application
     };
+  } */
+  ngOnInit() {
+    this.primengConfig.ripple = true;
+    document.documentElement.style.fontSize = '14px';
   }
 
   checkUrl(url: string) {

@@ -18,6 +18,7 @@ import { AppMenuitemComponent } from '../../../shared/menu/views/app.menuitem.co
 import { AppSidebarComponent } from '../../../shared/sidebar/views/app.sidebar.component';
 import { AppTopBarComponent } from '../../../shared/topbar/views/app.topbar.component';
 import { AuthModule } from '../../auth/auth.module';
+import { AppConfigModule } from './config/config.module';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AuthModule } from '../../auth/auth.module';
     RouterModule,
     CommonModule,
     AuthModule,
+    AppConfigModule,
   ],
   exports: [AppLayoutComponent],
 })

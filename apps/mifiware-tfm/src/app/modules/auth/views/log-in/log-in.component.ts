@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
-import { NotificationService } from '../../../../core/services/notification.service';
+import { Router } from '@angular/router';
 import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
-import { AppStoreService } from '../../../../core/services/app-store.service';
-import { log } from 'console';
 import { LayoutService } from 'apps/mifiware-tfm/src/app/core/services/app.layout.service';
+import { AppStoreService } from '../../../../core/services/app-store.service';
+import { NotificationService } from '../../../../core/services/notification.service';
+import { AuthService } from '../../auth.service';
 @Component({
   selector: 'mifiware-tfm-log-in',
   templateUrl: './log-in.component.html',
@@ -44,15 +42,19 @@ export class LogInComponent implements OnInit {
     return this.loginForm.controls['password'];
   }
 
+  get remeberMe() {
+    return this.loginForm.controls['remeberMe'];
+  }
+
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
+      rememberMe: [false],
     });
   }
 
   onSubmit() {
-    console.log('onSubmit');
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
         this.appStoreService.setAuth(res);
@@ -70,7 +72,7 @@ export class LogInComponent implements OnInit {
         });
       },
       complete: () => {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/']);
       },
     });
   }

@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
+import { ProfileRoutingModule } from './profile-routing.module';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -22,14 +23,7 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     ButtonModule,
     DropdownModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: ProfileComponent,
-        data: { breadcrumb: 'MENU.LOGIN' },
-        canActivate: [AuthGuard],
-      },
-    ]),
+    ProfileRoutingModule,
   ],
   providers: [ProfileService],
 })

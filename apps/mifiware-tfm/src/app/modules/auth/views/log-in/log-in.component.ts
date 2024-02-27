@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
@@ -6,18 +6,22 @@ import { LayoutService } from 'apps/mifiware-tfm/src/app/core/services/app.layou
 import { AppStoreService } from '../../../../core/services/app-store.service';
 import { NotificationService } from '../../../../core/services/notification.service';
 import { AuthService } from '../../auth.service';
+import { UsersService } from '../../../users/users.service';
+import { Subject, takeUntil, switchMap } from 'rxjs';
 @Component({
   selector: 'mifiware-tfm-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss'],
   providers: [],
 })
-export class LogInComponent implements OnInit {
+export class LogInComponent implements OnInit, OnDestroy {
   error = '';
   loginForm!: FormGroup;
   loading = false;
   returnUrl!: string;
   submitted!: boolean;
+  userId!: string;
+  destroy$: Subject<void> = new Subject<void>();
 
   valCheck: string[] = ['remember'];
 
@@ -27,7 +31,8 @@ export class LogInComponent implements OnInit {
     private notificationService: NotificationService,
     private router: Router,
     private appStoreService: AppStoreService,
-    public layoutService: LayoutService
+    public layoutService: LayoutService,
+    private usersService: UsersService
   ) {}
 
   get f() {
@@ -55,25 +60,42 @@ export class LogInComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.login(this.loginForm.value).subscribe({
-      next: (res) => {
-        this.appStoreService.setAuth(res);
-        this.notificationService.showToast({
-          severity: MessageSeverity.SUCCESS,
-          summary: 'Sesión iniciada correctamente',
-          detail: 'Login successful',
-        });
-      },
-      error: (error) => {
-        this.notificationService.showToast({
-          severity: MessageSeverity.ERROR,
-          summary: 'Se ha producido un error al iniciar sesión',
-          detail: error.error.message,
-        });
-      },
-      complete: () => {
-        this.router.navigate(['/']);
-      },
-    });
+    this.authService
+      .login(this.loginForm.value)
+      .pipe(
+        takeUntil(this.destroy$),
+        switchMap((res) => {
+          this.userId = res.userId;
+          this.appStoreService.setAuth(res);
+          this.notificationService.showToast({
+            severity: MessageSeverity.SUCCESS,
+            summary: 'Sesión iniciada correctamente',
+            detail: 'Login successful',
+          });
+          return this.usersService
+            .getUser(this.userId, res.accessToken)
+            .pipe(takeUntil(this.destroy$));
+        })
+      )
+      .subscribe({
+        next: (user) => {
+          this.appStoreService.setMe(user);
+        },
+        error: (error) => {
+          this.notificationService.showToast({
+            severity: MessageSeverity.ERROR,
+            summary: 'Se ha producido un error al iniciar sesión',
+            detail: error.error.message,
+          });
+        },
+        complete: () => {
+          this.router.navigate(['/']);
+        },
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

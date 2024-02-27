@@ -3,6 +3,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AppLayoutComponent } from './modules/layout/views/app.layout.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { AdminGuard } from './core/guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -28,6 +29,12 @@ const routes: Routes = [
           import('./modules/profile/profile.module').then(
             (m) => m.ProfileModule
           ),
+      },
+      {
+        path: 'users',
+        canActivate: [AdminGuard],
+        loadChildren: () =>
+          import('./modules/users/users.module').then((m) => m.UsersModule),
       },
     ],
   },

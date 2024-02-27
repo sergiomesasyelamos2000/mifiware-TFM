@@ -1,9 +1,18 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AppStoreService } from '../../../core/services/app-store.service';
-import { ProfileService } from '../profile.service';
-import { Subject, takeUntil } from 'rxjs';
-import { IUserState, Role, User } from '@mifiware-tfm/entity-data-models';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageSeverity, Role, User } from '@mifiware-tfm/entity-data-models';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { Subject, takeUntil } from 'rxjs';
+import { AppStoreService } from '../../../core/services/app-store.service';
+import { NotificationService } from '../../../core/services/notification.service';
+import { ProfileService } from '../profile.service';
 
 @Component({
   selector: 'mifiware-tfm-profile',
@@ -11,10 +20,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit, OnDestroy {
+  @Input() userId!: string;
+  @Input() title!: string;
+  @Input() applyCardClass: boolean = true;
+  @Output() saveUser = new EventEmitter<boolean>();
   private destroy$ = new Subject<void>();
-  userId!: string;
   token!: string;
-  user!: IUserState;
+  user!: User;
   value!: string;
   profileForm!: FormGroup;
   roles!: any[];
@@ -36,10 +48,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
     return this.profileForm.controls['role'];
   }
 
+  // ...
   constructor(
     private appStoreService: AppStoreService,
     private profileService: ProfileService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private notificationService: NotificationService,
+    private config: DynamicDialogConfig,
+    private ref: DynamicDialogRef
   ) {
     this.profileForm = this.formBuilder.group({
       uuid: [{ value: '', disabled: true }],
@@ -53,6 +69,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
       { label: 'Admin', value: Role.SUPER_ADMIN },
       { label: 'User', value: Role.USER },
     ];
+
+    this.title = this.title || 'Profile';
+    if (this.config && this.config.data) {
+      this.userId = this.config.data.userId;
+      this.applyCardClass = this.config.data.applyCardClass;
+    }
   }
 
   ngOnInit(): void {
@@ -61,14 +83,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((auth) => {
         this.token = auth?.accessToken;
-        this.userId = auth?.userId;
+        this.userId = this.userId || auth?.userId;
       });
     this.profileService
       .getUser(this.userId, this.token)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (user: User) => {
-          console.log('user: ', user);
           this.user = user;
           this.profileForm.patchValue({
             uuid: user.uuid,
@@ -87,22 +108,30 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    /* this.authService.signUp(this.signUpForm.value).subscribe({
-      next: () => {
-        this.notificationService.showToast({
-          severity: MessageSeverity.SUCCESS,
-          summary: 'Se ha registrado correctamente',
-          detail: 'Sign Up successful',
-        });
-      },
-      error: (error) => {
-        this.notificationService.showToast({
-          severity: MessageSeverity.ERROR,
-          summary: 'Se ha producido un error al registrarse',
-          detail: error.error.message,
-        });
-      },
-    }); */
+    this.profileService
+      .updateUser(this.userId, this.profileForm.value, this.token)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (user: User) => {
+          this.user = user;
+          this.appStoreService.setMe(user);
+        },
+        error: (error) => {
+          this.notificationService.showToast({
+            severity: MessageSeverity.ERROR,
+            summary: 'Se ha producido un error al actualizar el usuario',
+            detail: error.error.message,
+          });
+        },
+        complete: () => {
+          this.notificationService.showToast({
+            severity: MessageSeverity.SUCCESS,
+            summary: 'Se ha actualizado correctamente el usuario',
+            detail: 'Sign Up successful',
+          });
+          this.ref.close();
+        },
+      });
   }
 
   ngOnDestroy(): void {

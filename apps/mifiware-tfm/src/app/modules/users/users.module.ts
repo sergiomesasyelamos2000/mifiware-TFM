@@ -1,22 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { UsersRoutingModule } from './users-routing.module';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TableModule } from 'primeng/table';
-import { FileUploadModule } from 'primeng/fileupload';
 import { ButtonModule } from 'primeng/button';
-import { RippleModule } from 'primeng/ripple';
-import { ToastModule } from 'primeng/toast';
-import { ToolbarModule } from 'primeng/toolbar';
-import { RatingModule } from 'primeng/rating';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { FileUploadModule } from 'primeng/fileupload';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { DropdownModule } from 'primeng/dropdown';
 import { RadioButtonModule } from 'primeng/radiobutton';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { DialogModule } from 'primeng/dialog';
-import { UsersComponent } from './views/users.component';
+import { RatingModule } from 'primeng/rating';
+import { RippleModule } from 'primeng/ripple';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { ToastModule } from 'primeng/toast';
+import { ToolbarModule } from 'primeng/toolbar';
 import { CoreModule } from '../../core/core.module';
+import { ProfileModule } from '../profile/profile.module';
+import { UsersRoutingModule } from './users-routing.module';
+import { UsersComponent } from './views/users.component';
 
 @NgModule({
   imports: [
@@ -37,7 +40,10 @@ import { CoreModule } from '../../core/core.module';
     RadioButtonModule,
     InputNumberModule,
     DialogModule,
+    TagModule,
+    ProfileModule,
   ],
   declarations: [UsersComponent],
+  providers: [DynamicDialogRef],
 })
 export class UsersModule {}

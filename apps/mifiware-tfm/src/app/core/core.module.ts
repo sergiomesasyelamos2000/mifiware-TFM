@@ -5,6 +5,7 @@ import * as fromState from './store';
 import { ConfirmationService, MessageService, Message } from 'primeng/api';
 import { StoreModule } from '@ngrx/store';
 import { NotificationService } from './services/notification.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @NgModule({
   declarations: [],
@@ -13,7 +14,12 @@ import { NotificationService } from './services/notification.service';
     MessageModule,
     StoreModule.forFeature('core', fromState.reducers),
   ],
-  providers: [MessageService, ConfirmationService, NotificationService],
+  providers: [
+    MessageService,
+    ConfirmationService,
+    NotificationService,
+    DialogService,
+  ],
   exports: [],
 })
 export class CoreModule {}

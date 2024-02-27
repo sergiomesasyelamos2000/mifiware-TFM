@@ -76,7 +76,7 @@ export class UserController {
   @ApiResponse({ status: 500, description: 'Internal server error' })
   @HttpCode(200)
   async remove(@Param('id') id: string) {
-    return this.userService.remove(id);
+    return this.userService.delete(id);
   }
 
   @Get(':id')

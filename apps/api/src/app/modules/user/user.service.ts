@@ -69,12 +69,12 @@ export class UserService {
     return await this.usersRepository.save(updateUser);
   }
 
-  async remove(uuid: string): Promise<void> {
+  async delete(uuid: string): Promise<void> {
     const user = await this.usersRepository.findOne({ where: { uuid } });
     if (!user) {
       throw new NotFoundException(`User #${uuid} not found`);
     }
-    await this.usersRepository.update(uuid, {});
+    await this.usersRepository.remove(user);
   }
 
   getGrafanaUrl(user: User): string {
@@ -82,7 +82,7 @@ export class UserService {
     const userId = 'A';
 
     // Determina si el usuario es administrador
-    const isAdmin = user.role === 'ADMIN';
+    const isAdmin = user.role === Role.SUPER_ADMIN;
     if (isAdmin) {
       return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a4/sensores-de-localizacion?orgId=1&from=1707636483388&to=1707658083388&kiosk=tv`;
     } else {

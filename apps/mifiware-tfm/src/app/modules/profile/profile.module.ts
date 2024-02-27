@@ -11,11 +11,18 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { ProfileRoutingModule } from './profile-routing.module';
+import { CoreModule } from '../../core/core.module';
+import {
+  DynamicDialogModule,
+  DynamicDialogConfig,
+  DynamicDialogRef,
+} from 'primeng/dynamicdialog';
 
 @NgModule({
   declarations: [ProfileComponent],
   imports: [
     CommonModule,
+    CoreModule,
     CardModule,
     TableModule,
     InputTextModule,
@@ -24,7 +31,9 @@ import { ProfileRoutingModule } from './profile-routing.module';
     ButtonModule,
     DropdownModule,
     ProfileRoutingModule,
+    DynamicDialogModule,
   ],
-  providers: [ProfileService],
+  providers: [ProfileService, DynamicDialogRef, DynamicDialogConfig],
+  exports: [ProfileComponent],
 })
 export class ProfileModule {}

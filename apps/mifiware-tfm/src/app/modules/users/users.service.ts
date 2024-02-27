@@ -18,13 +18,25 @@ import { Observable, catchError, tap, throwError } from 'rxjs';
 export class UsersService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  findAll() {
-    return this.http.get<User[]>(`${environment.apiUrl}/users`);
+  findAll(token: string): Observable<User[]> {
+    console.log('token', token);
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<User[]>(`${environment.apiUrl}/users`, {
+      headers,
+    });
   }
 
   getUser(id: string, token: string): Observable<User> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<User>(`${environment.apiUrl}/users/${id}`, {
+      headers,
+    });
+  }
+
+  deleteUser(id: string, token: string): Observable<void> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete<void>(`${environment.apiUrl}/users/${id}`, {
       headers,
     });
   }

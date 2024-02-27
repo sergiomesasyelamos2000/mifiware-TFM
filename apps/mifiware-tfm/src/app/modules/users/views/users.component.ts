@@ -1,26 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Table } from 'primeng/table';
 import { UsersService } from '../users.service';
+import { MessageService } from 'primeng/api';
+import { Subject, takeUntil } from 'rxjs';
+import { AppStoreService } from '../../../core/services/app-store.service';
+import { User } from '@mifiware-tfm/entity-data-models';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { ProfileComponent } from '../../profile/views/profile.component';
+import { switchMap, of } from 'rxjs';
 
 @Component({
   selector: 'mifiware-tfm-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
+  providers: [MessageService],
 })
-export class UsersComponent implements OnInit {
-  productDialog: boolean = false;
+export class UsersComponent implements OnInit, OnDestroy {
+  deleteUserDialog: boolean = false;
 
-  deleteProductDialog: boolean = false;
+  deleteUsersDialog: boolean = false;
 
-  deleteProductsDialog: boolean = false;
+  users: User[] = [];
 
-  products: any[] = [];
+  user: any = {};
 
-  product: any = {};
-
-  selectedProducts: any[] = [];
-
-  submitted: boolean = false;
+  selectedUsers: any[] = [];
 
   cols: any[] = [];
 
@@ -28,20 +32,40 @@ export class UsersComponent implements OnInit {
 
   rowsPerPageOptions = [5, 10, 20];
 
+  destroy$: Subject<void> = new Subject<void>();
+  token!: string;
+
   constructor(
-    private usersService: UsersService
-  ) //private messageService: MessageService
-  {}
+    private usersService: UsersService,
+    private messageService: MessageService,
+    private appStoreService: AppStoreService,
+    private dialogService: DialogService,
+    private ref: DynamicDialogRef
+  ) {}
 
   ngOnInit() {
-    this.usersService.findAll().subscribe((data) => (this.products = data));
+    this.appStoreService
+      .loadAuth$()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((auth) => {
+        this.token = auth.accessToken;
+      });
+    if (this.token) {
+      this.usersService
+        .findAll(this.token)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((data: User[]) => {
+          console.log('data', data);
+
+          this.users = data;
+        });
+    }
 
     this.cols = [
-      { field: 'product', header: 'Product' },
-      { field: 'price', header: 'Price' },
-      { field: 'category', header: 'Category' },
-      { field: 'rating', header: 'Reviews' },
-      { field: 'inventoryStatus', header: 'Status' },
+      { field: 'name', header: 'Name' },
+      { field: 'surname', header: 'Surname' },
+      { field: 'email', header: 'email' },
+      { field: 'role', header: 'Role' },
     ];
 
     this.statuses = [
@@ -51,119 +75,104 @@ export class UsersComponent implements OnInit {
     ];
   }
 
+  getSeverity(status: string) {
+    if (status === 'ADMIN') {
+      return 'danger';
+    } else if (status === 'USER') {
+      return 'info';
+    } else {
+      return 'default'; // Asegúrate de devolver un valor por defecto
+    }
+  }
+
   openNew() {
-    this.product = {};
-    this.submitted = false;
-    this.productDialog = true;
+    this.users = [];
   }
 
-  deleteSelectedProducts() {
-    this.deleteProductsDialog = true;
+  deleteSelectedUsers() {
+    this.deleteUsersDialog = true;
   }
 
-  editProduct(product: any) {
-    this.product = { ...product };
-    this.productDialog = true;
+  editUser(user: User) {
+    this.ref = this.dialogService.open(ProfileComponent, {
+      header: 'Select a User',
+      width: '70%',
+      height: '44vh',
+      styleClass: 'dialog',
+      data: {
+        userId: user.uuid,
+      },
+    });
+
+    this.ref.onClose.subscribe((user: any) => {
+      console.log('cierro modal', user);
+
+      if (user) {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'user Selected',
+          detail: user.name,
+        });
+      }
+    });
   }
 
-  deleteProduct(product: any) {
-    this.deleteProductDialog = true;
-    this.product = { ...product };
+  deleteUser(user: User) {
+    this.deleteUserDialog = true;
+    this.user = { ...user };
   }
 
   confirmDeleteSelected() {
-    this.deleteProductsDialog = false;
-    this.products = this.products.filter(
-      (val) => !this.selectedProducts.includes(val)
-    );
-    /* this.messageService.add({
+    this.deleteUsersDialog = false;
+    this.users = this.users.filter((val) => !this.selectedUsers.includes(val));
+    this.messageService.add({
       severity: 'success',
       summary: 'Successful',
-      detail: 'Products Deleted',
+      detail: 'Users Deleted',
       life: 3000,
-    }); */
-    this.selectedProducts = [];
+    });
+    this.selectedUsers = [];
   }
 
   confirmDelete() {
-    this.deleteProductDialog = false;
-    this.products = this.products.filter((val) => val.id !== this.product.id);
-    /* this.messageService.add({
-      severity: 'success',
-      summary: 'Successful',
-      detail: 'Product Deleted',
-      life: 3000,
-    }); */
-    this.product = {};
-  }
+    this.deleteUserDialog = false;
 
-  hideDialog() {
-    this.productDialog = false;
-    this.submitted = false;
-  }
-
-  saveProduct() {
-    this.submitted = true;
-
-    if (this.product.name?.trim()) {
-      if (this.product.id) {
-        // @ts-ignore
-        this.product.inventoryStatus = this.product.inventoryStatus.value
-          ? this.product.inventoryStatus.value
-          : this.product.inventoryStatus;
-        this.products[this.findIndexById(this.product.id)] = this.product;
-        /* this.messageService.add({
-          severity: 'success',
-          summary: 'Successful',
-          detail: 'Product Updated',
-          life: 3000,
-        }); */
-      } else {
-        this.product.id = this.createId();
-        this.product.code = this.createId();
-        this.product.image = 'product-placeholder.svg';
-        // @ts-ignore
-        this.product.inventoryStatus = this.product.inventoryStatus
-          ? this.product.inventoryStatus.value
-          : 'INSTOCK';
-        this.products.push(this.product);
-        /* this.messageService.add({
-          severity: 'success',
-          summary: 'Successful',
-          detail: 'Product Created',
-          life: 3000,
-        }); */
-      }
-
-      this.products = [...this.products];
-      this.productDialog = false;
-      this.product = {};
-    }
-  }
-
-  findIndexById(id: string): number {
-    let index = -1;
-    for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i].id === id) {
-        index = i;
-        break;
-      }
-    }
-
-    return index;
-  }
-
-  createId(): string {
-    let id = '';
-    const chars =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (let i = 0; i < 5; i++) {
-      id += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return id;
+    this.usersService
+      .deleteUser(this.user.uuid, this.token)
+      .pipe(
+        takeUntil(this.destroy$),
+        switchMap(() => {
+          if (this.token) {
+            return this.usersService.findAll(this.token);
+          }
+          // Si no hay token, devolvemos un observable que emite un valor vacío
+          return of([]);
+        })
+      )
+      .subscribe({
+        next: (data: User[]) => {
+          this.users = data;
+        },
+        error: (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.error.message,
+            life: 3000,
+          });
+        },
+      });
   }
 
   onGlobalFilter(table: Table, event: Event) {
     table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    if (this.ref) {
+      this.ref.close();
+    }
   }
 }

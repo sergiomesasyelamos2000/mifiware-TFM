@@ -2,30 +2,24 @@ import {
   ConflictException,
   Injectable,
   UnauthorizedException,
+  NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Role, User } from '@mifiware-tfm/entity-data-models';
-//import { UpdateAuthDto } from './dto/update-auth.dto';
+import {
+  CreateUserDto,
+  Role,
+  UpdateUserDto,
+  User,
+} from '@mifiware-tfm/entity-data-models';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
-    public usersRepository: Repository<User>
+    private usersRepository: Repository<User>
   ) {}
-  /* async create(createUserDto: CreateUserDto): Promise<User> {
-    const userExist = await this.findByUsername(createUserDto.username);
-
-    if (userExist) {
-      throw new ConflictException('User already exists');
-    }
-
-    const user = new User();
-    user.name = createUserDto.username;
-    user.password = createUserDto.password;
-    return this.usersRepository.save(user);
-  }
+  /* 
 
   async validateUser(userValidation: CreateUserDto): Promise<User> {
     const user = await this.findByUsername(userValidation.username);
@@ -35,16 +29,52 @@ export class UserService {
     return user;
   } */
 
-  findByUsername(name: string): Promise<User> {
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const userExist = await this.findByUsername(createUserDto.name);
+
+    if (userExist) {
+      throw new ConflictException('User already exists');
+    }
+    const newPost = await this.usersRepository.save({
+      name: createUserDto.name,
+      surname: createUserDto.surname,
+      email: createUserDto.email,
+      password: createUserDto.password,
+    });
+    return newPost;
+  }
+
+  async findByUsername(name: string): Promise<User> {
     return this.usersRepository.findOne({ where: { name } });
   }
 
   async findById(uuid: string): Promise<User> {
-    const user = this.usersRepository.findOne({ where: { uuid } });
+    const user = await this.usersRepository.findOne({ where: { uuid } });
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
     }
     return user;
+  }
+
+  async findAll(): Promise<User[]> {
+    return await this.usersRepository.find();
+  }
+
+  async update(uuid: string, updateUserDto: Partial<UpdateUserDto>) {
+    const user = await this.usersRepository.findOne({ where: { uuid } });
+    if (!user) {
+      throw new NotFoundException(`User #${uuid} not found`);
+    }
+    const updateUser = Object.assign(user, updateUserDto);
+    return await this.usersRepository.save(updateUser);
+  }
+
+  async remove(uuid: string): Promise<void> {
+    const user = await this.usersRepository.findOne({ where: { uuid } });
+    if (!user) {
+      throw new NotFoundException(`User #${uuid} not found`);
+    }
+    await this.usersRepository.update(uuid, {});
   }
 
   getGrafanaUrl(user: User): string {

@@ -1,14 +1,4 @@
 import {
-  ConflictException,
-  Injectable,
-  NotFoundException,
-  UnauthorizedException,
-} from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
-import { environment } from '../../../environments/environment';
-import { UserService } from '../user/user.service';
-//import { UpdateAuthDto } from './dto/update-auth.dto';
-import {
   JwtPayload,
   JwtTokenDto,
   LogInDto,
@@ -17,44 +7,36 @@ import {
   User,
 } from '@mifiware-tfm/entity-data-models';
 import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { InjectRepository } from '@nestjs/typeorm';
+import * as bcrypt from 'bcrypt';
+import { Repository } from 'typeorm';
+import { environment } from '../../../environments/environment';
+import { UserService } from '../user/user.service';
+import {
   AUTH_ERROR_EMAIL_ALREADY_EXISTS,
   AUTH_ERROR_EMAIL_OR_PASSWORD_INVALID,
 } from './auth.constants';
-import * as bcrypt from 'bcrypt';
-import { sign } from 'crypto';
-import { log } from 'console';
 
 @Injectable()
 export class AuthService {
   constructor(
     private jwtService: JwtService,
-    private userService: UserService
+    private userService: UserService,
+    @InjectRepository(User)
+    private usersRepository: Repository<User>
   ) {}
-
-  /* async login(logInDto: any) {
-    const payload = {
-      sub: logInDto.uuid,
-      username: logInDto.username,
-      role: logInDto.role,
-    };
-
-    const secretKey = environment.secretKey;
-
-    if (!secretKey) {
-      throw new Error('No se ha proporcionado una clave secreta para JWT');
-    }
-
-    return {
-      access_token: await this.jwtService.signAsync(payload),
-    };
-  } */
 
   /* Register a new user */
 
   async signUp(signUpDto: SignUpDto): Promise<void> {
     const email = signUpDto.email ? signUpDto.email.trim() : null;
     let password = signUpDto.password ? signUpDto.password.trim() : null;
-    let user: User = await this.userService.usersRepository.findOne({
+    let user: User = await this.usersRepository.findOne({
       where: { email },
     });
 
@@ -73,7 +55,7 @@ export class AuthService {
       role: Role.USER,
     };
 
-    user = await this.userService.usersRepository.save(newUser);
+    user = await this.usersRepository.save(newUser);
   }
 
   /* Login user */
@@ -82,7 +64,7 @@ export class AuthService {
     const email = logInDto.email ? logInDto.email.trim() : null;
     const password = logInDto.password ? logInDto.password.trim() : null;
 
-    const user: User = await this.userService.usersRepository.findOne({
+    const user: User = await this.usersRepository.findOne({
       where: { email },
     });
 

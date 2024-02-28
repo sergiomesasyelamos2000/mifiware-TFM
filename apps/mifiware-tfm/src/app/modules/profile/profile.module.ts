@@ -17,6 +17,8 @@ import {
   DynamicDialogConfig,
   DynamicDialogRef,
 } from 'primeng/dynamicdialog';
+import { PasswordModule } from 'primeng/password';
+import { AvatarModule } from 'primeng/avatar';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -32,6 +34,8 @@ import {
     DropdownModule,
     ProfileRoutingModule,
     DynamicDialogModule,
+    PasswordModule,
+    AvatarModule,
   ],
   providers: [ProfileService, DynamicDialogRef, DynamicDialogConfig],
   exports: [ProfileComponent],

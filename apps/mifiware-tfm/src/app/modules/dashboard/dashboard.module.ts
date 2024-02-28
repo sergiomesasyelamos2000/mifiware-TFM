@@ -4,8 +4,9 @@ import { DashboardComponent } from './views/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../../core/guards/auth.guard';
 import { DashboardsRoutingModule } from './dashboard-routing.module';
+import { CoreModule } from '../../core/core.module';
 @NgModule({
   declarations: [DashboardComponent],
-  imports: [CommonModule, DashboardsRoutingModule],
+  imports: [CommonModule, CoreModule, DashboardsRoutingModule],
 })
 export class DashboardModule {}

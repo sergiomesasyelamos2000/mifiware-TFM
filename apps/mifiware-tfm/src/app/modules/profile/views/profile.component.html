@@ -1,7 +1,27 @@
 <div class="col-12">
   <form [formGroup]="profileForm" class="p-fluid p-formgrid grid">
     <div [ngClass]="{ card: applyCardClass }">
-      <h5 class="mb-6">{{ title }}</h5>
+      <!-- <h5 class="mb-6">{{ title }}</h5> -->
+      <div
+        class="flex flex-column align-items-center justify-content-center mb-7"
+      >
+        <input
+          type="file"
+          (change)="onFileSelected($event)"
+          style="display: none"
+          #fileInput
+        />
+        <div class="avatar-container" (click)="fileInput.click()">
+          <p-avatar
+            [image]="user?.photoUrl"
+            size="xlarge"
+            shape="circle"
+          ></p-avatar>
+          <i class="camera-icon pi pi-camera"></i>
+        </div>
+        <p class="mt-2 text-xl text-color-secondary">{{ avatarName }}</p>
+        <p class="mt-2 text-xl text-color-secondary">{{ avatarEmail }}</p>
+      </div>
       <div class="p-fluid p-formgrid grid">
         <div class="field col-12 md:col-6">
           <!-- Campo UUID -->
@@ -14,6 +34,13 @@
             />
             <label htmlFor="uuid">UUID</label>
           </span>
+          <small
+            *ngIf="uuid.invalid && (uuid.dirty || uuid.touched)"
+            class="block p-error"
+          >
+            <div *ngIf="uuid.errors?.['required']">uuid is required</div>
+            <div *ngIf="uuid.errors?.['pattern']">uuid should be valid</div>
+          </small>
         </div>
         <div class="field col-12 md:col-6">
           <!-- Campo Email -->
@@ -34,7 +61,7 @@
             <div *ngIf="email.errors?.['email']">Email should be valid</div>
           </small>
         </div>
-        <div class="field md:col-6">
+        <div class="field col-12 md:col-4">
           <!-- Campo Username -->
           <span class="p-float-label">
             <input
@@ -53,7 +80,7 @@
             <div *ngIf="name.errors?.['pattern']">name should be valid</div>
           </small>
         </div>
-        <div class="field md:col-6">
+        <div class="field col-12 md:col-4">
           <!-- Campo Surname -->
           <span class="p-float-label">
             <input
@@ -74,7 +101,7 @@
             </div>
           </small>
         </div>
-        <div class="field col-12 md:col-3">
+        <div class="field col-12 md:col-4">
           <!-- Campo Role -->
           <span class="p-float-label">
             <p-dropdown
@@ -94,13 +121,63 @@
             <div *ngIf="role.errors?.['required']">role is required</div>
           </small>
         </div>
+        <div class="field col-12 md:col-6">
+          <!-- Campo para PASSWORD -->
+          <span class="p-float-label">
+            <p-password
+              id="password"
+              formControlName="password"
+              [toggleMask]="true"
+              styleClass="mb-2"
+            ></p-password>
+            <label for="password">Password</label>
+          </span>
+          <small
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="mb-5 block p-error"
+          >
+            <div *ngIf="password.errors?.['required']">
+              Password is required
+            </div>
+          </small>
+        </div>
+        <div class="field col-12 md:col-6">
+          <!-- Campo para REPEAT PASSWORD -->
+          <span class="p-float-label">
+            <p-password
+              id="confirmPassword"
+              formControlName="confirmPassword"
+              [toggleMask]="true"
+              styleClass="mb-2"
+            ></p-password>
+            <label for="confirmPassword">Confirm Password</label>
+          </span>
+          <small
+            *ngIf="
+              confirmPassword.invalid &&
+              (confirmPassword.dirty || confirmPassword.touched)
+            "
+            class="mb-5 block p-error"
+          >
+            <div *ngIf="confirmPassword.errors?.['required']">
+              Confirm Password is required
+            </div>
+          </small>
+        </div>
       </div>
-      <p-button
-        label="SAVE"
-        styleClass="w-full"
-        (onClick)="onSubmit()"
-        [disabled]="profileForm.invalid"
-      ></p-button>
+      <div class="flex justify-content-end">
+        <p-button
+          [label]="'Cancelar'"
+          [ngStyle]="{ 'margin-right': '1rem' }"
+          [routerLink]="isNew ? '/users' : '/'"
+          (onClick)="onCancel()"
+        ></p-button>
+        <p-button
+          [label]="isNew ? 'CREAR' : 'Guardar'"
+          (onClick)="isNew ? onSubmitCreate() : onSubmitUpdate()"
+          [disabled]="profileForm.invalid || profileForm.pristine"
+        ></p-button>
+      </div>
     </div>
   </form>
 </div>

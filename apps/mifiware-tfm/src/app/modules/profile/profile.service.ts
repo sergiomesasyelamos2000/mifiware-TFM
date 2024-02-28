@@ -25,4 +25,13 @@ export class ProfileService {
       headers,
     });
   }
+
+  createUser(user: User, token: string): Observable<User> {
+    console.log('token', token, user);
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post<User>(`${environment.apiUrl}/users`, user, {
+      headers,
+    });
+  }
 }

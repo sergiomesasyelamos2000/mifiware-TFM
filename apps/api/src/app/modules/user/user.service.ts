@@ -35,10 +35,17 @@ export class UserService {
     if (userExist) {
       throw new ConflictException('User already exists');
     }
+
+    console.log('entra en create api', createUserDto.photoUrl);
+
     const newPost = await this.usersRepository.save({
+      photoUrl:
+        createUserDto.photoUrl ||
+        'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png',
       name: createUserDto.name,
       surname: createUserDto.surname,
       email: createUserDto.email,
+      role: createUserDto.role,
       password: createUserDto.password,
     });
     return newPost;
@@ -66,7 +73,11 @@ export class UserService {
       throw new NotFoundException(`User #${uuid} not found`);
     }
     const updateUser = Object.assign(user, updateUserDto);
-    return await this.usersRepository.save(updateUser);
+    const updatedUser = await this.usersRepository.save(updateUser);
+
+    delete updatedUser.password;
+
+    return updatedUser;
   }
 
   async delete(uuid: string): Promise<void> {

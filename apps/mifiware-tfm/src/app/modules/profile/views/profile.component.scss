@@ -1,0 +1,27 @@
+::ng-deep .p-avatar.p-avatar-xl {
+  width: 8rem;
+  height: 8rem;
+}
+
+.avatar-container {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar-container:hover p-avatar {
+  filter: brightness(50%);
+}
+
+.camera-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  color: white;
+  display: none;
+}
+
+.avatar-container:hover .camera-icon {
+  display: block;
+}

@@ -28,9 +28,17 @@ export class User {
   })
   role: Role;
 
+  @Column({
+    type: 'longtext',
+    nullable: true,
+  })
+  photoUrl?: string;
+
   constructor() {
     this.name = null;
     this.password = null;
     this.role = null;
+    this.photoUrl =
+      'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png';
   }
 }

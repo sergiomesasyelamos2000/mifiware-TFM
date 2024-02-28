@@ -13,6 +13,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { AppStoreService } from '../../../core/services/app-store.service';
 import { NotificationService } from '../../../core/services/notification.service';
 import { ProfileService } from '../profile.service';
+import { passwordMatchValidator } from '../../../shared/password-match.directive';
 
 @Component({
   selector: 'mifiware-tfm-profile',
@@ -22,6 +23,7 @@ import { ProfileService } from '../profile.service';
 export class ProfileComponent implements OnInit, OnDestroy {
   @Input() userId!: string;
   @Input() title!: string;
+  @Input() isNew: boolean = false;
   @Input() applyCardClass: boolean = true;
   @Output() saveUser = new EventEmitter<boolean>();
   private destroy$ = new Subject<void>();
@@ -31,6 +33,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
   profileForm!: FormGroup;
   roles!: any[];
   selectedRole!: Role;
+  avatarName!: string;
+  avatarEmail!: string;
+  globalImageSrc!: string;
+
+  get uuid() {
+    return this.profileForm.controls['uuid'];
+  }
 
   get name() {
     return this.profileForm.controls['name'];
@@ -48,7 +57,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
     return this.profileForm.controls['role'];
   }
 
-  // ...
+  get password() {
+    return this.profileForm.controls['password'];
+  }
+  get confirmPassword() {
+    return this.profileForm.controls['confirmPassword'];
+  }
+
   constructor(
     private appStoreService: AppStoreService,
     private profileService: ProfileService,
@@ -57,27 +72,56 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private config: DynamicDialogConfig,
     private ref: DynamicDialogRef
   ) {
-    this.profileForm = this.formBuilder.group({
-      uuid: [{ value: '', disabled: true }],
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      role: ['', Validators.required],
-    });
+    this.title = this.title || 'Profile';
+    if (this.config && this.config.data) {
+      this.userId = this.config.data.userId;
+      this.applyCardClass = this.config.data.applyCardClass;
+      this.isNew = this.config.data.isNew;
+    }
+    this.profileForm = this.formBuilder.group(
+      {
+        photoUrl: [''],
+        uuid: [
+          { value: '', disabled: !this.isNew },
+          [
+            Validators.required,
+            Validators.pattern(
+              /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+            ),
+          ],
+        ],
+        name: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(/^[a-zA-Z ]+(?:[a-zA-Z ]+)*$/),
+          ],
+        ],
+        surname: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        role: ['', Validators.required],
+        password: ['', this.isNew ? Validators.required : null],
+        confirmPassword: ['', this.isNew ? Validators.required : null],
+      },
+      {
+        validators: passwordMatchValidator,
+      }
+    );
 
     this.roles = [
       { label: 'Admin', value: Role.SUPER_ADMIN },
       { label: 'User', value: Role.USER },
     ];
-
-    this.title = this.title || 'Profile';
-    if (this.config && this.config.data) {
-      this.userId = this.config.data.userId;
-      this.applyCardClass = this.config.data.applyCardClass;
-    }
   }
 
   ngOnInit(): void {
+    this.profileForm.get('name').valueChanges.subscribe((value) => {
+      this.avatarName = value;
+    });
+
+    this.profileForm.get('email').valueChanges.subscribe((value) => {
+      this.avatarEmail = value;
+    });
     this.appStoreService
       .loadAuth$()
       .pipe(takeUntil(this.destroy$))
@@ -85,31 +129,45 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.token = auth?.accessToken;
         this.userId = this.userId || auth?.userId;
       });
-    this.profileService
-      .getUser(this.userId, this.token)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (user: User) => {
-          this.user = user;
-          this.profileForm.patchValue({
-            uuid: user.uuid,
-            name: user.name,
-            surname: user.surname,
-            email: user.email,
-            role: user.role,
-          });
+    if (!this.isNew) {
+      this.profileService
+        .getUser(this.userId, this.token)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: (user: User) => {
+            const userRole = this.roles.find(
+              (role) => role.value === user.role
+            );
 
-          this.appStoreService.setMe(user);
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+            this.user = user;
+            this.profileForm.patchValue({
+              uuid: user.uuid,
+              name: user.name,
+              surname: user.surname,
+              email: user.email,
+              role: userRole,
+            });
+
+            this.appStoreService.setMe(user);
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+    }
   }
 
-  onSubmit() {
+  onSubmitUpdate() {
+    // Crear una copia del valor del formulario
+    const formValue = { ...this.profileForm.value };
+
+    // Actualizar el campo 'role' con el valor del rol seleccionado
+    formValue.role = this.profileForm.get('role').value.value;
+    if (this.globalImageSrc) {
+      formValue.photoUrl = this.globalImageSrc;
+    }
     this.profileService
-      .updateUser(this.userId, this.profileForm.value, this.token)
+      .updateUser(this.userId, formValue, this.token)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (user: User) => {
@@ -132,6 +190,74 @@ export class ProfileComponent implements OnInit, OnDestroy {
           this.ref.close();
         },
       });
+  }
+
+  onSubmitCreate() {
+    // Crear una copia del valor del formulario
+    const formValue = { ...this.profileForm.value };
+
+    // Actualizar el campo 'role' con el valor del rol seleccionado
+    formValue.role = this.profileForm.get('role').value.value;
+    console.log('formValue', this.globalImageSrc);
+
+    if (this.globalImageSrc) {
+      formValue.photoUrl = this.globalImageSrc;
+    }
+    this.profileService
+      .createUser(formValue, this.token)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (user: User) => {
+          console.log('user CREATE', user);
+
+          this.user = user;
+          this.appStoreService.setMe(user);
+        },
+        error: (error) => {
+          this.notificationService.showToast({
+            severity: MessageSeverity.ERROR,
+            summary: 'Se ha producido un error al actualizar el usuario',
+            detail: error.error.message,
+          });
+        },
+        complete: () => {
+          this.notificationService.showToast({
+            severity: MessageSeverity.SUCCESS,
+            summary: 'Se ha actualizado correctamente el usuario',
+            detail: 'Sign Up successful',
+          });
+          this.ref.close();
+        },
+      });
+  }
+
+  onCancel() {
+    this.ref.close();
+  }
+
+  onFileSelected(event: any) {
+    console.log('event', event);
+
+    const inputElement = event.target as HTMLInputElement;
+
+    if (inputElement.files && inputElement.files.length > 0) {
+      const file = inputElement.files[0];
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        this.globalImageSrc = reader.result as string;
+        this.profileForm.controls['photoUrl'].markAsDirty();
+        console.log('user.photoUrl', this.globalImageSrc);
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+    const file: File = event.target.files[0];
+
+    if (file) {
+      // Sube el archivo
+    }
   }
 
   ngOnDestroy(): void {

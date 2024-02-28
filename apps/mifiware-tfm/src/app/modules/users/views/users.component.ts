@@ -1,13 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Table } from 'primeng/table';
-import { UsersService } from '../users.service';
-import { MessageService } from 'primeng/api';
-import { Subject, takeUntil } from 'rxjs';
-import { AppStoreService } from '../../../core/services/app-store.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from '@mifiware-tfm/entity-data-models';
+import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { Table } from 'primeng/table';
+import { Subject, of, switchMap, takeUntil } from 'rxjs';
+import { AppStoreService } from '../../../core/services/app-store.service';
 import { ProfileComponent } from '../../profile/views/profile.component';
-import { switchMap, of } from 'rxjs';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'mifiware-tfm-users',
@@ -84,20 +83,41 @@ export class UsersComponent implements OnInit, OnDestroy {
       return 'default'; // Asegúrate de devolver un valor por defecto
     }
   }
+  //meter el findAll despues de crear
 
   openNew() {
-    this.users = [];
+    this.ref = this.dialogService.open(ProfileComponent, {
+      header: 'Select a User',
+      width: '70%',
+      height: '67vh',
+      styleClass: 'dialog',
+      data: {
+        isNew: true,
+      },
+    });
+
+    this.ref.onClose.subscribe((user: any) => {
+      console.log('cierro modal', user);
+
+      if (user) {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'user Selected',
+          detail: user.name,
+        });
+      }
+    });
   }
 
   deleteSelectedUsers() {
     this.deleteUsersDialog = true;
   }
-
+  //meter el findAll despues de actualizar
   editUser(user: User) {
     this.ref = this.dialogService.open(ProfileComponent, {
-      header: 'Select a User',
+      header: 'Editar usuario: ' + user.name,
       width: '70%',
-      height: '44vh',
+      height: '64vh',
       styleClass: 'dialog',
       data: {
         userId: user.uuid,

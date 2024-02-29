@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { AppLayoutModule } from './modules/layout/views/app.layout.module';
 
 import { NotfoundComponent } from './shared/notfound/notfound.component';
+import { TranslocoRootModule } from './transloco-root.module';
 
 export const metaReducers: MetaReducer<any>[] = isDevMode()
   ? [storeFreeze]
@@ -48,6 +49,7 @@ export const metaReducers: MetaReducer<any>[] = isDevMode()
       debugInfo: false,
     }),
     AppLayoutModule,
+    TranslocoRootModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

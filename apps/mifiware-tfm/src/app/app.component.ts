@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { AppStoreService } from './core/services/app-store.service';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'mifiware-tfm-root',
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private primengConfig: PrimeNGConfig,
-    private appStoreService: AppStoreService
+    private appStoreService: AppStoreService,
+    private translocoService: TranslocoService
   ) {
     /* this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -34,6 +36,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.primengConfig.ripple = true;
     document.documentElement.style.fontSize = '14px';
+    this.translocoService.setActiveLang('es');
   }
 
   checkUrl(url: string) {

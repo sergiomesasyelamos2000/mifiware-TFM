@@ -5,6 +5,7 @@ import { MenuItem } from 'primeng/api';
 import { AppStoreService } from '../../../core/services/app-store.service';
 import { Role } from '@mifiware-tfm/entity-data-models';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'mifiware-tfm-menu',
@@ -17,7 +18,8 @@ export class AppMenuComponent implements OnInit, OnDestroy {
 
   constructor(
     public layoutService: LayoutService,
-    private appStoreService: AppStoreService
+    private appStoreService: AppStoreService,
+    private translocoService: TranslocoService
   ) {}
 
   ngOnInit() {
@@ -31,21 +33,21 @@ export class AppMenuComponent implements OnInit, OnDestroy {
       });
     this.model = [
       {
-        label: 'Home',
+        label: 'MENU.HOME',
         items: [
-          { label: 'Inicio', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
+          { label: 'MENU.HOME', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
         ],
       },
       {
-        label: 'UI Components',
+        label: 'MENU.MASTER.TITLE',
         items: [
           {
-            label: 'MyDashBoard',
+            label: 'MENU.MASTER.DASHBOARD',
             icon: 'pi pi-fw pi-id-card',
             routerLink: ['/dashboard'],
           },
           {
-            label: 'PROFILE',
+            label: 'MENU.MASTER.PROFILE',
             icon: 'pi pi-fw pi-user-edit',
             routerLink: ['/profile'],
           },
@@ -61,7 +63,7 @@ export class AppMenuComponent implements OnInit, OnDestroy {
         visible: this.isAdmin,
         items: [
           {
-            label: 'usuarios',
+            label: 'MENU.MASTER.USERS',
             icon: 'pi pi-fw pi-user',
             routerLink: ['/users'],
           },

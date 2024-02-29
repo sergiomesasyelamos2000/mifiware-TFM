@@ -1,0 +1,15 @@
+{
+  "MENU": {
+    "HOME": "Inicio",
+    "MASTER": {
+      "TITLE": "Maestros",
+      "DASHBOARD": "Dashboard",
+      "USERS": "Usuarios",
+      "PROFILE": "Perfil"
+    }
+  },
+  "LANG": {
+    "es": "Castellano",
+    "en": "Inglés"
+  }
+}

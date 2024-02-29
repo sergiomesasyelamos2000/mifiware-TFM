@@ -17,6 +17,11 @@ import { AppSidebarComponent } from '../../../shared/sidebar/views/app.sidebar.c
 import { AppTopBarComponent } from '../../../shared/topbar/views/app.topbar.component';
 import { AppLayoutComponent } from './app.layout.component';
 import { AppConfigModule } from './config/config.module';
+import { DropdownModule } from 'primeng/dropdown';
+import { MenuModule } from 'primeng/menu';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { ListboxModule } from 'primeng/listbox';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,10 @@ import { AppConfigModule } from './config/config.module';
     InputSwitchModule,
     RippleModule,
     RouterModule,
+    OverlayPanelModule,
+    ListboxModule,
     AppConfigModule,
+    TranslocoModule,
   ],
   exports: [AppLayoutComponent],
 })

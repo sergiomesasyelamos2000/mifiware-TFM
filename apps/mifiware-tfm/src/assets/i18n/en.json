@@ -1,0 +1,12 @@
+{
+  "MENU": {
+    "HOME": "Home",
+    "DASHBOARD": "Dashboard",
+    "USERS": "Users",
+    "PROFILE": "Profile"
+  },
+  "LANG": {
+    "es": "Spanish",
+    "en": "English"
+  }
+}

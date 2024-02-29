@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { AppStoreService } from '../../../core/services/app-store.service';
 import { LayoutService } from '../../../core/services/app.layout.service';
+import { TranslocoService } from '@ngneat/transloco';
+import { OverlayPanel } from 'primeng/overlaypanel';
+import { LANGUAGES_ENUM } from '@mifiware-tfm/entity-data-models';
 
 @Component({
   selector: 'mifiware-tfm-topbar',
@@ -12,6 +15,8 @@ import { LayoutService } from '../../../core/services/app.layout.service';
 export class AppTopBarComponent {
   items!: MenuItem[];
   isDarkTheme = false;
+  languages = Object.keys(LANGUAGES_ENUM);
+  selectedLanguage: any;
 
   @ViewChild('menubutton') menuButton!: ElementRef;
 
@@ -19,11 +24,27 @@ export class AppTopBarComponent {
 
   @ViewChild('topbarmenu') menu!: ElementRef;
 
+  @ViewChild('op') op: OverlayPanel;
+
   constructor(
     public layoutService: LayoutService,
     private appStoreService: AppStoreService,
-    public router: Router
-  ) {}
+    public router: Router,
+    private translocoService: TranslocoService
+  ) {
+    this.selectedLanguage = this.languages[0];
+
+    this.items = [
+      {
+        label: 'New',
+        icon: 'pi pi-fw pi-plus',
+      },
+      {
+        label: 'Delete',
+        icon: 'pi pi-fw pi-trash',
+      },
+    ];
+  }
 
   changeColor() {
     if (this.isDarkTheme) {
@@ -68,5 +89,13 @@ export class AppTopBarComponent {
     this.appStoreService.resetMe();
     this.appStoreService.resetAuth();
     this.router.navigate(['auth', 'login']);
+  }
+
+  changeLanguage(lang?: string) {
+    console.log('changeLanguage', lang);
+
+    this.translocoService.setActiveLang(lang);
+    this.selectedLanguage = lang;
+    this.op.hide();
   }
 }

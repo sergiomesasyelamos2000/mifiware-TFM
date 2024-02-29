@@ -17,6 +17,7 @@ import {
   CreateUserDto,
   Role,
   UpdateUserDto,
+  User,
 } from '@mifiware-tfm/entity-data-models';
 import { AuthGuard } from '../../core/guards/auth.guard';
 import { RolesGuard } from '../../core/guards/roles.guard';
@@ -87,6 +88,21 @@ export class UserController {
   @HttpCode(200)
   async remove(@Param('id') id: string) {
     return this.userService.delete(id);
+  }
+
+  @Delete()
+  @Roles(Role.SUPER_ADMIN)
+  @UseGuards(AuthGuard, RolesGuard)
+  @ApiResponse({
+    status: 204,
+    description: 'The user has been successfully removed.',
+  })
+  @ApiResponse({ status: 400, description: 'Bad request' })
+  @ApiResponse({ status: 409, description: 'Conflict' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  @HttpCode(200)
+  async bulkDelete(@Body() users: User[]) {
+    return this.userService.bulkDelete(users);
   }
 
   @Get(':id')

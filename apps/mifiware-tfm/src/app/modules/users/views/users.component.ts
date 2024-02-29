@@ -124,13 +124,15 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   confirmDeleteSelected() {
     this.deleteUsersDialog = false;
-    this.users = this.users.filter((val) => !this.selectedUsers.includes(val));
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Successful',
-      detail: 'Users Deleted',
-      life: 3000,
-    });
+    this.usersService
+      .bulkDetele(this.selectedUsers, this.token)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        error: (error) => {},
+        complete: () => {
+          this.findAllUsers(this.token);
+        },
+      });
     this.selectedUsers = [];
   }
 

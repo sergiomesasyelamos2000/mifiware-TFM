@@ -31,4 +31,12 @@ export class UsersService {
       headers,
     });
   }
+
+  bulkDetele(ids: string[], token: string): Observable<void> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete<void>(`${environment.apiUrl}/users`, {
+      headers,
+      body: ids,
+    });
+  }
 }

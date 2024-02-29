@@ -104,6 +104,10 @@ export class UserService {
     await this.usersRepository.remove(user);
   }
 
+  async bulkDelete(users: User[]): Promise<void> {
+    await this.usersRepository.remove(users);
+  }
+
   getGrafanaUrl(user: User): string {
     console.log('entra en getGrafanaUrl API', user);
     const userId = 'A';

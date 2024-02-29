@@ -24,6 +24,9 @@ export const environment = {
     synchronize: true,
     charset: 'utf8mb4',
   },
+  photoBase64: {
+    dirname: 'cdn/images/avatar.png',
+  },
   // Swagger Config
   swaggerConfig: {
     auth: {

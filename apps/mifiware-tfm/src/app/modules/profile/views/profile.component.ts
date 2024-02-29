@@ -36,6 +36,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   avatarName!: string;
   avatarEmail!: string;
   globalImageSrc!: string;
+  isAdmin!: boolean;
 
   get uuid() {
     return this.profileForm.controls['uuid'];
@@ -140,6 +141,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             );
 
             this.user = user;
+
             this.profileForm.patchValue({
               uuid: user.uuid,
               name: user.name,
@@ -148,6 +150,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
               role: userRole,
               photoUrl: user.photoUrl,
             });
+            this.isAdmin = user.role === Role.SUPER_ADMIN;
+            this.isAdmin
+              ? this.profileForm.get('role').enable()
+              : this.profileForm.get('role').disable();
 
             // this.appStoreService.setMe(user);
           },
@@ -224,7 +230,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             summary: 'Se ha actualizado correctamente el usuario',
             detail: 'Sign Up successful',
           });
-          this.ref.close();
+          this.ref.close(this.user);
         },
       });
   }
@@ -243,6 +249,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
       reader.onloadend = () => {
         this.globalImageSrc = reader.result as string;
         this.profileForm.controls['photoUrl'].markAsDirty();
+        if (this.user) {
+          this.user.photoUrl = this.globalImageSrc;
+        }
       };
 
       reader.readAsDataURL(file);

@@ -50,12 +50,7 @@ export class UsersComponent implements OnInit, OnDestroy {
         this.token = auth.accessToken;
       });
     if (this.token) {
-      this.usersService
-        .findAll(this.token)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe((data: User[]) => {
-          this.users = data;
-        });
+      this.findAllUsers(this.token);
     }
 
     this.cols = [
@@ -78,10 +73,9 @@ export class UsersComponent implements OnInit, OnDestroy {
     } else if (status === 'USER') {
       return 'info';
     } else {
-      return 'default'; // Asegúrate de devolver un valor por defecto
+      return 'default';
     }
   }
-  //meter el findAll despues de crear
 
   openNew() {
     this.ref = this.dialogService.open(ProfileComponent, {
@@ -94,13 +88,9 @@ export class UsersComponent implements OnInit, OnDestroy {
       },
     });
 
-    this.ref.onClose.subscribe((user: any) => {
+    this.ref.onClose.subscribe((user: User) => {
       if (user) {
-        this.messageService.add({
-          severity: 'info',
-          summary: 'user Selected',
-          detail: user.name,
-        });
+        this.findAllUsers(this.token);
       }
     });
   }
@@ -108,7 +98,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   deleteSelectedUsers() {
     this.deleteUsersDialog = true;
   }
-  //meter el findAll despues de actualizar
+
   editUser(user: User) {
     this.ref = this.dialogService.open(ProfileComponent, {
       header: 'Editar usuario: ' + user.name,
@@ -120,13 +110,9 @@ export class UsersComponent implements OnInit, OnDestroy {
       },
     });
 
-    this.ref.onClose.subscribe((user: any) => {
+    this.ref.onClose.subscribe((user: User) => {
       if (user) {
-        this.messageService.add({
-          severity: 'info',
-          summary: 'user Selected',
-          detail: user.name,
-        });
+        this.findAllUsers(this.token);
       }
     });
   }
@@ -175,6 +161,15 @@ export class UsersComponent implements OnInit, OnDestroy {
             life: 3000,
           });
         },
+      });
+  }
+
+  findAllUsers(token: string) {
+    this.usersService
+      .findAll(token)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: User[]) => {
+        this.users = data;
       });
   }
 

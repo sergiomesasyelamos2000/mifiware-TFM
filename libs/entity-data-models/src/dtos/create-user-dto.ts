@@ -6,6 +6,7 @@ export class CreateUserDto {
   @IsOptional()
   @IsString()
   photoUrl?: string;
+
   @Column({ type: 'varchar' })
   name: string;
 

@@ -21,6 +21,7 @@ import {
   AUTH_ERROR_EMAIL_ALREADY_EXISTS,
   AUTH_ERROR_EMAIL_OR_PASSWORD_INVALID,
 } from './auth.constants';
+import * as fs from 'fs';
 
 @Injectable()
 export class AuthService {
@@ -47,7 +48,15 @@ export class AuthService {
     const salt = await bcrypt.genSalt(10);
     password = await bcrypt.hash(password, salt);
 
+    if (!signUpDto.photoUrl) {
+      const imageBuffer = fs.readFileSync(environment.photoBase64.dirname);
+      const imageBase64 = imageBuffer.toString('base64');
+
+      signUpDto.photoUrl = 'data:image/png;base64,' + imageBase64;
+    }
+
     const newUser: User = {
+      photoUrl: signUpDto.photoUrl,
       name: signUpDto.name,
       surname: signUpDto.surname,
       email: email,

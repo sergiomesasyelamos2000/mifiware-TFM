@@ -12,6 +12,10 @@ import {
   UpdateUserDto,
   User,
 } from '@mifiware-tfm/entity-data-models';
+import { AUTH_ERROR_EMAIL_ALREADY_EXISTS } from '../auth/auth.constants';
+import * as bcrypt from 'bcrypt';
+import * as fs from 'fs';
+import environment from './../../../environments/environment';
 
 @Injectable()
 export class UserService {
@@ -30,23 +34,35 @@ export class UserService {
   } */
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const userExist = await this.findByUsername(createUserDto.name);
+    const email = createUserDto.email ? createUserDto.email.trim() : null;
+    let password = createUserDto.password
+      ? createUserDto.password.trim()
+      : null;
+    const user: User = await this.usersRepository.findOne({
+      where: { email },
+    });
 
-    if (userExist) {
-      throw new ConflictException('User already exists');
+    if (user) {
+      throw new ConflictException(AUTH_ERROR_EMAIL_ALREADY_EXISTS);
     }
 
-    console.log('entra en create api', createUserDto.photoUrl);
+    const salt = await bcrypt.genSalt(10);
+    password = await bcrypt.hash(password, salt);
+
+    if (!createUserDto.photoUrl) {
+      const imageBuffer = fs.readFileSync(environment.photoBase64.dirname);
+      const imageBase64 = imageBuffer.toString('base64');
+
+      createUserDto.photoUrl = 'data:image/png;base64,' + imageBase64;
+    }
 
     const newPost = await this.usersRepository.save({
-      photoUrl:
-        createUserDto.photoUrl ||
-        'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png',
+      photoUrl: createUserDto.photoUrl,
       name: createUserDto.name,
       surname: createUserDto.surname,
-      email: createUserDto.email,
+      email: email,
       role: createUserDto.role,
-      password: createUserDto.password,
+      password: password,
     });
     return newPost;
   }

@@ -1,7 +1,11 @@
 import { Column } from 'typeorm';
-import { IsEmail } from 'class-validator';
+import { IsEmail, IsOptional, IsString } from 'class-validator';
 
 export class SignUpDto {
+  @IsOptional()
+  @IsString()
+  photoUrl?: string;
+
   @Column({ type: 'varchar' })
   name: string;
 

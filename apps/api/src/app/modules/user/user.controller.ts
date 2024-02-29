@@ -1,27 +1,26 @@
 import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  UseGuards,
-  HttpCode,
-  Req,
-  Put,
-} from '@nestjs/common';
-import { UserService } from './user.service';
-import { Roles } from '../../core/decorators/roles.decorator';
-import {
   CreateUserDto,
   Role,
   UpdateUserDto,
   User,
 } from '@mifiware-tfm/entity-data-models';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  Param,
+  Patch,
+  Post,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
+import { ApiResponse } from '@nestjs/swagger';
+import { Roles } from '../../core/decorators/roles.decorator';
 import { AuthGuard } from '../../core/guards/auth.guard';
 import { RolesGuard } from '../../core/guards/roles.guard';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { UserService } from './user.service';
 
 @Controller('users')
 export class UserController {

@@ -120,4 +120,20 @@ export class UserService {
       return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a4/sensores-de-localizacion?orgId=1&var-user_id=${userId}&from=1707636483388&to=1707658083388&kiosk`;
     }
   }
+
+  /* Método findAll con paginación */
+  //skip es el número de registros que queremos saltar
+  //take es el número de registros que queremos tomar
+
+  /* async findAllPagination(
+    skip = 0,
+    take = 10
+  ): Promise<{ data: User[]; total: number }> {
+    const [data, total] = await this.usersRepository.findAndCount({
+      skip: skip,
+      take: take,
+    });
+
+    return { data, total };
+  } */
 }

@@ -39,4 +39,23 @@ export class UsersService {
       body: ids,
     });
   }
+  /* Método para paginación */
+  /* findAllPagination(
+    token: string,
+    skip = 0,
+    take = 10
+  ): Observable<{ data: User[]; total: number }> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http
+      .get<{ data: User[]; total: number }>(
+        `${environment.apiUrl}/users?skip=${skip}&take=${take}`,
+        { headers: headers }
+      )
+      .pipe(
+        map((response) => ({
+          data: response.data,
+          total: response.total,
+        }))
+      );
+  } */
 }

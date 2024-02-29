@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { User } from '@mifiware-tfm/entity-data-models';
-import { MessageService } from 'primeng/api';
+import { Role, User } from '@mifiware-tfm/entity-data-models';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Table } from 'primeng/table';
 import { Subject, of, switchMap, takeUntil } from 'rxjs';
@@ -27,22 +27,94 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   cols: any[] = [];
 
-  statuses: any[] = [];
+  roles: Role[] = [];
 
   rowsPerPageOptions = [5, 10, 20];
 
   destroy$: Subject<void> = new Subject<void>();
   token!: string;
+  loading: boolean = true;
+  totalRecords: number;
 
   constructor(
     private usersService: UsersService,
     private messageService: MessageService,
     private appStoreService: AppStoreService,
     private dialogService: DialogService,
-    private ref: DynamicDialogRef
+    private ref: DynamicDialogRef,
+    private config: PrimeNGConfig
   ) {}
 
   ngOnInit() {
+    this.config.setTranslation({
+      startsWith: 'Comienza con',
+      contains: 'Contiene',
+      notContains: 'No contiene',
+      endsWith: 'Termina con',
+      equals: 'Igual a',
+      notEquals: 'No igual a',
+      noFilter: 'Sin filtro',
+      lt: 'Menor que',
+      lte: 'Menor o igual que',
+      gt: 'Mayor que',
+      gte: 'Mayor o igual que',
+      is: 'Es',
+      isNot: 'No es',
+      before: 'Antes',
+      after: 'Después',
+      clear: 'Limpiar',
+      apply: 'Aplicar',
+      matchAll: 'Coincidir todo',
+      matchAny: 'Coincidir cualquier',
+      addRule: 'Agregar regla',
+      removeRule: 'Eliminar regla',
+      accept: 'Sí',
+      reject: 'No',
+      choose: 'Elegir',
+      upload: 'Subir',
+      cancel: 'Cancelar',
+      dayNames: [
+        'Domingo',
+        'Lunes',
+        'Martes',
+        'Miércoles',
+        'Jueves',
+        'Viernes',
+        'Sábado',
+      ],
+      dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+      dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+      monthNames: [
+        'Enero',
+        'Febrero',
+        'Marzo',
+        'Abril',
+        'Mayo',
+        'Junio',
+        'Julio',
+        'Agosto',
+        'Septiembre',
+        'Octubre',
+        'Noviembre',
+        'Diciembre',
+      ],
+      monthNamesShort: [
+        'Ene',
+        'Feb',
+        'Mar',
+        'Abr',
+        'May',
+        'Jun',
+        'Jul',
+        'Ago',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dic',
+      ],
+      today: 'Hoy',
+      weekHeader: 'Sem',
+    });
     this.appStoreService
       .loadAuth$()
       .pipe(takeUntil(this.destroy$))
@@ -54,16 +126,10 @@ export class UsersComponent implements OnInit, OnDestroy {
     }
 
     this.cols = [
-      { field: 'name', header: 'Name' },
-      { field: 'surname', header: 'Surname' },
-      { field: 'email', header: 'email' },
-      { field: 'role', header: 'Role' },
-    ];
-
-    this.statuses = [
-      { label: 'INSTOCK', value: 'instock' },
-      { label: 'LOWSTOCK', value: 'lowstock' },
-      { label: 'OUTOFSTOCK', value: 'outofstock' },
+      { field: 'name', header: 'Name', type: 'text' },
+      { field: 'surname', header: 'Surname', type: 'text' },
+      { field: 'email', header: 'email', type: 'text' },
+      { field: 'role', header: 'Role', type: 'role' },
     ];
   }
 
@@ -172,11 +238,19 @@ export class UsersComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: User[]) => {
         this.users = data;
+        this.loading = false;
+        this.roles = this.users
+          .map((user) => user.role)
+          .filter((role, index, self) => self.indexOf(role) === index);
       });
   }
 
   onGlobalFilter(table: Table, event: Event) {
     table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
+  }
+
+  clear(table: Table) {
+    table.clear();
   }
 
   ngOnDestroy(): void {
@@ -186,4 +260,25 @@ export class UsersComponent implements OnInit, OnDestroy {
       this.ref.close();
     }
   }
+
+  /*
+  En caso de necesitar paginación, se puede utilizar el siguiente método. En html usar:
+        [lazy]="true"
+        (onLazyLoad)="loadUsers($event)"
+        [loading]="loading"
+        [totalRecords]="totalRecords"
+   */
+
+  /* loadUsers(event: LazyLoadEvent) {
+    this.loading = true;
+
+    this.usersService
+      .findAll(this.token, event.first, event.rows)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((response: { data: User[]; total: number }) => {
+        this.users = response.data;
+        this.totalRecords = response.total;
+        this.loading = false;
+      });
+  } */
 }

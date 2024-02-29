@@ -1,16 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import {
-  JwtTokenDto,
-  LogInDto,
-  MessageSeverity,
-  SignUpDto,
-  User,
-} from '@mifiware-tfm/entity-data-models';
-import { NotificationService } from '../../core/services/notification.service';
 import { Router } from '@angular/router';
-import { Observable, catchError, tap, throwError } from 'rxjs';
+import { User } from '@mifiware-tfm/entity-data-models';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +12,6 @@ export class UsersService {
   constructor(private http: HttpClient, private router: Router) {}
 
   findAll(token: string): Observable<User[]> {
-    console.log('token', token);
-
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<User[]>(`${environment.apiUrl}/users`, {
       headers,

@@ -1,5 +1,6 @@
 import { IUserState } from '@mifiware-tfm/entity-data-models';
 import { createReducer, on } from '@ngrx/store';
+
 import * as coreActions from '../actions';
 
 export const initialState: IUserState = {
@@ -8,6 +9,7 @@ export const initialState: IUserState = {
   surname: '',
   email: '',
   role: null,
+  photoUrl: '',
 };
 
 export const userReducer = createReducer(

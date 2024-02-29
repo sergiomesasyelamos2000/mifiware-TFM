@@ -18,8 +18,6 @@ export class ProfileService {
     });
   }
   updateUser(id: string, user: User, token: string): Observable<User> {
-    console.log('token', token, user);
-
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.patch<User>(`${environment.apiUrl}/users/${id}`, user, {
       headers,
@@ -27,8 +25,6 @@ export class ProfileService {
   }
 
   createUser(user: User, token: string): Observable<User> {
-    console.log('token', token, user);
-
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post<User>(`${environment.apiUrl}/users`, user, {
       headers,

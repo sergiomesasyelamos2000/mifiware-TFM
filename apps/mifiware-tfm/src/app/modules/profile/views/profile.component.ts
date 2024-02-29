@@ -146,9 +146,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
               surname: user.surname,
               email: user.email,
               role: userRole,
+              photoUrl: user.photoUrl,
             });
 
-            this.appStoreService.setMe(user);
+            // this.appStoreService.setMe(user);
           },
           error: (err) => {
             console.log(err);
@@ -198,7 +199,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     // Actualizar el campo 'role' con el valor del rol seleccionado
     formValue.role = this.profileForm.get('role').value.value;
-    console.log('formValue', this.globalImageSrc);
 
     if (this.globalImageSrc) {
       formValue.photoUrl = this.globalImageSrc;
@@ -208,8 +208,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (user: User) => {
-          console.log('user CREATE', user);
-
           this.user = user;
           this.appStoreService.setMe(user);
         },
@@ -236,8 +234,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   onFileSelected(event: any) {
-    console.log('event', event);
-
     const inputElement = event.target as HTMLInputElement;
 
     if (inputElement.files && inputElement.files.length > 0) {
@@ -247,16 +243,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
       reader.onloadend = () => {
         this.globalImageSrc = reader.result as string;
         this.profileForm.controls['photoUrl'].markAsDirty();
-        console.log('user.photoUrl', this.globalImageSrc);
       };
 
       reader.readAsDataURL(file);
-    }
-
-    const file: File = event.target.files[0];
-
-    if (file) {
-      // Sube el archivo
     }
   }
 

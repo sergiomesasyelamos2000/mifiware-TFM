@@ -1,5 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { AppStoreService } from '../../../core/services/app-store.service';
 import { LayoutService } from '../../../core/services/app.layout.service';
 
 @Component({
@@ -17,7 +19,11 @@ export class AppTopBarComponent {
 
   @ViewChild('topbarmenu') menu!: ElementRef;
 
-  constructor(public layoutService: LayoutService) {}
+  constructor(
+    public layoutService: LayoutService,
+    private appStoreService: AppStoreService,
+    public router: Router
+  ) {}
 
   changeColor() {
     if (this.isDarkTheme) {
@@ -56,5 +62,11 @@ export class AppTopBarComponent {
       cloneLinkElement.setAttribute('id', id);
       onComplete();
     });
+  }
+
+  logout() {
+    this.appStoreService.resetMe();
+    this.appStoreService.resetAuth();
+    this.router.navigate(['auth', 'login']);
   }
 }

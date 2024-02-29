@@ -6,4 +6,5 @@ export interface IUserState {
   surname?: string;
   email?: string;
   role?: Role;
+  photoUrl?: string;
 }

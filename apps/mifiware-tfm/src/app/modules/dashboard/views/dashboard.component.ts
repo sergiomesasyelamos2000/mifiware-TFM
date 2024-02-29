@@ -29,7 +29,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.appStoreService.loadAuth$().subscribe((auth) => {
-      console.log('auth', auth);
       this.userId = auth.userId;
       this.token = auth.accessToken;
       this.getGrafanaDashboardUrl();
@@ -59,8 +58,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getGrafanaDashboardUrl(): void {
-    console.log('getGrafanaDashboardUrl');
-
     const userId = 'A';
     this.dashboardService
       .getGrafanaDashboardUrl(userId, this.token)

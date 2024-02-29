@@ -54,8 +54,6 @@ export class UsersComponent implements OnInit, OnDestroy {
         .findAll(this.token)
         .pipe(takeUntil(this.destroy$))
         .subscribe((data: User[]) => {
-          console.log('data', data);
-
           this.users = data;
         });
     }
@@ -97,8 +95,6 @@ export class UsersComponent implements OnInit, OnDestroy {
     });
 
     this.ref.onClose.subscribe((user: any) => {
-      console.log('cierro modal', user);
-
       if (user) {
         this.messageService.add({
           severity: 'info',
@@ -125,8 +121,6 @@ export class UsersComponent implements OnInit, OnDestroy {
     });
 
     this.ref.onClose.subscribe((user: any) => {
-      console.log('cierro modal', user);
-
       if (user) {
         this.messageService.add({
           severity: 'info',

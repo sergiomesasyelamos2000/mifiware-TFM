@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CoreState, getAuth, getMe, setAuth, setMe } from '../store';
+import {
+  CoreState,
+  getAuth,
+  getMe,
+  resetAuth,
+  resetMe,
+  setAuth,
+  setMe,
+} from '../store';
 import { IAuthState, IUserState } from '@mifiware-tfm/entity-data-models';
 import { Observable } from 'rxjs';
 
@@ -24,5 +32,13 @@ export class AppStoreService {
 
   setMe(me: IUserState | null) {
     this.appStore.dispatch(setMe(me));
+  }
+
+  resetMe() {
+    this.appStore.dispatch(resetMe());
+  }
+
+  resetAuth() {
+    this.appStore.dispatch(resetAuth());
   }
 }

@@ -7,6 +7,9 @@ import { PasswordModule } from 'primeng/password';
 import { LogInRoutingModule } from './log-in-routing.module';
 import { LogInComponent } from './log-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { ListboxModule } from 'primeng/listbox';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
   imports: [
@@ -17,6 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InputTextModule,
     FormsModule,
     PasswordModule,
+    OverlayPanelModule,
+    ListboxModule,
+    TranslocoModule,
     ReactiveFormsModule,
   ],
   declarations: [LogInComponent],

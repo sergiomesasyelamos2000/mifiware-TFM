@@ -13,7 +13,6 @@ import { LANGUAGES_ENUM } from '@mifiware-tfm/entity-data-models';
   styleUrls: ['./app.topbar.component.scss'],
 })
 export class AppTopBarComponent {
-  items!: MenuItem[];
   isDarkTheme = false;
   languages = Object.keys(LANGUAGES_ENUM);
   selectedLanguage: any;
@@ -33,17 +32,6 @@ export class AppTopBarComponent {
     private translocoService: TranslocoService
   ) {
     this.selectedLanguage = this.languages[0];
-
-    this.items = [
-      {
-        label: 'New',
-        icon: 'pi pi-fw pi-plus',
-      },
-      {
-        label: 'Delete',
-        icon: 'pi pi-fw pi-trash',
-      },
-    ];
   }
 
   changeColor() {

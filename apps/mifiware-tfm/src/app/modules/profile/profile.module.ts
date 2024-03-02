@@ -19,6 +19,7 @@ import {
 } from 'primeng/dynamicdialog';
 import { PasswordModule } from 'primeng/password';
 import { AvatarModule } from 'primeng/avatar';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -36,6 +37,7 @@ import { AvatarModule } from 'primeng/avatar';
     DynamicDialogModule,
     PasswordModule,
     AvatarModule,
+    TranslocoModule,
   ],
   providers: [ProfileService, DynamicDialogRef, DynamicDialogConfig],
   exports: [ProfileComponent],

@@ -1,23 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { passwordMatchValidator } from '../../../../shared/password-match.directive';
 import { AuthService } from '../../auth.service';
 import { NotificationService } from '../../../../core/services/notification.service';
-import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
+import {
+  LANGUAGES_ENUM,
+  MessageSeverity,
+} from '@mifiware-tfm/entity-data-models';
 import { LayoutService } from 'apps/mifiware-tfm/src/app/core/services/app.layout.service';
+import { OverlayPanel } from 'primeng/overlaypanel';
+import { TranslocoService } from '@ngneat/transloco';
 @Component({
   selector: 'mifiware-tfm-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
+  @ViewChild('op') op: OverlayPanel;
+  selectedLanguage: any;
+  languages = Object.keys(LANGUAGES_ENUM);
   signUpForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private notificationService: NotificationService,
-    public layoutService: LayoutService
+    public layoutService: LayoutService,
+    private translocoService: TranslocoService
   ) {}
 
   get name() {
@@ -81,5 +90,13 @@ export class SignUpComponent implements OnInit {
         });
       },
     });
+  }
+
+  changeLanguage(lang?: string) {
+    console.log('changeLanguage', lang);
+
+    this.translocoService.setActiveLang(lang);
+    this.selectedLanguage = lang;
+    this.op.hide();
   }
 }

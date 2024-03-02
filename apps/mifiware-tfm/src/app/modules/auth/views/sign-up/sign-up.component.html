@@ -1,3 +1,31 @@
+<div class="layout-topbar">
+  <div
+    #topbarmenu
+    class="layout-topbar-menu"
+    [ngClass]="{
+      'layout-topbar-menu-mobile-active':
+        layoutService.state.profileSidebarVisible
+    }"
+  >
+    <button class="p-link layout-topbar-button" (click)="op.toggle($event)">
+      <i class="pi pi-globe"></i>
+      <span>Languages</span>
+    </button>
+    <p-overlayPanel #op>
+      <p-listbox
+        [options]="languages"
+        [(ngModel)]="selectedLanguage"
+        [style]="{ width: '15rem' }"
+        (onChange)="changeLanguage($event.value)"
+      >
+        <ng-template let-lang pTemplate="item">
+          {{ 'LANG.' + lang | transloco }}
+        </ng-template>
+      </p-listbox>
+    </p-overlayPanel>
+  </div>
+</div>
+
 <div
   class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"
 >
@@ -33,20 +61,24 @@
             height="50"
             class="mb-3"
           />
-          <div class="text-900 text-3xl font-medium mb-3">Welcome, Isabel!</div>
-          <span class="text-600 font-medium">Sign in to continue</span>
+          <div class="text-900 text-3xl font-medium mb-3">
+            {{ 'SIGN_UP.TITLE' | transloco }}
+          </div>
+          <span class="text-600 font-medium">{{
+            'SIGN_UP.SUBTITLE' | transloco
+          }}</span>
         </div>
 
         <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
           <div>
             <!-- Campo para NAME -->
-            <label for="name" class="block text-900 text-xl font-medium mb-2"
-              >Name</label
-            >
+            <label for="name" class="block text-900 text-xl font-medium mb-2">{{
+              'SIGN_UP.NAME.LABEL' | transloco
+            }}</label>
             <input
               id="name"
               type="text"
-              placeholder="Type your name"
+              [placeholder]="'SIGN_UP.NAME.PLACEHOLDER' | transloco"
               formControlName="name"
               pInputText
               class="w-full md:w-30rem mb-2"
@@ -56,18 +88,24 @@
               *ngIf="name.invalid && (name.dirty || name.touched)"
               class="mb-5 block p-error"
             >
-              <div *ngIf="name.errors?.['required']">name is required</div>
-              <div *ngIf="name.errors?.['pattern']">name should be valid</div>
+              <div *ngIf="name.errors?.['required']">
+                {{ 'SIGN_UP.NAME.ERROR' | transloco }}
+              </div>
+              <div *ngIf="name.errors?.['pattern']">
+                {{ 'SIGN_UP.NAME.VALID' | transloco }}
+              </div>
             </small>
 
             <!-- Campo para SURNAME -->
-            <label for="surname" class="block text-900 text-xl font-medium mb-2"
-              >Surname</label
+            <label
+              for="surname"
+              class="block text-900 text-xl font-medium mb-2"
+              >{{ 'SIGN_UP.SURNAME.LABEL' | transloco }}</label
             >
             <input
               id="surname"
               type="text"
-              placeholder="Type your surname"
+              [placeholder]="'SIGN_UP.SURNAME.PLACEHOLDER' | transloco"
               formControlName="surname"
               pInputText
               class="w-full md:w-30rem mb-2"
@@ -78,22 +116,24 @@
               class="mb-5 block p-error"
             >
               <div *ngIf="surname.errors?.['required']">
-                surname is required
+                {{ 'SIGN_UP.SURNAME.ERROR' | transloco }}
               </div>
               <div *ngIf="surname.errors?.['pattern']">
-                surname should be valid
+                {{ 'SIGN_UP.NAME.VALID' | transloco }}
               </div>
             </small>
 
             <!-- Campo para EMAIL -->
 
-            <label for="email1" class="block text-900 text-xl font-medium mb-2"
-              >Email</label
+            <label
+              for="email1"
+              class="block text-900 text-xl font-medium mb-2"
+              >{{ 'SIGN_UP.EMAIL.LABEL' | transloco }}</label
             >
             <input
               id="email1"
               type="text"
-              placeholder="Email address"
+              [placeholder]="'SIGN_UP.EMAIL.PLACEHOLDER' | transloco"
               formControlName="email"
               pInputText
               class="w-full md:w-30rem mb-2"
@@ -103,8 +143,12 @@
               *ngIf="email.invalid && (email.dirty || email.touched)"
               class="mb-5 block p-error"
             >
-              <div *ngIf="email.errors?.['required']">Email is required</div>
-              <div *ngIf="email.errors?.['email']">Email should be valid</div>
+              <div *ngIf="email.errors?.['required']">
+                {{ 'SIGN_UP.EMAIL.ERROR' | transloco }}
+              </div>
+              <div *ngIf="email.errors?.['email']">
+                {{ 'SIGN_UP.EMAIL.VALID' | transloco }}
+              </div>
             </small>
 
             <!-- Campo para PASSWORD -->
@@ -112,12 +156,12 @@
             <label
               for="password"
               class="block text-900 font-medium text-xl mb-2"
-              >Password</label
+              >{{ 'SIGN_UP.PASSWORD.LABEL' | transloco }}</label
             >
             <p-password
               id="password"
               formControlName="password"
-              placeholder="Password"
+              [placeholder]="'SIGN_UP.PASSWORD.LABEL' | transloco"
               [toggleMask]="true"
               styleClass="mb-2"
               inputStyleClass="w-full p-3 md:w-30rem"
@@ -127,7 +171,7 @@
               class="mb-5 block p-error"
             >
               <div *ngIf="password.errors?.['required']">
-                Password is required
+                {{ 'SIGN_UP.PASSWORD.ERROR' | transloco }}
               </div>
             </small>
 
@@ -136,12 +180,12 @@
             <label
               for="confirmPassword"
               class="block text-900 font-medium text-xl mb-2"
-              >Confirm Password</label
+              >{{ 'SIGN_UP.REPEAT_PASSWORD.LABEL' | transloco }}</label
             >
             <p-password
               id="confirmPassword"
               formControlName="confirmPassword"
-              placeholder="Confirm Password"
+              [placeholder]="'SIGN_UP.REPEAT_PASSWORD.LABEL' | transloco"
               [toggleMask]="true"
               styleClass="mb-2"
               inputStyleClass="w-full p-3 md:w-30rem"
@@ -154,7 +198,7 @@
               class="mb-5 block p-error"
             >
               <div *ngIf="confirmPassword.errors?.['required']">
-                Confirm Password is required
+                {{ 'SIGN_UP.REPEAT_PASSWORD.ERROR' | transloco }}
               </div>
             </small>
 
@@ -163,14 +207,17 @@
                 type="submit"
                 pButton
                 pRipple
-                label="Sign In"
+                [label]="'SIGN_UP.SUBMIT' | transloco"
                 class="w-full p-3 text-xl mt-5"
                 (onClick)="onSubmit()"
                 [disabled]="signUpForm.invalid"
               ></button>
             </div>
             <div class="mt-2">
-              Already a member? <a routerLink="/auth/login"> Login</a>
+              {{ 'SIGN_UP.LOGIN.ACCOUNT' | transloco }}
+              <a routerLink="/auth/login">
+                {{ 'SIGN_UP.LOGIN.LOGIN' | transloco }}</a
+              >
             </div>
           </div>
         </form>

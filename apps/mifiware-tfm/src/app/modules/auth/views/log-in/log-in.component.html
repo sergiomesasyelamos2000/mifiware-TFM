@@ -1,3 +1,31 @@
+<div class="layout-topbar">
+  <div
+    #topbarmenu
+    class="layout-topbar-menu"
+    [ngClass]="{
+      'layout-topbar-menu-mobile-active':
+        layoutService.state.profileSidebarVisible
+    }"
+  >
+    <button class="p-link layout-topbar-button" (click)="op.toggle($event)">
+      <i class="pi pi-globe"></i>
+      <span>Languages</span>
+    </button>
+    <p-overlayPanel #op>
+      <p-listbox
+        [options]="languages"
+        [(ngModel)]="selectedLanguage"
+        [style]="{ width: '15rem' }"
+        (onChange)="changeLanguage($event.value)"
+      >
+        <ng-template let-lang pTemplate="item">
+          {{ 'LANG.' + lang | transloco }}
+        </ng-template>
+      </p-listbox>
+    </p-overlayPanel>
+  </div>
+</div>
+
 <div
   class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"
 >
@@ -33,21 +61,27 @@
             height="50"
             class="mb-3"
           />
-          <div class="text-900 text-3xl font-medium mb-3">Welcome, Isabel!</div>
-          <span class="text-600 font-medium">Sign in to continue</span>
+          <div class="text-900 text-3xl font-medium mb-3">
+            {{ 'LOGIN.TITLE' | transloco }}
+          </div>
+          <span class="text-600 font-medium">{{
+            'LOGIN.SUBTITLE' | transloco
+          }}</span>
         </div>
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div>
             <!-- Campo para EMAIL -->
 
-            <label for="email1" class="block text-900 text-xl font-medium mb-2"
-              >Email</label
+            <label
+              for="email"
+              class="block text-900 text-xl font-medium mb-2"
+              >{{ 'LOGIN.EMAIL.LABEL' | transloco }}</label
             >
             <input
-              id="email1"
+              id="email"
               type="text"
-              placeholder="Email address"
+              [placeholder]="'LOGIN.EMAIL.PLACEHOLDER' | transloco"
               formControlName="email"
               pInputText
               class="w-full md:w-30rem mb-2"
@@ -57,8 +91,12 @@
               *ngIf="email.invalid && (email.dirty || email.touched)"
               class="mb-5 block p-error"
             >
-              <div *ngIf="email.errors?.['required']">Email is required</div>
-              <div *ngIf="email.errors?.['email']">Email should be valid</div>
+              <div *ngIf="email.errors?.['required']">
+                {{ 'LOGIN.EMAIL.ERROR' | transloco }}
+              </div>
+              <div *ngIf="email.errors?.['email']">
+                {{ 'LOGIN.EMAIL.VALID' | transloco }}
+              </div>
             </small>
 
             <!-- Campo para PASSWORD -->
@@ -66,12 +104,12 @@
             <label
               for="password"
               class="block text-900 font-medium text-xl mb-2"
-              >Password</label
+              >{{ 'LOGIN.PASSWORD.LABEL' | transloco }}</label
             >
             <p-password
               id="password"
               formControlName="password"
-              placeholder="Password"
+              [placeholder]="'LOGIN.PASSWORD.LABEL' | transloco"
               [toggleMask]="true"
               styleClass="mb-2"
               inputStyleClass="w-full p-3 md:w-30rem"
@@ -81,7 +119,7 @@
               class="mb-5 block p-error"
             >
               <div *ngIf="password.errors?.['required']">
-                Password is required
+                {{ 'LOGIN.PASSWORD.ERROR' | transloco }}
               </div>
             </small>
 
@@ -95,29 +133,31 @@
                   [binary]="true"
                   styleClass="mr-2"
                 ></p-checkbox>
-                <label for="rememberme">Remember me</label>
+                <label for="rememberme">{{
+                  'LOGIN.REMEMBER' | transloco
+                }}</label>
               </div>
               <a
                 class="font-medium no-underline ml-2 text-right cursor-pointer"
                 style="color: var(--primary-color)"
-                >Forgot password?</a
+                >{{ 'LOGIN.FORGOT' | transloco }}</a
               >
             </div>
             <div class="mb-4">
-              <span class="text-600 font-medium line-height-3"
-                >Don't have an account?</span
-              >
+              <span class="text-600 font-medium line-height-3">{{
+                'LOGIN.NOT_ACCOUNT' | transloco
+              }}</span>
               <a
                 class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
                 routerLink="/auth/signup"
-                >Create account!</a
+                >{{ 'LOGIN.SIGN_UP' | transloco }}</a
               >
             </div>
             <button
               type="submit"
               pButton
               pRipple
-              label="Sign In"
+              [label]="'LOGIN.SUBMIT' | transloco"
               class="w-full p-3 text-xl"
               (onClick)="onSubmit()"
               [disabled]="loginForm.invalid"
@@ -145,9 +185,9 @@
   </div>
 
   <div>
-    <label for="email1" class="block text-900 font-medium mb-2">Email</label>
+    <label for="email" class="block text-900 font-medium mb-2">Email</label>
     <input
-      id="email1"
+      id="email"
       type="text"
       placeholder="Email address"
       pInputText

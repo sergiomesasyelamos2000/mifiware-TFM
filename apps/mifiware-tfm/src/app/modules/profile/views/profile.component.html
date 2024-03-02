@@ -32,14 +32,18 @@
               formControlName="uuid"
               class="text-base text-color surface-overlay border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
             />
-            <label htmlFor="uuid">UUID</label>
+            <label htmlFor="uuid">{{ 'PROFILE.UUID.LABEL' | transloco }}</label>
           </span>
           <small
             *ngIf="uuid.invalid && (uuid.dirty || uuid.touched)"
             class="block p-error"
           >
-            <div *ngIf="uuid.errors?.['required']">uuid is required</div>
-            <div *ngIf="uuid.errors?.['pattern']">uuid should be valid</div>
+            <div *ngIf="uuid.errors?.['required']">
+              {{ 'PROFILE.UUID.ERROR' | transloco }}
+            </div>
+            <div *ngIf="uuid.errors?.['pattern']">
+              {{ 'PROFILE.UUID.VALID' | transloco }}
+            </div>
           </small>
         </div>
         <div class="field col-12 md:col-6">
@@ -51,14 +55,20 @@
               formControlName="email"
               class="text-base text-color surface-overlay border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
             />
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{{
+              'PROFILE.EMAIL.LABEL' | transloco
+            }}</label>
           </span>
           <small
             *ngIf="email.invalid && (email.dirty || email.touched)"
             class="block p-error"
           >
-            <div *ngIf="email.errors?.['required']">Email is required</div>
-            <div *ngIf="email.errors?.['email']">Email should be valid</div>
+            <div *ngIf="email.errors?.['required']">
+              {{ 'PROFILE.EMAIL.ERROR' | transloco }}
+            </div>
+            <div *ngIf="email.errors?.['email']">
+              {{ 'PROFILE.EMAIL.VALID' | transloco }}
+            </div>
           </small>
         </div>
         <div class="field col-12 md:col-4">

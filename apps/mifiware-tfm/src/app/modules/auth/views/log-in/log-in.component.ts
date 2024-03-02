@@ -1,13 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
+import {
+  LANGUAGES_ENUM,
+  MessageSeverity,
+} from '@mifiware-tfm/entity-data-models';
 import { LayoutService } from 'apps/mifiware-tfm/src/app/core/services/app.layout.service';
 import { AppStoreService } from '../../../../core/services/app-store.service';
 import { NotificationService } from '../../../../core/services/notification.service';
 import { AuthService } from '../../auth.service';
 import { UsersService } from '../../../users/users.service';
 import { Subject, takeUntil, switchMap } from 'rxjs';
+import { TranslocoService } from '@ngneat/transloco';
+import { OverlayPanel } from 'primeng/overlaypanel';
 @Component({
   selector: 'mifiware-tfm-log-in',
   templateUrl: './log-in.component.html',
@@ -15,6 +20,7 @@ import { Subject, takeUntil, switchMap } from 'rxjs';
   providers: [],
 })
 export class LogInComponent implements OnInit, OnDestroy {
+  @ViewChild('op') op: OverlayPanel;
   error = '';
   loginForm!: FormGroup;
   loading = false;
@@ -24,6 +30,8 @@ export class LogInComponent implements OnInit, OnDestroy {
   destroy$: Subject<void> = new Subject<void>();
 
   valCheck: string[] = ['remember'];
+  selectedLanguage: any;
+  languages = Object.keys(LANGUAGES_ENUM);
 
   constructor(
     private authService: AuthService,
@@ -32,7 +40,8 @@ export class LogInComponent implements OnInit, OnDestroy {
     private router: Router,
     private appStoreService: AppStoreService,
     public layoutService: LayoutService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private translocoService: TranslocoService
   ) {}
 
   get f() {
@@ -92,6 +101,14 @@ export class LogInComponent implements OnInit, OnDestroy {
           this.router.navigate(['/']);
         },
       });
+  }
+
+  changeLanguage(lang?: string) {
+    console.log('changeLanguage', lang);
+
+    this.translocoService.setActiveLang(lang);
+    this.selectedLanguage = lang;
+    this.op.hide();
   }
 
   ngOnDestroy(): void {

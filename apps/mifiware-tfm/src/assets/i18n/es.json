@@ -11,5 +11,93 @@
   "LANG": {
     "es": "Castellano",
     "en": "Inglés"
+  },
+  "LOGIN": {
+    "TITLE": "¡Bienvenid@!",
+    "SUBTITLE": "Inicia sesión para continuar",
+    "EMAIL": {
+      "LABEL": "Correo electrónico",
+      "PLACEHOLDER": "Dirección de correo electrónico",
+      "ERROR": "El correo electrónico es requerido",
+      "VALID": "El correo electrónico no es válido"
+    },
+    "PASSWORD": {
+      "LABEL": "Contraseña",
+      "ERROR": "La contraseña es requerida"
+    },
+    "REMEMBER": "Recordar",
+    "FORGOT": "¿Olvidaste tu contraseña?",
+    "NOT_ACCOUNT": "¿No tienes cuenta?",
+    "SIGN_UP": "Crear cuenta",
+    "SUBMIT": "Iniciar sesión"
+  },
+  "SIGN_UP": {
+    "TITLE": "¡Bienvenid@!",
+    "SUBTITLE": "Regístrate para continuar",
+    "EMAIL": {
+      "LABEL": "Correo electrónico",
+      "PLACEHOLDER": "Dirección de correo electrónico",
+      "ERROR": "El correo electrónico es requerido",
+      "VALID": "El correo electrónico no es válido"
+    },
+    "PASSWORD": {
+      "LABEL": "Contraseña",
+      "ERROR": "La contraseña es requerida"
+    },
+    "REPEAT_PASSWORD": {
+      "LABEL": "Confirmar contraseña",
+      "ERROR": "La contraseña es requerida"
+    },
+    "NAME": {
+      "LABEL": "Nombre",
+      "PLACEHOLDER": "Escribe tu nombre",
+      "ERROR": "El nombre es requerido",
+      "VALID": "El nombre no es válido"
+    },
+    "SURNAME": {
+      "LABEL": "Apellido",
+      "PLACEHOLDER": "Escribe tu apellido",
+      "ERROR": "El apellido es requerido",
+      "VALID": "El apellido no es válido"
+    },
+    "LOGIN": {
+      "ACCOUNT": "¿Ya tienes cuenta?",
+      "LOGIN": "Iniciar sesión"
+    },
+    "SUBMIT": "Registrarse"
+  },
+  "PROFILE": {
+    "UUID": {
+      "LABEL": "ID de usuario",
+      "PLACEHOLDER": "Dirección de correo electrónico",
+      "ERROR": "El identificador es requerido",
+      "VALID": "El identificador no es válido"
+    },
+    "EMAIL": {
+      "LABEL": "Correo electrónico",
+      "PLACEHOLDER": "Dirección de correo electrónico",
+      "ERROR": "El correo electrónico es requerido",
+      "VALID": "El correo electrónico no es válido"
+    },
+    "PASSWORD": {
+      "LABEL": "Contraseña",
+      "ERROR": "La contraseña es requerida"
+    },
+    "REPEAT_PASSWORD": {
+      "LABEL": "Confirmar contraseña",
+      "ERROR": "La contraseña es requerida"
+    },
+    "NAME": {
+      "LABEL": "Nombre",
+      "PLACEHOLDER": "Escribe tu nombre",
+      "ERROR": "El nombre es requerido",
+      "VALID": "El nombre no es válido"
+    },
+    "SURNAME": {
+      "LABEL": "Apellido",
+      "PLACEHOLDER": "Escribe tu apellido",
+      "ERROR": "El apellido es requerido",
+      "VALID": "El apellido no es válido"
+    }
   }
 }

@@ -26,12 +26,20 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('dashboard')
-  @Roles(Role.USER)
+  @Get('dashboard/binary')
+  //@Roles(Role.USER)
   @UseGuards(AuthGuard, RolesGuard)
   @HttpCode(200)
-  getGrafanaDashboardUrl(@Req() req: any): string {
-    return this.userService.getGrafanaUrl(req?.user);
+  getGrafanaDashboardUrlBinray(@Req() req: any): string {
+    return this.userService.getGrafanaUrlBinary(req?.user);
+  }
+
+  @Get('dashboard/location')
+  //@Roles(Role.USER)
+  @UseGuards(AuthGuard, RolesGuard)
+  @HttpCode(200)
+  getGrafanaDashboardUrlLocation(@Req() req: any): string {
+    return this.userService.getGrafanaUrlLocation(req?.user);
   }
 
   @Post()

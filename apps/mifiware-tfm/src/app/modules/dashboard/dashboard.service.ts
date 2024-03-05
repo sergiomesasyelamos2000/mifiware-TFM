@@ -8,14 +8,14 @@ import { environment } from '../../../environments/environment';
 export class DashboardService {
   constructor(private http: HttpClient) {}
 
-  getGrafanaDashboardUrl(userId: string, token: string) {
+  getGrafanaDashboardUrlUsers(userId: string, token: string) {
     console.log('entra en getGrafanaDashboardUrl del front');
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     });
-    return this.http.get(`${environment.apiUrl}/users/dashboard`, {
+    return this.http.get(`${environment.apiUrl}/users/dashboard/binary`, {
       headers,
       responseType: 'text',
     });
@@ -34,5 +34,18 @@ export class DashboardService {
         console.log('response', response);
 
       }); */
+  }
+
+  getGrafanaDashboardUrlLocation(userId: string, token: string) {
+    console.log('entra en getGrafanaDashboardUrl del front');
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get(`${environment.apiUrl}/users/dashboard/location`, {
+      headers,
+      responseType: 'text',
+    });
   }
 }

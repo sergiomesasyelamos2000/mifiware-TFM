@@ -16,8 +16,8 @@ import { LayoutService } from '../../../core/services/app.layout.service';
 export class DashboardComponent implements OnInit {
   protected userId!: string;
   protected token!: string;
-  protected grafanaUrl!: SafeResourceUrl;
-
+  protected grafanaUrlBinary!: SafeResourceUrl;
+  protected grafanaUrlLocation!: SafeResourceUrl;
   constructor(
     private profileService: ProfileService,
     private appStoreService: AppStoreService,
@@ -60,10 +60,17 @@ export class DashboardComponent implements OnInit {
   getGrafanaDashboardUrl(): void {
     const userId = 'A';
     this.dashboardService
-      .getGrafanaDashboardUrl(userId, this.token)
-      .subscribe((grafanaUrl) => {
-        this.grafanaUrl =
-          this.domSanitizer.bypassSecurityTrustResourceUrl(grafanaUrl);
+      .getGrafanaDashboardUrlUsers(userId, this.token)
+      .subscribe((grafanaUrlBinary) => {
+        this.grafanaUrlBinary =
+          this.domSanitizer.bypassSecurityTrustResourceUrl(grafanaUrlBinary);
+      });
+
+    this.dashboardService
+      .getGrafanaDashboardUrlLocation(userId, this.token)
+      .subscribe((grafanaUrlLocation) => {
+        this.grafanaUrlLocation =
+          this.domSanitizer.bypassSecurityTrustResourceUrl(grafanaUrlLocation);
       });
   }
 

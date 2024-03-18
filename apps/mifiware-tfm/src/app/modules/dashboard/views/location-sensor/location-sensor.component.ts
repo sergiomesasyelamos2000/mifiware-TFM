@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from '../../profile/profile.service';
-import { AppStoreService } from '../../../core/services/app-store.service';
-import { NotificationService } from '../../../core/services/notification.service';
 import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
 import { MessageService } from 'primeng/api';
-import { DashboardService } from '../dashboard.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { LayoutService } from '../../../core/services/app.layout.service';
+import { AppStoreService } from 'apps/mifiware-tfm/src/app/core/services/app-store.service';
+import { LayoutService } from 'apps/mifiware-tfm/src/app/core/services/app.layout.service';
+import { NotificationService } from 'apps/mifiware-tfm/src/app/core/services/notification.service';
+import { ProfileService } from '../../../profile/profile.service';
+import { DashboardService } from '../../dashboard.service';
 
 @Component({
-  selector: 'mifiware-tfm-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  selector: 'mifiware-tfm-location-sensor',
+  templateUrl: './location-sensor.component.html',
+  styleUrls: ['./location-sensor.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class LocationSensorComponent implements OnInit {
   protected userId!: string;
   protected token!: string;
   protected grafanaUrlBinary!: SafeResourceUrl;
@@ -33,20 +33,6 @@ export class DashboardComponent implements OnInit {
       this.token = auth.accessToken;
       this.getGrafanaDashboardUrl();
     });
-
-    /* this.profileService.getProfile(this.userId, this.token).subscribe({
-      next: (res) => {
-        this.appStoreService.setMe(res);
-        this.notificationService.showToast({
-          severity: MessageSeverity.SUCCESS,
-          summary: 'Login',
-          detail: 'Login successful',
-        });
-      },
-      error: (error) => {
-        console.log('error', error);
-      },
-    }); */
   }
 
   ngAfterViewInit() {
@@ -59,13 +45,6 @@ export class DashboardComponent implements OnInit {
 
   getGrafanaDashboardUrl(): void {
     const userId = 'A';
-    this.dashboardService
-      .getGrafanaDashboardUrlUsers(userId, this.token)
-      .subscribe((grafanaUrlBinary) => {
-        this.grafanaUrlBinary =
-          this.domSanitizer.bypassSecurityTrustResourceUrl(grafanaUrlBinary);
-      });
-
     this.dashboardService
       .getGrafanaDashboardUrlLocation(userId, this.token)
       .subscribe((grafanaUrlLocation) => {

@@ -1,12 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { DashboardComponent } from './views/dashboard.component';
 import { AuthGuard } from '../../core/guards/auth.guard';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+      {
+        path: 'binary-sensor',
+        loadChildren: () =>
+          import('./views/binary-sensor/binary-sensor.module').then(
+            (m) => m.BinarySensorModule
+          ),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'location-sensor',
+        loadChildren: () =>
+          import('./views/location-sensor/location-sensor.module').then(
+            (m) => m.LocationSensorModule
+          ),
+        canActivate: [AuthGuard],
+      },
+      { path: '**', redirectTo: '/notfound' },
     ]),
   ],
   exports: [RouterModule],

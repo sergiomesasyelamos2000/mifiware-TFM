@@ -3,7 +3,8 @@
     "HOME": "Inicio",
     "MASTER": {
       "TITLE": "Maestros",
-      "DASHBOARD": "Dashboard",
+      "BINARY_DASHBOARD": "Sensores binarios",
+      "LOCATION_DASHBOARD": "Sensores de localización",
       "USERS": "Usuarios",
       "PROFILE": "Perfil"
     }

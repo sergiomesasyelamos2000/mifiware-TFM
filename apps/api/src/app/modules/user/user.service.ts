@@ -115,9 +115,9 @@ export class UserService {
     // Determina si el usuario es administrador
     const isAdmin = user.role === Role.SUPER_ADMIN;
     if (isAdmin) {
-      return `http://localhost:3003/d/f776e53f-b69f-41fe-99ac-c2da53f85d0b/sensores-binarios?orgId=1&from=1709615155491&to=1709636755491&kiosk=tv`;
+      return `http://localhost:3003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1710586232769&to=1710607832770&kiosk=tv`;
     } else {
-      return `http://localhost:3003/d/f776e53f-b69f-41fe-99ac-c2da53f85d0b/sensores-binarios?orgId=1&from=1709615155491&to=1709636755491&kiosk`;
+      return `http://localhost:3003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1710586232769&to=1710607832770&kiosk`;
     }
   }
 
@@ -128,9 +128,9 @@ export class UserService {
     // Determina si el usuario es administrador
     const isAdmin = user.role === Role.SUPER_ADMIN;
     if (isAdmin) {
-      return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a4/sensores-de-localizacion?orgId=1&var-user_id=All&from=1704063600000&to=1735685999999&`;
+      return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=All&from=1704063600000&to=1735685999999&`;
     } else {
-      return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a4/sensores-de-localizacion?orgId=1&var-user_id=${userId}&from=1704063600000&to=1735685999999&kiosk`;
+      return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=${userId}&from=1704063600000&to=1735685999999&kiosk`;
     }
   }
 

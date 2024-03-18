@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
 export class DashboardService {
   constructor(private http: HttpClient) {}
 
-  getGrafanaDashboardUrlUsers(userId: string, token: string) {
+  getGrafanaDashboardUrlBinary(userId: string, token: string) {
     console.log('entra en getGrafanaDashboardUrl del front');
 
     const headers = new HttpHeaders({

@@ -39,33 +39,34 @@ export class AppMenuComponent implements OnInit, OnDestroy {
         ],
       },
       {
-        label: 'MENU.MASTER.TITLE',
+        label: 'MENU.DASHBOARD.TITLE',
         items: [
           {
-            label: 'MENU.MASTER.BINARY_DASHBOARD',
-            icon: 'pi pi-fw pi-id-card',
+            label: 'MENU.DASHBOARD.BINARY_DASHBOARD',
+            icon: 'pi pi-fw pi-chart-bar',
             routerLink: ['/dashboard/binary-sensor'],
           },
           {
-            label: 'MENU.MASTER.LOCATION_DASHBOARD',
-            icon: 'pi pi-fw pi-id-card',
+            label: 'MENU.DASHBOARD.LOCATION_DASHBOARD',
+            icon: 'pi pi-fw pi-chart-line',
             routerLink: ['/dashboard/location-sensor'],
-          },
-          {
-            label: 'MENU.MASTER.PROFILE',
-            icon: 'pi pi-fw pi-user-edit',
-            routerLink: ['/profile'],
           },
         ],
       },
       {
-        label: 'CRUD USERS',
-        visible: this.isAdmin,
+        label: 'MENU.USERS.TITLE',
+
         items: [
           {
-            label: 'MENU.MASTER.USERS',
-            icon: 'pi pi-fw pi-user',
+            label: 'MENU.USERS.PROFILE',
+            icon: 'pi pi-fw pi-user-edit',
+            routerLink: ['/profile'],
+          },
+          {
+            label: 'MENU.USERS.LIST',
+            icon: 'pi pi-fw pi-users',
             routerLink: ['/users'],
+            visible: this.isAdmin,
           },
         ],
       },

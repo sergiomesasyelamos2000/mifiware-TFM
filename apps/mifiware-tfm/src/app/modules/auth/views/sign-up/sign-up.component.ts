@@ -10,6 +10,7 @@ import {
 import { LayoutService } from 'apps/mifiware-tfm/src/app/core/services/app.layout.service';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import { TranslocoService } from '@ngneat/transloco';
+import { Router } from '@angular/router';
 @Component({
   selector: 'mifiware-tfm-sign-up',
   templateUrl: './sign-up.component.html',
@@ -26,7 +27,8 @@ export class SignUpComponent implements OnInit {
     private authService: AuthService,
     private notificationService: NotificationService,
     public layoutService: LayoutService,
-    private translocoService: TranslocoService
+    private translocoService: TranslocoService,
+    private route: Router
   ) {}
 
   get name() {
@@ -78,16 +80,18 @@ export class SignUpComponent implements OnInit {
       next: () => {
         this.notificationService.showToast({
           severity: MessageSeverity.SUCCESS,
-          summary: 'Se ha registrado correctamente',
-          detail: 'Sign Up successful',
+          summary: this.translocoService.translate('SIGN_UP.TOAST.SUCCESS'),
         });
       },
       error: (error) => {
         this.notificationService.showToast({
           severity: MessageSeverity.ERROR,
-          summary: 'Se ha producido un error al registrarse',
+          summary: this.translocoService.translate('SIGN_UP.TOAST.ERROR'),
           detail: error.error.message,
         });
+      },
+      complete: () => {
+        this.route.navigate(['/auth/login']);
       },
     });
   }

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
-import { MessageService } from 'primeng/api';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MessageSeverity } from '@mifiware-tfm/entity-data-models';
+import { TranslocoService } from '@ngneat/transloco';
 import { AppStoreService } from 'apps/mifiware-tfm/src/app/core/services/app-store.service';
 import { LayoutService } from 'apps/mifiware-tfm/src/app/core/services/app.layout.service';
 import { NotificationService } from 'apps/mifiware-tfm/src/app/core/services/notification.service';
-import { ProfileService } from '../../../profile/profile.service';
 import { DashboardService } from '../../dashboard.service';
 
 @Component({
@@ -19,12 +18,12 @@ export class BinarySensorComponent implements OnInit {
   protected grafanaUrlBinary!: SafeResourceUrl;
   protected grafanaUrlLocation!: SafeResourceUrl;
   constructor(
-    private profileService: ProfileService,
     private appStoreService: AppStoreService,
     private notificationService: NotificationService,
     private dashboardService: DashboardService,
     private domSanitizer: DomSanitizer,
-    public layoutService: LayoutService
+    public layoutService: LayoutService,
+    private translocoService: TranslocoService
   ) {}
 
   ngOnInit(): void {
@@ -45,19 +44,25 @@ export class BinarySensorComponent implements OnInit {
 
   getGrafanaDashboardUrl(): void {
     const userId = 'A';
+
     this.dashboardService
       .getGrafanaDashboardUrlBinary(userId, this.token)
-      .subscribe((grafanaUrlBinary) => {
-        this.grafanaUrlBinary =
-          this.domSanitizer.bypassSecurityTrustResourceUrl(grafanaUrlBinary);
+      .subscribe({
+        next: (grafanaUrlBinary) => {
+          this.grafanaUrlBinary =
+            this.domSanitizer.bypassSecurityTrustResourceUrl(grafanaUrlBinary);
+        },
+        error: (error) => {
+          this.notificationService.showToast({
+            severity: MessageSeverity.ERROR,
+            summary: this.translocoService.translate(
+              'DASHBOARD.BINARY.TOAST.ERROR'
+            ),
+            detail: this.translocoService.translate(
+              'DASHBOARD.BINARY.TOAST.MESSAGE_ERROR'
+            ),
+          });
+        },
       });
-  }
-
-  show() {
-    this.notificationService.showToast({
-      severity: MessageSeverity.ERROR,
-      summary: 'Sign Up',
-      detail: 'error.error.message',
-    });
   }
 }

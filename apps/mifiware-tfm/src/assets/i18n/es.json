@@ -1,11 +1,14 @@
 {
   "MENU": {
     "HOME": "Inicio",
-    "MASTER": {
-      "TITLE": "Maestros",
+    "DASHBOARD": {
+      "TITLE": "Visualizaciones",
       "BINARY_DASHBOARD": "Sensores binarios",
-      "LOCATION_DASHBOARD": "Sensores de localización",
-      "USERS": "Usuarios",
+      "LOCATION_DASHBOARD": "Sensores de localización"
+    },
+    "USERS": {
+      "TITLE": "Usuarios",
+      "LIST": "Lista de usuarios",
       "PROFILE": "Perfil"
     }
   },
@@ -30,7 +33,11 @@
     "FORGOT": "¿Olvidaste tu contraseña?",
     "NOT_ACCOUNT": "¿No tienes cuenta?",
     "SIGN_UP": "Crear cuenta",
-    "SUBMIT": "Iniciar sesión"
+    "SUBMIT": "Iniciar sesión",
+    "TOAST": {
+      "ERROR": "Se ha producido un error al iniciar sesión",
+      "SUCCESS": "Sesión iniciada correctamente"
+    }
   },
   "SIGN_UP": {
     "TITLE": "¡Bienvenid@!",
@@ -65,7 +72,11 @@
       "ACCOUNT": "¿Ya tienes cuenta?",
       "LOGIN": "Iniciar sesión"
     },
-    "SUBMIT": "Registrarse"
+    "SUBMIT": "Registrarse",
+    "TOAST": {
+      "ERROR": "Se ha producido un error al registrarse",
+      "SUCCESS": "Se ha registrado correctamente"
+    }
   },
   "PROFILE": {
     "UUID": {
@@ -99,6 +110,66 @@
       "PLACEHOLDER": "Escribe tu apellido",
       "ERROR": "El apellido es requerido",
       "VALID": "El apellido no es válido"
+    },
+    "TOAST": {
+      "ERROR": "Se ha producido un error al cargar el perfil",
+      "SUCCESS": "Perfil cargado correctamente",
+      "MESSAGE_ERROR": "Por favor, inténtelo de nuevo más tarde"
+    },
+    "SUBMIT": {
+      "TOAST_UPDATE": {
+        "ERROR": "Se ha producido un error al actualizar el perfil",
+        "SUCCESS": "Perfil actualizado correctamente"
+      },
+      "TOAST_CREATE": {
+        "ERROR": "Se ha producido un error al crear el perfil",
+        "SUCCESS": "Perfil creado correctamente"
+      }
+    }
+  },
+  "DASHBOARD": {
+    "TITLE": "Tablero",
+    "BINARY": {
+      "TITLE": "Dashboard de sensores binarios",
+      "TABLE": {
+        "ID": "ID",
+        "NAME": "Nombre",
+        "DESCRIPTION": "Descripción",
+        "STATUS": "Estado",
+        "ACTIONS": "Acciones"
+      },
+      "TOAST": {
+        "ERROR": "Se ha producido un error al cargar los sensores binarios",
+        "SUCCESS": "Sensores binarios cargados correctamente",
+        "MESSAGE_ERROR": "Por favor, inténtelo de nuevo más tarde"
+      }
+    },
+    "LOCATION": {
+      "TITLE": "Dashboard de sensores de localización",
+      "TABLE": {
+        "ID": "ID",
+        "NAME": "Nombre",
+        "DESCRIPTION": "Descripción",
+        "STATUS": "Estado",
+        "ACTIONS": "Acciones"
+      },
+      "TOAST": {
+        "ERROR": "Se ha producido un error al cargar los sensores de localización",
+        "SUCCESS": "Sensores de localización cargados correctamente",
+        "MESSAGE_ERROR": "Por favor, inténtelo de nuevo más tarde"
+      }
+    }
+  },
+  "USERS": {
+    "TOAST_FIND": {
+      "ERROR": "Se ha producido un error al cargar los usuarios",
+      "SUCCESS": "Usuarios cargados correctamente",
+      "MESSAGE_ERROR": "Por favor, inténtelo de nuevo más tarde"
+    },
+    "TOAST_DELETE": {
+      "ERROR": "Se ha producido un error al eliminar el usuario",
+      "SUCCESS": "Usuario eliminado correctamente",
+      "MESSAGE_ERROR": "Por favor, inténtelo de nuevo más tarde"
     }
   }
 }

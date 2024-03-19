@@ -8,12 +8,13 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageSeverity, Role, User } from '@mifiware-tfm/entity-data-models';
+import { TranslocoService } from '@ngneat/transloco';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Subject, takeUntil } from 'rxjs';
 import { AppStoreService } from '../../../core/services/app-store.service';
 import { NotificationService } from '../../../core/services/notification.service';
-import { ProfileService } from '../profile.service';
 import { passwordMatchValidator } from '../../../shared/password-match.directive';
+import { ProfileService } from '../profile.service';
 
 @Component({
   selector: 'mifiware-tfm-profile',
@@ -71,7 +72,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private notificationService: NotificationService,
     private config: DynamicDialogConfig,
-    private ref: DynamicDialogRef
+    private ref: DynamicDialogRef,
+    private translocoService: TranslocoService
   ) {
     this.title = this.title || 'Profile';
     if (this.config && this.config.data) {
@@ -158,7 +160,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
             // this.appStoreService.setMe(user);
           },
           error: (err) => {
-            console.log(err);
+            this.notificationService.showToast({
+              severity: MessageSeverity.ERROR,
+              summary: this.translocoService.translate('PROFILE.TOAST.ERROR'),
+              detail: this.translocoService.translate(
+                'PROFILE.TOAST.MESSAGE_ERROR'
+              ),
+            });
           },
         });
     }
@@ -184,15 +192,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
         error: (error) => {
           this.notificationService.showToast({
             severity: MessageSeverity.ERROR,
-            summary: 'Se ha producido un error al actualizar el usuario',
+            summary: this.translocoService.translate(
+              'PROFILE.SUBMIT.TOAST_UPDATE.ERROR'
+            ),
             detail: error.error.message,
           });
         },
         complete: () => {
           this.notificationService.showToast({
             severity: MessageSeverity.SUCCESS,
-            summary: 'Se ha actualizado correctamente el usuario',
-            detail: 'Sign Up successful',
+            summary: this.translocoService.translate(
+              'PROFILE.SUBMIT.TOAST_UPDATE.SUCCESS'
+            ),
           });
           this.ref.close();
         },
@@ -220,14 +231,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
         error: (error) => {
           this.notificationService.showToast({
             severity: MessageSeverity.ERROR,
-            summary: 'Se ha producido un error al actualizar el usuario',
+            summary: this.translocoService.translate(
+              'PROFILE.SUBMIT.TOAST_CREATE.ERROR'
+            ),
             detail: error.error.message,
           });
         },
         complete: () => {
           this.notificationService.showToast({
             severity: MessageSeverity.SUCCESS,
-            summary: 'Se ha actualizado correctamente el usuario',
+            summary: this.translocoService.translate(
+              'PROFILE.SUBMIT.TOAST_CREATE.SUCCESS'
+            ),
             detail: 'Sign Up successful',
           });
           this.ref.close(this.user);

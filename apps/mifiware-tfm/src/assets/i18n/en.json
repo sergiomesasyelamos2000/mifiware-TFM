@@ -1,12 +1,175 @@
 {
   "MENU": {
     "HOME": "Home",
-    "DASHBOARD": "Dashboard",
-    "USERS": "Users",
-    "PROFILE": "Profile"
+    "DASHBOARD": {
+      "TITLE": "Visualizations",
+      "BINARY_DASHBOARD": "Binary Sensors",
+      "LOCATION_DASHBOARD": "Location Sensors"
+    },
+    "USERS": {
+      "TITLE": "Users",
+      "LIST": "List of users",
+      "PROFILE": "Profile"
+    }
   },
   "LANG": {
     "es": "Spanish",
     "en": "English"
+  },
+  "LOGIN": {
+    "TITLE": "Welcome!",
+    "SUBTITLE": "Sign in to continue",
+    "EMAIL": {
+      "LABEL": "Email",
+      "PLACEHOLDER": "Email address",
+      "ERROR": "Email is required",
+      "VALID": "The email is not valid"
+    },
+    "PASSWORD": {
+      "LABEL": "Password",
+      "ERROR": "Password is required"
+    },
+    "REMEMBER": "Remember",
+    "FORGOT": "Forgot your password?",
+    "NOT_ACCOUNT": "Don't you have an account?",
+    "SIGN_UP": "Create account",
+    "SUBMIT": "Sign in",
+    "TOAST": {
+      "ERROR": "An error occurred while logging in",
+      "SUCCESS": "Session started successfully"
+    }
+  },
+  "SIGN_UP": {
+    "TITLE": "Welcome!",
+    "SUBTITLE": "Sign up to continue",
+    "EMAIL": {
+      "LABEL": "Email",
+      "PLACEHOLDER": "Email address",
+      "ERROR": "Email is required",
+      "VALID": "The email is not valid"
+    },
+    "PASSWORD": {
+      "LABEL": "Password",
+      "ERROR": "Password is required"
+    },
+    "REPEAT_PASSWORD": {
+      "LABEL": "Confirm password",
+      "ERROR": "Password is required"
+    },
+    "NAME": {
+      "LABEL": "Name",
+      "PLACEHOLDER": "Enter your name",
+      "ERROR": "The name is required",
+      "VALID": "The name is not valid"
+    },
+    "SURNAME": {
+      "LABEL": "Last name",
+      "PLACEHOLDER": "Enter your last name",
+      "ERROR": "Last name is required",
+      "VALID": "The last name is not valid"
+    },
+    "LOGIN": {
+      "ACCOUNT": "Do you already have an account?",
+      "LOGIN": "Login"
+    },
+    "SUBMIT": "Sign up",
+    "TOAST": {
+      "ERROR": "An error occurred while registering",
+      "SUCCESS": "You have successfully registered"
+    }
+  },
+  "PROFILE": {
+    "UUID": {
+      "LABEL": "user ID",
+      "PLACEHOLDER": "Email address",
+      "ERROR": "The identifier is required",
+      "VALID": "The identifier is not valid"
+    },
+    "EMAIL": {
+      "LABEL": "Email",
+      "PLACEHOLDER": "Email address",
+      "ERROR": "Email is required",
+      "VALID": "The email is not valid"
+    },
+    "PASSWORD": {
+      "LABEL": "Password",
+      "ERROR": "Password is required"
+    },
+    "REPEAT_PASSWORD": {
+      "LABEL": "Confirm password",
+      "ERROR": "Password is required"
+    },
+    "NAME": {
+      "LABEL": "Name",
+      "PLACEHOLDER": "Enter your name",
+      "ERROR": "The name is required",
+      "VALID": "The name is not valid"
+    },
+    "SURNAME": {
+      "LABEL": "Last name",
+      "PLACEHOLDER": "Enter your last name",
+      "ERROR": "Last name is required",
+      "VALID": "The last name is not valid"
+    },
+    "TOAST": {
+      "ERROR": "An error occurred while loading the profile",
+      "SUCCESS": "Profile loaded successfully",
+      "MESSAGE_ERROR": "Please try again later"
+    },
+    "SUBMIT": {
+      "TOAST_UPDATE": {
+        "ERROR": "An error occurred while updating the profile",
+        "SUCCESS": "Profile updated successfully"
+      },
+      "TOAST_CREATE": {
+        "ERROR": "An error occurred while creating the profile",
+        "SUCCESS": "Profile created successfully"
+      }
+    }
+  },
+  "DASHBOARD": {
+    "TITLE": "Board",
+    "BINARY": {
+      "TITLE": "Binary Sensor Dashboard",
+      "TABLE": {
+        "ID": "ID",
+        "NAME": "Name",
+        "DESCRIPTION": "Description",
+        "STATUS": "Status",
+        "ACTIONS": "Actions"
+      },
+      "TOAST": {
+        "ERROR": "An error occurred while loading the binary sensors",
+        "SUCCESS": "Binary sensors loaded successfully",
+        "MESSAGE_ERROR": "Please try again later"
+      }
+    },
+    "LOCATION": {
+      "TITLE": "Location Sensor Dashboard",
+      "TABLE": {
+        "ID": "ID",
+        "NAME": "Name",
+        "DESCRIPTION": "Description",
+        "STATUS": "Status",
+        "ACTIONS": "Actions"
+      },
+      "TOAST": {
+        "ERROR": "An error occurred while loading the location sensors",
+        "SUCCESS": "Location sensors loaded successfully",
+        "MESSAGE_ERROR": "Please try again later"
+      }
+    }
+  },
+  "USERS": {
+    "TOAST_FIND": {
+      "ERROR": "An error occurred while loading users",
+      "SUCCESS": "Users loaded successfully",
+      "MESSAGE_ERROR": "Please try again later"
+    },
+    "TOAST_DELETE": {
+      "ERROR": "An error occurred while deleting the user",
+      "SUCCESS": "User successfully deleted",
+      "MESSAGE_ERROR": "Please try again later"
+    }
   }
 }

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { MessagesModule } from 'primeng/messages';
-import { MessageModule } from 'primeng/message';
-import * as fromState from './store';
-import { ConfirmationService, MessageService, Message } from 'primeng/api';
 import { StoreModule } from '@ngrx/store';
+import { ConfirmationService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
 import { NotificationService } from './services/notification.service';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import * as fromState from './store';
 
 @NgModule({
   declarations: [],
@@ -14,12 +14,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
     MessageModule,
     StoreModule.forFeature('core', fromState.reducers),
   ],
-  providers: [
-    MessageService,
-    ConfirmationService,
-    NotificationService,
-    DialogService,
-  ],
+  providers: [ConfirmationService, NotificationService, DialogService],
   exports: [],
 })
 export class CoreModule {}

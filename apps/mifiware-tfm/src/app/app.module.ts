@@ -14,6 +14,8 @@ import { AppLayoutModule } from './modules/layout/views/app.layout.module';
 
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { TranslocoRootModule } from './transloco-root.module';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 export const metaReducers: MetaReducer<any>[] = isDevMode()
   ? [storeFreeze]
@@ -22,6 +24,7 @@ export const metaReducers: MetaReducer<any>[] = isDevMode()
 @NgModule({
   declarations: [AppComponent, NotfoundComponent],
   imports: [
+    ToastModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -51,7 +54,7 @@ export const metaReducers: MetaReducer<any>[] = isDevMode()
     AppLayoutModule,
     TranslocoRootModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

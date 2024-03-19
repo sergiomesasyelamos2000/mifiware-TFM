@@ -1,18 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Role, User } from '@mifiware-tfm/entity-data-models';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { MessageSeverity, Role, User } from '@mifiware-tfm/entity-data-models';
+import { PrimeNGConfig } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Table } from 'primeng/table';
 import { Subject, of, switchMap, takeUntil } from 'rxjs';
 import { AppStoreService } from '../../../core/services/app-store.service';
 import { ProfileComponent } from '../../profile/views/profile.component';
 import { UsersService } from '../users.service';
+import { NotificationService } from '../../../core/services/notification.service';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'mifiware-tfm-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
-  providers: [MessageService],
+  providers: [],
 })
 export class UsersComponent implements OnInit, OnDestroy {
   deleteUserDialog: boolean = false;
@@ -38,11 +40,12 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   constructor(
     private usersService: UsersService,
-    private messageService: MessageService,
     private appStoreService: AppStoreService,
     private dialogService: DialogService,
     private ref: DynamicDialogRef,
-    private config: PrimeNGConfig
+    private config: PrimeNGConfig,
+    private notificationService: NotificationService,
+    private translocoService: TranslocoService
   ) {}
 
   ngOnInit() {
@@ -194,8 +197,24 @@ export class UsersComponent implements OnInit, OnDestroy {
       .bulkDetele(this.selectedUsers, this.token)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        error: (error) => {},
+        error: (error) => {
+          this.notificationService.showToast({
+            severity: MessageSeverity.ERROR,
+            summary: this.translocoService.translate(
+              'USERS.TOAST_DELETE.ERROR'
+            ),
+            detail: this.translocoService.translate(
+              'USERS.TOAST_DELETE.MESSAGE_ERROR'
+            ),
+          });
+        },
         complete: () => {
+          this.notificationService.showToast({
+            severity: MessageSeverity.SUCCESS,
+            summary: this.translocoService.translate(
+              'USERS.TOAST_DELETE.SUCCESS'
+            ),
+          });
           this.findAllUsers(this.token);
         },
       });
@@ -222,11 +241,22 @@ export class UsersComponent implements OnInit, OnDestroy {
           this.users = data;
         },
         error: (error) => {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: error.error.message,
-            life: 3000,
+          this.notificationService.showToast({
+            severity: MessageSeverity.ERROR,
+            summary: this.translocoService.translate(
+              'USERS.TOAST_DELETE.ERROR'
+            ),
+            detail: this.translocoService.translate(
+              'USERS.TOAST_DELETE.MESSAGE_ERROR'
+            ),
+          });
+        },
+        complete: () => {
+          this.notificationService.showToast({
+            severity: MessageSeverity.SUCCESS,
+            summary: this.translocoService.translate(
+              'USERS.TOAST_DELETE.SUCCESS'
+            ),
           });
         },
       });
@@ -236,12 +266,23 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.usersService
       .findAll(token)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data: User[]) => {
-        this.users = data;
-        this.loading = false;
-        this.roles = this.users
-          .map((user) => user.role)
-          .filter((role, index, self) => self.indexOf(role) === index);
+      .subscribe({
+        next: (data: User[]) => {
+          this.users = data;
+          this.loading = false;
+          this.roles = this.users
+            .map((user) => user.role)
+            .filter((role, index, self) => self.indexOf(role) === index);
+        },
+        error: (error) => {
+          this.notificationService.showToast({
+            severity: MessageSeverity.ERROR,
+            summary: this.translocoService.translate('USERS.TOAST_FIND.ERROR'),
+            detail: this.translocoService.translate(
+              'USERS.TOAST_FIND.MESSAGE_ERROR'
+            ),
+          });
+        },
       });
   }
 

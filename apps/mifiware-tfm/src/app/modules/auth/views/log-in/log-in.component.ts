@@ -1,18 +1,18 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
   LANGUAGES_ENUM,
   MessageSeverity,
 } from '@mifiware-tfm/entity-data-models';
+import { TranslocoService } from '@ngneat/transloco';
 import { LayoutService } from 'apps/mifiware-tfm/src/app/core/services/app.layout.service';
+import { OverlayPanel } from 'primeng/overlaypanel';
+import { Subject, switchMap, takeUntil } from 'rxjs';
 import { AppStoreService } from '../../../../core/services/app-store.service';
 import { NotificationService } from '../../../../core/services/notification.service';
-import { AuthService } from '../../auth.service';
 import { UsersService } from '../../../users/users.service';
-import { Subject, takeUntil, switchMap } from 'rxjs';
-import { TranslocoService } from '@ngneat/transloco';
-import { OverlayPanel } from 'primeng/overlaypanel';
+import { AuthService } from '../../auth.service';
 @Component({
   selector: 'mifiware-tfm-log-in',
   templateUrl: './log-in.component.html',
@@ -78,8 +78,7 @@ export class LogInComponent implements OnInit, OnDestroy {
           this.appStoreService.setAuth(res);
           this.notificationService.showToast({
             severity: MessageSeverity.SUCCESS,
-            summary: 'Sesión iniciada correctamente',
-            detail: 'Login successful',
+            summary: this.translocoService.translate('LOGIN.TOAST.SUCCESS'),
           });
           return this.usersService
             .getUser(this.userId, res.accessToken)
@@ -93,7 +92,7 @@ export class LogInComponent implements OnInit, OnDestroy {
         error: (error) => {
           this.notificationService.showToast({
             severity: MessageSeverity.ERROR,
-            summary: 'Se ha producido un error al iniciar sesión',
+            summary: this.translocoService.translate('LOGIN.TOAST.ERROR'),
             detail: error.error.message,
           });
         },

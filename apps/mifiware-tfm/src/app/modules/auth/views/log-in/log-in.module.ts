@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ListboxModule } from 'primeng/listbox';
 import { TranslocoModule } from '@ngneat/transloco';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   imports: [

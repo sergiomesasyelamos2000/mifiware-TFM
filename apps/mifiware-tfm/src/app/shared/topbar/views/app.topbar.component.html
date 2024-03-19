@@ -37,20 +37,20 @@
   >
     <button class="p-link layout-topbar-button" (click)="changeColor()">
       <i [ngClass]="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"></i>
-      <span>Theme</span>
+      <span>{{ 'MENU.THEME' | transloco }}</span>
     </button>
     <button class="p-link layout-topbar-button" [routerLink]="'/profile'">
       <i class="pi pi-user"></i>
-      <span>Profile</span>
+      <span>{{ 'MENU.USERS.PROFILE' | transloco }}</span>
     </button>
     <button class="p-link layout-topbar-button" (click)="logout()">
       <i class="pi pi-power-off"></i>
-      <span>Logout</span>
+      <span>{{ 'MENU.LOGOUT' | transloco }}</span>
     </button>
 
     <button class="p-link layout-topbar-button" (click)="op.toggle($event)">
       <i class="pi pi-globe"></i>
-      <span>Languages</span>
+      <span>{{ 'MENU.LANG' | transloco }}</span>
     </button>
     <p-overlayPanel #op>
       <p-listbox

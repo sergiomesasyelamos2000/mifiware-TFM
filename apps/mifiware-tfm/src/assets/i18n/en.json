@@ -10,7 +10,10 @@
       "TITLE": "Users",
       "LIST": "List of users",
       "PROFILE": "Profile"
-    }
+    },
+    "THEME": "Theme",
+    "LOGOUT": "Log out",
+    "LANG": "Language"
   },
   "LANG": {
     "es": "Spanish",

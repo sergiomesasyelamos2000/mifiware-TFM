@@ -3,6 +3,13 @@
 <iframe
   id="grafanaframe"
   [src]="grafanaUrlBinary"
-  style="width: 100%; height: 100vh; border: none; overflow: hidden"
+  [ngStyle]="{
+    width:
+      layoutService.state.staticMenuDesktopInactive ||
+      layoutService.state.staticMenuMobileActive
+        ? '100%'
+        : 'calc(127% - 200px)'
+  }"
+  style="height: 100vh; border: none; overflow: hidden"
 >
 </iframe>

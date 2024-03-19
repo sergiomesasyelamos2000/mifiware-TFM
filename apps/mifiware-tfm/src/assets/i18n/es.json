@@ -10,7 +10,10 @@
       "TITLE": "Usuarios",
       "LIST": "Lista de usuarios",
       "PROFILE": "Perfil"
-    }
+    },
+    "THEME": "Tema",
+    "LOGOUT": "Cerrar sesión",
+    "LANG": "Idioma"
   },
   "LANG": {
     "es": "Castellano",

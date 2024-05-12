@@ -1,0 +1,9 @@
+FROM node:latest
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm cache clean --force
+RUN npm install --legacy-peer-deps
+COPY . .
+RUN npx nx build api --base-href /api/ --configuration=dev
+EXPOSE 3000
+CMD ["npm", "run", "serve:api"]

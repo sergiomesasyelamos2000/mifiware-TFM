@@ -56,8 +56,11 @@ services:
 
   nginx:
     image: nginx:latest
+    depends_on:
+      - api
+      - mifiware-tfm
     volumes:
-      - ./dist/apps/mifiware-tfm:/var/www/html/mifiware-tfm
+      - mifiware-tfm-dist:/var/www/html/mifiware-tfm
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - '3050:80'
@@ -80,8 +83,10 @@ services:
       - ./mifiware-tfm:/app
       - /app/node_modules
       - /app/.next
+      - mifiware-tfm-dist:/usr/src/app/dist/apps/mifiware-tfm
     networks:
       - default
 
 volumes:
   mysql-volume:
+  mifiware-tfm-dist:

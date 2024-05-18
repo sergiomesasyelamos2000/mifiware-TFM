@@ -1,6 +1,6 @@
 import { LANGUAGES_ENUM } from '@mifiware-tfm/entity-data-models';
 
-const url = 'http://api:3000';
+const url = 'http://localhost:3000';
 
 export const environment = {
   production: false,

@@ -1,32 +1,17 @@
 import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  UseGuards,
-  Req,
-  HttpCode,
-} from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { UserService } from '../user/user.service';
-import { AuthGuard } from '../../core/guards/auth.guard';
-import { Roles } from '../../core/decorators/roles.decorator';
-import { RolesGuard } from '../../core/guards/roles.guard';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import {
   JwtTokenDto,
   LogInDto,
-  Role,
   SignUpDto,
 } from '@mifiware-tfm/entity-data-models';
+import { Body, Controller, HttpCode, Post } from '@nestjs/common';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { UserService } from '../user/user.service';
 import {
   AUTH_ERROR_EMAIL_ALREADY_EXISTS,
   AUTH_ERROR_EMAIL_OR_PASSWORD_INVALID,
   AUTH_ERROR_USER_NOT_VALIDATED,
 } from './auth.constants';
+import { AuthService } from './auth.service';
 //import { UpdateAuthDto } from './dto/update-auth.dto';
 
 @Controller(`auth`)

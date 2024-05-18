@@ -2,7 +2,7 @@ export const environment = {
   production: false,
   environment: 'DEV',
   httpConfig: {
-    privateDomain: 'api',
+    privateDomain: '0.0.0.0',
     privatePort: 3000,
     publicDomain: 'localhost',
     publicPort: 3000,
@@ -94,7 +94,7 @@ export const environment = {
       max: 500, // limit each IP to 500 requests per windowMs
     },
     enableCors: {
-      origin: ['http://localhost:4200'], // Reemplaza con tu dominio de producción en producción
+      origin: ['http://localhost'], // Reemplaza con tu dominio de producción en producción
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
       credentials: true,
       allowedHeaders: ['Content-Type', 'Authorization'],

@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 import {
   JwtTokenDto,
   LogInDto,
-  MessageSeverity,
   SignUpDto,
 } from '@mifiware-tfm/entity-data-models';
-import { NotificationService } from '../../core/services/notification.service';
-import { Router } from '@angular/router';
-import { Observable, catchError, tap, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

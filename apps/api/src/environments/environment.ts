@@ -94,7 +94,7 @@ export const environment = {
       max: 500, // limit each IP to 500 requests per windowMs
     },
     enableCors: {
-      origin: ['http://localhost'], // Reemplaza con tu dominio de producción en producción
+      origin: ['http://localhost:4600'], // Reemplaza para AWS con nginx origin: ['http://localhost']
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
       credentials: true,
       allowedHeaders: ['Content-Type', 'Authorization'],

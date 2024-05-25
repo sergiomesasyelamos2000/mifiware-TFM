@@ -26,6 +26,11 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Get('mongo')
+  getUserIdMongo() {
+    return this.userService.getAllUsers();
+  }
+
   @Get('dashboard/binary')
   //@Roles(Role.USER)
   @UseGuards(AuthGuard, RolesGuard)

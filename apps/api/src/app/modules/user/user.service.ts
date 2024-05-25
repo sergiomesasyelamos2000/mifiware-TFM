@@ -1,28 +1,68 @@
 import {
-  ConflictException,
-  Injectable,
-  UnauthorizedException,
-  NotFoundException,
-} from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import {
   CreateUserDto,
   Role,
   UpdateUserDto,
   User,
 } from '@mifiware-tfm/entity-data-models';
-import { AUTH_ERROR_EMAIL_ALREADY_EXISTS } from '../auth/auth.constants';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import * as fs from 'fs';
+import { Model } from 'mongoose';
+import { Repository } from 'typeorm';
+import { AUTH_ERROR_EMAIL_ALREADY_EXISTS } from '../auth/auth.constants';
 import environment from './../../../environments/environment';
+import { LocationUser } from './entities/location-user.entity';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private usersRepository: Repository<User>
+    private usersRepository: Repository<User>,
+    @InjectModel(LocationUser.name)
+    private locationUserModel: Model<any>
   ) {}
+
+  async onModuleInit() {
+    await this.getAllUsers();
+  }
+
+  async getAllUsers(): Promise<string[]> {
+    const users = await this.locationUserModel
+      .find(
+        { '_id.type': 'LocationUser' }, // consulta
+        { 'attrs.user_id.value': 1, _id: 0 } // proyección
+      )
+      .exec();
+
+    const userIds = users.map((user) => user.attrs.get('user_id').value);
+
+    const uniqueUserIds = [...new Set(userIds)];
+
+    // Guardar los user_id únicos en la base de datos MySQL
+    for (const userId of uniqueUserIds) {
+      const salt = await bcrypt.genSalt(10);
+      const password = await bcrypt.hash('defaultpassword' + userId, salt);
+      const newUser = this.usersRepository.create({
+        uuid: userId,
+        name: 'Default name' + userId,
+        surname: 'Default surname' + userId,
+        email: userId + '@example.com',
+        password: password,
+        role: Role.USER,
+      });
+      await this.usersRepository.save(newUser);
+    }
+
+    return uniqueUserIds;
+  }
+
   /* 
 
   async validateUser(userValidation: CreateUserDto): Promise<User> {

@@ -32,7 +32,6 @@ export class UserController {
   }
 
   @Get('dashboard/binary')
-  //@Roles(Role.USER)
   @UseGuards(AuthGuard, RolesGuard)
   @HttpCode(200)
   getGrafanaDashboardUrlBinray(@Req() req: any): string {
@@ -40,7 +39,6 @@ export class UserController {
   }
 
   @Get('dashboard/location')
-  //@Roles(Role.USER)
   @UseGuards(AuthGuard, RolesGuard)
   @HttpCode(200)
   getGrafanaDashboardUrlLocation(@Req() req: any): string {

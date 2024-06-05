@@ -1,6 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { Role } from '../enums/role.enum';
 import { IsEmail } from 'class-validator';
+import { Column } from 'typeorm';
 
 export class LogInDto {
   @Column({ type: 'varchar' })

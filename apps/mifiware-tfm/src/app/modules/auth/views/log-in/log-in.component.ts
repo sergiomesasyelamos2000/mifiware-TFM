@@ -1,5 +1,10 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import {
   LANGUAGES_ENUM,
@@ -48,6 +53,11 @@ export class LogInComponent implements OnInit, OnDestroy {
     return this.loginForm.controls;
   }
 
+  /**
+   * Este método se utiliza para obtener el control del campo 'email' del formulario de inicio de sesión.
+   *
+   * @returns {AbstractControl} - El control del campo 'email' del formulario de inicio de sesión.
+   */
   get email() {
     return this.loginForm.controls['email'];
   }

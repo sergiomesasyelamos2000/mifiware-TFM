@@ -42,6 +42,14 @@ export class BinarySensorComponent implements OnInit {
     });
   }
 
+  /**
+   * Este método se utiliza para obtener la URL del panel de Grafana para los sensores binarios.
+   * Llama al método getGrafanaDashboardUrlBinary del servicio DashboardService.
+   *
+   * En caso de éxito, se actualiza la propiedad grafanaUrlBinary con la URL obtenida.
+   * En caso de error, se muestra una notificación de error.
+   */
+
   getGrafanaDashboardUrl(): void {
     const userId = 'A';
 

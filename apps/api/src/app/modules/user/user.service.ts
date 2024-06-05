@@ -155,9 +155,9 @@ export class UserService {
     // Determina si el usuario es administrador
     const isAdmin = user.role === Role.SUPER_ADMIN;
     if (isAdmin) {
-      return `http://localhost:3003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1710586232769&to=1710607832770&kiosk=tv`;
+      return `http://localhost:3003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1704063600000&to=1735685999999&kiosk=tv`;
     } else {
-      return `http://localhost:3003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1710586232769&to=1710607832770&kiosk`;
+      return `http://localhost:3003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1704063600000&to=1735685999999&kiosk`;
     }
   }
 

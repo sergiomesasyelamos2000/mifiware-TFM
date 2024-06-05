@@ -7,14 +7,12 @@ services:
   mysql-db:
     container_name: mysql-db
     image: mysql:5.7
-    # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
-    # (this is just an example, not intended to be a production configuration)
     command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
     env_file: ./.env
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: tfm
+      MYSQL_ROOT_PASSWORD: $MYSQLDB_PASSWORD
+      MYSQL_DATABASE: $MYSQLDB_DATABASE
     ports:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
@@ -39,7 +37,7 @@ services:
     restart: unless-stopped
     env_file: ./.env
     ports:
-      - 3000:3000
+      - $NESTJS_APP_LOCAL_PORT:$NESTJS_APP_LOCAL_PORT
     environment:
       - DB_HOST=$MYSQLDB_HOST
       - DB_USER=$MYSQLDB_USER
@@ -58,16 +56,16 @@ services:
     image: nginx:latest
     depends_on:
       - api
-      - mifiware-tfm
+      - frontend
     volumes:
-      - mifiware-tfm-dist:/var/www/html/mifiware-tfm
+      - frontend-dist:/var/www/html/frontend
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - '3050:80'
     restart: always
 
-  mifiware-tfm:
-    container_name: mifiware-tfm
+  frontend:
+    container_name: frontend
     depends_on:
       - api
     build:
@@ -80,13 +78,13 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./mifiware-tfm:/app
+      - ./frontend:/app
       - /app/node_modules
       - /app/.next
-      - mifiware-tfm-dist:/usr/src/app/dist/apps/mifiware-tfm
+      - frontend-dist:/usr/src/app/dist/apps/frontend
     networks:
       - default
 
 volumes:
   mysql-volume:
-  mifiware-tfm-dist:
+  frontend-dist:

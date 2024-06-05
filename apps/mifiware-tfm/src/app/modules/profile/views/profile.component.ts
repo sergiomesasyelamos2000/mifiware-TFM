@@ -39,6 +39,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
   globalImageSrc!: string;
   isAdmin!: boolean;
 
+  /**
+   * Este método se utiliza para obtener el control del campo 'uuid' del formulario de perfil.
+   *
+   * @returns {AbstractControl} - El control del campo 'uuid' del formulario de perfil.
+   */
+
   get uuid() {
     return this.profileForm.controls['uuid'];
   }

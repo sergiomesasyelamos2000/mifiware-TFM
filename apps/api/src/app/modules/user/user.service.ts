@@ -14,7 +14,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import * as fs from 'fs';
-import { Model } from 'mongoose';
+//import { Model } from 'mongoose';
 import { Repository } from 'typeorm';
 import { AUTH_ERROR_EMAIL_ALREADY_EXISTS } from '../auth/auth.constants';
 import environment from './../../../environments/environment';
@@ -24,16 +24,16 @@ import { LocationUser } from './entities/location-user.entity';
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private usersRepository: Repository<User>,
-    @InjectModel(LocationUser.name)
-    private locationUserModel: Model<any>
-  ) {}
+    private usersRepository: Repository<User>
+  ) /* @InjectModel(LocationUser.name) */
+  /* private locationUserModel: Model<any> */
+  {}
 
-  async onModuleInit() {
+  /*  async onModuleInit() {
     await this.getAllUsers();
-  }
+  } */
 
-  async getAllUsers(): Promise<string[]> {
+  /* async getAllUsers(): Promise<string[]> {
     const users = await this.locationUserModel
       .find(
         { '_id.type': 'LocationUser' }, // consulta
@@ -61,7 +61,7 @@ export class UserService {
     }
 
     return uniqueUserIds;
-  }
+  } */
 
   /* 
 

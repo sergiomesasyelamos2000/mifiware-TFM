@@ -20,7 +20,7 @@ COPY . .
 RUN npx nx build mifiware-tfm --base-href /mifiware-tfm/ --configuration=dev && npx nx build api --base-href /api/ --configuration=dev
 
 # Expone los puertos en los que corren los servidores de Angular y NestJS
-EXPOSE 4200 3000
+EXPOSE 4600 3000
 
 # Comando para arrancar los servidores de Angular y NestJS
 CMD ["npm", "run", "start:all"]

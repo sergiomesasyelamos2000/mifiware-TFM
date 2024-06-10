@@ -26,10 +26,10 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('mongo')
+  /* @Get('mongo')
   getUserIdMongo() {
     return this.userService.getAllUsers();
-  }
+  } */
 
   @Get('dashboard/binary')
   @UseGuards(AuthGuard, RolesGuard)

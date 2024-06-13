@@ -162,7 +162,7 @@ export async function bootstrap(app?: NestExpressApplication) {
   // Create NestJS app
   if (environment.environment !== 'TEST') {
     app = await NestFactory.create<NestExpressApplication>(AppModule, {
-      cors: environment.secure.enableCors, // { origin: ['http://localhost:4600'], methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', credentials: true },
+      cors: environment.secure.enableCors, // { origin: ['http://localhost:4601'], methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', credentials: true },
     });
 
     // Agrega más opciones de CORS si lo deseas

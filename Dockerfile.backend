@@ -6,5 +6,5 @@ RUN npm install --legacy-peer-deps
 COPY . .
 RUN npm rebuild bcrypt --build-from-source
 RUN npx nx build api --base-href /api/ --configuration=dev
-EXPOSE 3000
+EXPOSE 3001
 CMD ["npm", "run", "serve:api"]

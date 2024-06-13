@@ -3,9 +3,9 @@ export const environment = {
   environment: 'DEV',
   httpConfig: {
     privateDomain: '0.0.0.0',
-    privatePort: 3000,
+    privatePort: 3001,
     publicDomain: 'localhost',
-    publicPort: 3000,
+    publicPort: 3001,
     httpsEnabled: false,
     globalPrefix: 'api',
     apiVersion: 'v1',
@@ -17,11 +17,15 @@ export const environment = {
     logging: ['error', 'warn'],
     type: 'mysql',
     //host: '127.0.0.1',
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
+    // host: process.env.DB_HOST,
+    // port: process.env.DB_PORT,
+    // username: process.env.DB_USER,
+    // password: process.env.DB_PASSWORD,
+    // database: process.env.DB_DATABASE,
+    port: 3306,
+    username: 'root',
+    password: 'root',
+    database: 'tfm',
     synchronize: true,
     charset: 'utf8mb4',
   },
@@ -94,7 +98,7 @@ export const environment = {
       max: 500, // limit each IP to 500 requests per windowMs
     },
     enableCors: {
-      origin: ['http://localhost:4600'], // Reemplaza para AWS con nginx origin: ['http://localhost']
+      origin: ['http://localhost:4601'], // Reemplaza para AWS con nginx origin: ['http://localhost']
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
       credentials: true,
       allowedHeaders: ['Content-Type', 'Authorization'],

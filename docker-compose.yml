@@ -74,7 +74,7 @@ services:
     restart: unless-stopped
     env_file: ./.env
     ports:
-      - 4600:80
+      - 4601:80
     stdin_open: true
     tty: true
     volumes:

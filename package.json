@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "nx",
-    "serve:app": "nx serve mifiware-tfm --port 4600 --host 0.0.0.0 --open --configuration=dev",
+    "serve:app": "nx serve mifiware-tfm --port 4601 --host 0.0.0.0 --open --configuration=dev",
     "build:app": "nx build mifiware-tfm --base-href /mifiware-tfm/ --configuration=dev",
     "build:api": "nx build api --base-href /api/ --configuration=dev",
     "test": "nx test",

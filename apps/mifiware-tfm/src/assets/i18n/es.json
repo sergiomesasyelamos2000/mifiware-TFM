@@ -164,6 +164,10 @@
     }
   },
   "USERS": {
+    "LIST": {
+      "ADD_BUTTON": "Añadir usuario",
+      "DELETE_BUTTON": "Eliminar usuario"
+    },
     "TOAST_FIND": {
       "ERROR": "Se ha producido un error al cargar los usuarios",
       "SUCCESS": "Usuarios cargados correctamente",

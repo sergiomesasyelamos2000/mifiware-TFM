@@ -97,8 +97,6 @@ export class SignUpComponent implements OnInit {
   }
 
   changeLanguage(lang?: string) {
-    console.log('changeLanguage', lang);
-
     this.translocoService.setActiveLang(lang);
     this.selectedLanguage = lang;
     this.op.hide();

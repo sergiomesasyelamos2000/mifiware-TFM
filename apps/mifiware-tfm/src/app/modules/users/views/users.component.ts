@@ -36,7 +36,6 @@ export class UsersComponent implements OnInit, OnDestroy {
   destroy$: Subject<void> = new Subject<void>();
   token!: string;
   loading: boolean = true;
-  totalRecords: number;
 
   constructor(
     private usersService: UsersService,
@@ -49,75 +48,14 @@ export class UsersComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.config.setTranslation({
-      startsWith: 'Comienza con',
-      contains: 'Contiene',
-      notContains: 'No contiene',
-      endsWith: 'Termina con',
-      equals: 'Igual a',
-      notEquals: 'No igual a',
-      noFilter: 'Sin filtro',
-      lt: 'Menor que',
-      lte: 'Menor o igual que',
-      gt: 'Mayor que',
-      gte: 'Mayor o igual que',
-      is: 'Es',
-      isNot: 'No es',
-      before: 'Antes',
-      after: 'Después',
-      clear: 'Limpiar',
-      apply: 'Aplicar',
-      matchAll: 'Coincidir todo',
-      matchAny: 'Coincidir cualquier',
-      addRule: 'Agregar regla',
-      removeRule: 'Eliminar regla',
-      accept: 'Sí',
-      reject: 'No',
-      choose: 'Elegir',
-      upload: 'Subir',
-      cancel: 'Cancelar',
-      dayNames: [
-        'Domingo',
-        'Lunes',
-        'Martes',
-        'Miércoles',
-        'Jueves',
-        'Viernes',
-        'Sábado',
-      ],
-      dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
-      dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-      monthNames: [
-        'Enero',
-        'Febrero',
-        'Marzo',
-        'Abril',
-        'Mayo',
-        'Junio',
-        'Julio',
-        'Agosto',
-        'Septiembre',
-        'Octubre',
-        'Noviembre',
-        'Diciembre',
-      ],
-      monthNamesShort: [
-        'Ene',
-        'Feb',
-        'Mar',
-        'Abr',
-        'May',
-        'Jun',
-        'Jul',
-        'Ago',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dic',
-      ],
-      today: 'Hoy',
-      weekHeader: 'Sem',
-    });
+    this.translocoService
+      .selectTranslateObject('TABLE')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((translations) => {
+        console.log(translations);
+
+        this.config.setTranslation(translations);
+      });
     this.appStoreService
       .loadAuth$()
       .pipe(takeUntil(this.destroy$))
@@ -129,11 +67,40 @@ export class UsersComponent implements OnInit, OnDestroy {
     }
 
     this.cols = [
-      { field: 'name', header: 'Name', type: 'text' },
-      { field: 'surname', header: 'Surname', type: 'text' },
-      { field: 'email', header: 'email', type: 'text' },
-      { field: 'role', header: 'Role', type: 'role' },
+      {
+        field: 'name',
+        header: this.translocoService.translate('USERS.HEADERS.NAME'),
+        type: 'text',
+      },
+      {
+        field: 'surname',
+        header: this.translocoService.translate('USERS.HEADERS.SURNAME'),
+        type: 'text',
+      },
+      {
+        field: 'email',
+        header: this.translocoService.translate('USERS.HEADERS.EMAIL'),
+        type: 'text',
+      },
+      {
+        field: 'role',
+        header: this.translocoService.translate('USERS.HEADERS.ROLE'),
+        type: 'role',
+      },
     ];
+  }
+
+  getCurrentPageReportTemplate(): string {
+    const showFrom = this.translocoService.translate(
+      'USERS.LIST.PAGE_REPORT_SHOW_FROM'
+    );
+    const to = this.translocoService.translate('USERS.LIST.PAGE_REPORT_TO');
+    const of = this.translocoService.translate('USERS.LIST.PAGE_REPORT_OF');
+    const entries = this.translocoService.translate(
+      'USERS.LIST.PAGE_REPORT_ENTRIES'
+    );
+
+    return `${showFrom} {first} ${to} {last} ${of} {totalRecords} ${entries}`;
   }
 
   getSeverity(status: string) {
@@ -170,7 +137,8 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   editUser(user: User) {
     this.ref = this.dialogService.open(ProfileComponent, {
-      header: 'Editar usuario: ' + user.name,
+      header:
+        this.translocoService.translate('USERS.EDIT_USER.TITLE') + user.name,
       width: '70%',
       height: '64vh',
       styleClass: 'dialog',

@@ -16,7 +16,7 @@ export const environment = {
     softDelete: true,
     logging: ['error', 'warn'],
     type: 'mysql',
-    //host: '127.0.0.1',
+    host: '127.0.0.1',
     // host: process.env.DB_HOST,
     // port: process.env.DB_PORT,
     // username: process.env.DB_USER,

@@ -249,7 +249,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
             summary: this.translocoService.translate(
               'PROFILE.SUBMIT.TOAST_CREATE.SUCCESS'
             ),
-            detail: 'Sign Up successful',
           });
           this.ref.close(this.user);
         },

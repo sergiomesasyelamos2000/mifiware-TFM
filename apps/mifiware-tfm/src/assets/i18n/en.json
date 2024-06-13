@@ -1,4 +1,17 @@
 {
+  "BUTTONS": {
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "ADD": "Add",
+    "CLOSE": "Close",
+    "ACCEPT": "Accept",
+    "REJECT": "Reject",
+    "LOGIN": "Login",
+    "SIGN_UP": "Sign up",
+    "CREATE": "Create"
+  },
   "MENU": {
     "HOME": "Home",
     "DASHBOARD": {
@@ -83,7 +96,7 @@
   },
   "PROFILE": {
     "UUID": {
-      "LABEL": "user ID",
+      "LABEL": "User ID",
       "PLACEHOLDER": "Email address",
       "ERROR": "The identifier is required",
       "VALID": "The identifier is not valid"
@@ -113,6 +126,10 @@
       "PLACEHOLDER": "Enter your last name",
       "ERROR": "Last name is required",
       "VALID": "The last name is not valid"
+    },
+    "ROLE": {
+      "LABEL": "Role",
+      "ERROR": "The role is required"
     },
     "TOAST": {
       "ERROR": "An error occurred while loading the profile",
@@ -164,6 +181,34 @@
     }
   },
   "USERS": {
+    "LIST": {
+      "TITLE": "User List",
+      "ADD_BUTTON": "Add user",
+      "DELETE_BUTTON": "Delete user",
+      "PAGE_REPORT_SHOW_FROM": "Showing",
+      "PAGE_REPORT_TO": "a",
+      "PAGE_REPORT_OF": "of",
+      "PAGE_REPORT_ENTRIES": "entries",
+      "CLEAR_FILTER": "Clear filters",
+      "SEARCH": "Search..."
+    },
+    "HEADERS": {
+      "ID": "ID",
+      "NAME": "Name",
+      "SURNAME": "Last name",
+      "EMAIL": "Email",
+      "ROLE": "Role"
+    },
+    "EDIT_USER": {
+      "TITLE": "Edit user: ",
+      "SUBMIT": "Update"
+    },
+    "DELETE_DIALOG": {
+      "TITLE": "Are you sure you want to delete the user: <strong>{{user}}</strong>?",
+      "CONFIRM_DIALOG": "Delete",
+      "CANCEL_DIALOG": "Cancel",
+      "TITLE_DIALOG": "Delete user"
+    },
     "TOAST_FIND": {
       "ERROR": "An error occurred while loading users",
       "SUCCESS": "Users loaded successfully",
@@ -174,5 +219,74 @@
       "SUCCESS": "User successfully deleted",
       "MESSAGE_ERROR": "Please try again later"
     }
+  },
+  "TABLE": {
+    "startsWith": "Starts with",
+    "contains": "Contains",
+    "notContains": "Does not contain",
+    "endsWith": "Ends with",
+    "equals": "Equals",
+    "notEquals": "Does not equal",
+    "noFilter": "No filter",
+    "lt": "Less than",
+    "lte": "Less than or equal to",
+    "gt": "Greater than",
+    "gte": "Greater than or equal to",
+    "is": "Is",
+    "isNot": "Is not",
+    "before": "Before",
+    "after": "After",
+    "clear": "Clear",
+    "apply": "Apply",
+    "matchAll": "Match all",
+    "matchAny": "Match any",
+    "addRule": "Add rule",
+    "removeRule": "Remove rule",
+    "accept": "Yes",
+    "reject": "No",
+    "choose": "Choose",
+    "upload": "Upload",
+    "cancel": "Cancel",
+    "dayNames": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "dayNamesShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    "dayNamesMin": ["S", "M", "T", "W", "T", "F", "S"],
+    "monthNames": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "monthNamesShort": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    "today": "Today",
+    "weekHeader": "Wk"
   }
 }

@@ -20,6 +20,7 @@ import { CoreModule } from '../../core/core.module';
 import { ProfileModule } from '../profile/profile.module';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './views/users.component';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { UsersComponent } from './views/users.component';
     DialogModule,
     TagModule,
     ProfileModule,
+    TranslocoModule,
   ],
   declarations: [UsersComponent],
   providers: [DynamicDialogRef],

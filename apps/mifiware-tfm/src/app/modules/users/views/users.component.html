@@ -16,7 +16,7 @@
             <button
               pButton
               pRipple
-              label="Delete"
+              [label]="'USERS.LIST.DELETE_BUTTON' | transloco"
               icon="pi pi-trash"
               class="p-button-danger"
               (click)="deleteSelectedUsers()"
@@ -55,7 +55,7 @@
         [paginator]="true"
         [rowsPerPageOptions]="[10, 20, 30]"
         [showCurrentPageReport]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [currentPageReportTemplate]="getCurrentPageReportTemplate()"
         [(selection)]="selectedUsers"
         selectionMode="multiple"
         [rowHover]="true"
@@ -66,10 +66,10 @@
           <div
             class="flex flex-column md:flex-row md:justify-content-between md:align-items-center"
           >
-            <h5 class="m-0">Manage Users</h5>
+            <h5 class="m-0">{{ 'USERS.LIST.TITLE' | transloco }}</h5>
             <button
               pButton
-              label="Clear"
+              [label]="'USERS.LIST.CLEAR_FILTER' | transloco"
               class="p-button-outlined"
               icon="pi pi-filter-slash"
               (click)="clear(dt)"
@@ -80,7 +80,7 @@
                 pInputText
                 type="text"
                 (input)="onGlobalFilter(dt, $event)"
-                placeholder="Search..."
+                [placeholder]="'USERS.LIST.SEARCH' | transloco"
                 class="w-full sm:w-auto"
               />
             </span>
@@ -99,7 +99,7 @@
                   type="{{ col.type }}"
                   field="{{ col.field }}"
                   display="menu"
-                  placeholder="asdasdad"
+                  placeholder=""
                   class="ml-auto"
                 ></p-columnFilter>
               </ng-container>
@@ -172,7 +172,7 @@
 
     <p-dialog
       [(visible)]="deleteUserDialog"
-      header="Confirm"
+      [header]="'USERS.DELETE_DIALOG.TITLE_DIALOG' | transloco"
       [modal]="true"
       [style]="{ width: '450px' }"
       [draggable]="false"
@@ -181,10 +181,12 @@
     >
       <div class="flex align-items-center justify-content-center">
         <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
-        <span *ngIf="user"
-          >Are you sure you want to delete <b>{{ user.name }}</b
-          >?</span
-        >
+        <span
+          *ngIf="user"
+          [innerHTML]="
+            'USERS.DELETE_DIALOG.TITLE' | transloco : { user: user.name }
+          "
+        ></span>
       </div>
       <ng-template pTemplate="footer">
         <button
@@ -192,7 +194,7 @@
           pRipple
           icon="pi pi-times"
           class="p-button-text"
-          label="No"
+          [label]="'USERS.DELETE_DIALOG.CANCEL_DIALOG' | transloco"
           (click)="deleteUserDialog = false"
         ></button>
         <button
@@ -200,7 +202,7 @@
           pRipple
           icon="pi pi-check"
           class="p-button-text"
-          label="Yes"
+          [label]="'USERS.DELETE_DIALOG.CONFIRM_DIALOG' | transloco"
           (click)="confirmDelete()"
         ></button>
       </ng-template>

@@ -80,14 +80,18 @@
               formControlName="name"
               class="text-base text-color surface-overlay border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
             />
-            <label htmlFor="name">Username</label>
+            <label htmlFor="name">{{ 'PROFILE.NAME.LABEL' | transloco }}</label>
           </span>
           <small
             *ngIf="name.invalid && (name.dirty || name.touched)"
             class="block p-error"
           >
-            <div *ngIf="name.errors?.['required']">name is required</div>
-            <div *ngIf="name.errors?.['pattern']">name should be valid</div>
+            <div *ngIf="name.errors?.['required']">
+              {{ 'PROFILE.NAME.ERROR' | transloco }}
+            </div>
+            <div *ngIf="name.errors?.['pattern']">
+              {{ 'PROFILE.NAME.VALID' | transloco }}
+            </div>
           </small>
         </div>
         <div class="field col-12 md:col-4">
@@ -99,15 +103,19 @@
               formControlName="surname"
               class="text-base text-color surface-overlay border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
             />
-            <label htmlFor="surname">Surname</label>
+            <label htmlFor="surname">{{
+              'PROFILE.SURNAME.LABEL' | transloco
+            }}</label>
           </span>
           <small
             *ngIf="surname.invalid && (surname.dirty || surname.touched)"
             class="block p-error"
           >
-            <div *ngIf="surname.errors?.['required']">surname is required</div>
+            <div *ngIf="surname.errors?.['required']">
+              {{ 'PROFILE.SURNAME.ERROR' | transloco }}
+            </div>
             <div *ngIf="surname.errors?.['pattern']">
-              surname should be valid
+              {{ 'PROFILE.SURNAME.VALID' | transloco }}
             </div>
           </small>
         </div>
@@ -121,14 +129,18 @@
               optionLabel="label"
               inputId="float-label"
             ></p-dropdown>
-            <label for="float-label">Select a Role</label>
+            <label for="float-label">{{
+              'PROFILE.ROLE.LABEL' | transloco
+            }}</label>
           </span>
 
           <small
             *ngIf="role.invalid && (role.dirty || role.touched)"
             class="block p-error"
           >
-            <div *ngIf="role.errors?.['required']">role is required</div>
+            <div *ngIf="role.errors?.['required']">
+              {{ 'PROFILE.ROLE.ERROR' | transloco }}
+            </div>
           </small>
         </div>
         <div class="field col-12 md:col-6">
@@ -140,14 +152,16 @@
               [toggleMask]="true"
               styleClass="mb-2"
             ></p-password>
-            <label for="password">Password</label>
+            <label for="password">{{
+              'PROFILE.PASSWORD.LABEL' | transloco
+            }}</label>
           </span>
           <small
             *ngIf="password.invalid && (password.dirty || password.touched)"
             class="mb-5 block p-error"
           >
             <div *ngIf="password.errors?.['required']">
-              Password is required
+              {{ 'PROFILE.PASSWORD.ERROR' | transloco }}
             </div>
           </small>
         </div>
@@ -160,7 +174,9 @@
               [toggleMask]="true"
               styleClass="mb-2"
             ></p-password>
-            <label for="confirmPassword">Confirm Password</label>
+            <label for="confirmPassword">{{
+              'PROFILE.REPEAT_PASSWORD.LABEL' | transloco
+            }}</label>
           </span>
           <small
             *ngIf="
@@ -170,20 +186,24 @@
             class="mb-5 block p-error"
           >
             <div *ngIf="confirmPassword.errors?.['required']">
-              Confirm Password is required
+              {{ 'PROFILE.REPEAT_PASSWORD.ERROR' | transloco }}
             </div>
           </small>
         </div>
       </div>
       <div class="flex justify-content-end">
         <p-button
-          [label]="'Cancelar'"
+          [label]="'BUTTONS.CANCEL' | transloco"
           [ngStyle]="{ 'margin-right': '1rem' }"
           [routerLink]="isNew ? '/users' : '/'"
           (onClick)="onCancel()"
         ></p-button>
         <p-button
-          [label]="isNew ? 'CREAR' : 'Guardar'"
+          [label]="
+            isNew
+              ? ('BUTTONS.CREATE' | transloco)
+              : ('BUTTONS.SAVE' | transloco)
+          "
           (onClick)="isNew ? onSubmitCreate() : onSubmitUpdate()"
           [disabled]="profileForm.invalid || profileForm.pristine"
         ></p-button>

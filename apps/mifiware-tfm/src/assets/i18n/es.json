@@ -1,4 +1,17 @@
 {
+  "BUTTONS": {
+    "SAVE": "Guardar",
+    "CANCEL": "Cancelar",
+    "DELETE": "Eliminar",
+    "EDIT": "Editar",
+    "ADD": "Añadir",
+    "CLOSE": "Cerrar",
+    "ACCEPT": "Aceptar",
+    "REJECT": "Rechazar",
+    "LOGIN": "Iniciar sesión",
+    "SIGN_UP": "Registrarse",
+    "CREATE": "Crear"
+  },
   "MENU": {
     "HOME": "Inicio",
     "DASHBOARD": {
@@ -114,6 +127,10 @@
       "ERROR": "El apellido es requerido",
       "VALID": "El apellido no es válido"
     },
+    "ROLE": {
+      "LABEL": "Rol",
+      "ERROR": "El rol es requerido"
+    },
     "TOAST": {
       "ERROR": "Se ha producido un error al cargar el perfil",
       "SUCCESS": "Perfil cargado correctamente",
@@ -165,8 +182,32 @@
   },
   "USERS": {
     "LIST": {
+      "TITLE": "Listado de usuarios",
       "ADD_BUTTON": "Añadir usuario",
-      "DELETE_BUTTON": "Eliminar usuario"
+      "DELETE_BUTTON": "Eliminar usuario",
+      "PAGE_REPORT_SHOW_FROM": "Mostrando",
+      "PAGE_REPORT_TO": "a",
+      "PAGE_REPORT_OF": "de",
+      "PAGE_REPORT_ENTRIES": "entradas",
+      "CLEAR_FILTER": "Limpiar filtros",
+      "SEARCH": "Buscar..."
+    },
+    "HEADERS": {
+      "ID": "ID",
+      "NAME": "Nombre",
+      "SURNAME": "Apellido",
+      "EMAIL": "Correo electrónico",
+      "ROLE": "Rol"
+    },
+    "EDIT_USER": {
+      "TITLE": "Editar usuario: ",
+      "SUBMIT": "Actualizar"
+    },
+    "DELETE_DIALOG": {
+      "TITLE": "¿Estás seguro de que quieres eliminar el usuario: <strong>{{user}}</strong>?",
+      "CONFIRM_DIALOG": "Eliminar",
+      "CANCEL_DIALOG": "Cancelar",
+      "TITLE_DIALOG": "Eliminar usuario"
     },
     "TOAST_FIND": {
       "ERROR": "Se ha producido un error al cargar los usuarios",
@@ -178,5 +219,74 @@
       "SUCCESS": "Usuario eliminado correctamente",
       "MESSAGE_ERROR": "Por favor, inténtelo de nuevo más tarde"
     }
+  },
+  "TABLE": {
+    "startsWith": "Comienza con",
+    "contains": "Contiene",
+    "notContains": "No contiene",
+    "endsWith": "Termina con",
+    "equals": "Igual a",
+    "notEquals": "No igual a",
+    "noFilter": "Sin filtro",
+    "lt": "Menor que",
+    "lte": "Menor o igual que",
+    "gt": "Mayor que",
+    "gte": "Mayor o igual que",
+    "is": "Es",
+    "isNot": "No es",
+    "before": "Antes",
+    "after": "Después",
+    "clear": "Limpiar",
+    "apply": "Aplicar",
+    "matchAll": "Coincidir todo",
+    "matchAny": "Coincidir cualquier",
+    "addRule": "Agregar regla",
+    "removeRule": "Eliminar regla",
+    "accept": "Sí",
+    "reject": "No",
+    "choose": "Elegir",
+    "upload": "Subir",
+    "cancel": "Cancelar",
+    "dayNames": [
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves",
+      "Viernes",
+      "Sábado"
+    ],
+    "dayNamesShort": ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+    "dayNamesMin": ["D", "L", "M", "M", "J", "V", "S"],
+    "monthNames": [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre"
+    ],
+    "monthNamesShort": [
+      "Ene",
+      "Feb",
+      "Mar",
+      "Abr",
+      "May",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dic"
+    ],
+    "today": "Hoy",
+    "weekHeader": "Sem"
   }
 }

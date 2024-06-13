@@ -9,7 +9,7 @@
   >
     <button class="p-link layout-topbar-button" (click)="op.toggle($event)">
       <i class="pi pi-globe"></i>
-      <span>Languages</span>
+      <span>{{ 'MENU.LANG' | transloco }}</span>
     </button>
     <p-overlayPanel #op>
       <p-listbox
@@ -124,7 +124,7 @@
               </div>
             </small>
 
-            <div
+            <!-- <div
               class="flex align-items-center justify-content-between mb-5 gap-5"
             >
               <div class="flex align-items-center">
@@ -143,7 +143,7 @@
                 style="color: var(--primary-color)"
                 >{{ 'LOGIN.FORGOT' | transloco }}</a
               >
-            </div>
+            </div> -->
             <div class="mb-4">
               <span class="text-600 font-medium line-height-3">{{
                 'LOGIN.NOT_ACCOUNT' | transloco

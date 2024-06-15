@@ -4,13 +4,10 @@ import { ButtonModule } from 'primeng/button';
 
 import { AccessRoutingModule } from './access-routing.module';
 import { AccessComponent } from './access.component';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        AccessRoutingModule,
-        ButtonModule
-    ],
-    declarations: [AccessComponent]
+  imports: [CommonModule, AccessRoutingModule, ButtonModule, TranslocoModule],
+  declarations: [AccessComponent],
 })
-export class AccessModule { }
+export class AccessModule {}

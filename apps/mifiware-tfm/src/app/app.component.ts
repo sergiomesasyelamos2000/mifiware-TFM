@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.primengConfig.ripple = true;
-    document.documentElement.style.fontSize = '14px';
+    document.documentElement.style.fontSize = '16px';
     this.translocoService.setActiveLang('es');
   }
 

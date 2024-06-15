@@ -203,8 +203,13 @@
       "TITLE": "Editar usuario: ",
       "SUBMIT": "Actualizar"
     },
+    "CREATE_USER": {
+      "TITLE": "Crear nuevo usuario",
+      "SUBMIT": "Crear"
+    },
     "DELETE_DIALOG": {
       "TITLE": "¿Estás seguro de que quieres eliminar el usuario: <strong>{{user}}</strong>?",
+      "PLURAL_TITLE": "¿Estás seguro de que quieres eliminar los usuarios seleccionados?",
       "CONFIRM_DIALOG": "Eliminar",
       "CANCEL_DIALOG": "Cancelar",
       "TITLE_DIALOG": "Eliminar usuario"
@@ -288,5 +293,15 @@
     ],
     "today": "Hoy",
     "weekHeader": "Sem"
+  },
+  "NOT_FOUND": {
+    "TITLE": "Página no encontrada",
+    "SUBTITLE": "La página que estás buscando no existe",
+    "BUTTON": "Volver al inicio"
+  },
+  "ACCESS_DENIED": {
+    "TITLE": "Acceso denegado",
+    "SUBTITLE": "No tienes los permisos necesarios. Por favor contacte a los administradores",
+    "BUTTON": "Volver al inicio de sesión"
   }
 }

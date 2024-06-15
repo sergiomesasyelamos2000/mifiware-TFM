@@ -210,7 +210,7 @@
 
     <p-dialog
       [(visible)]="deleteUsersDialog"
-      header="Confirm"
+      [header]="'USERS.DELETE_DIALOG.CONFIRM_DIALOG' | transloco"
       [modal]="true"
       [style]="{ width: '450px' }"
       [draggable]="false"
@@ -219,7 +219,7 @@
     >
       <div class="flex align-items-center justify-content-center">
         <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
-        <span>Are you sure you want to delete selected users?</span>
+        <span>{{ 'USERS.DELETE_DIALOG.PLURAL_TITLE' | transloco }}</span>
       </div>
       <ng-template pTemplate="footer">
         <button
@@ -227,7 +227,7 @@
           pRipple
           icon="pi pi-times"
           class="p-button-text"
-          label="No"
+          [label]="'USERS.DELETE_DIALOG.CANCEL_DIALOG' | transloco"
           (click)="deleteUsersDialog = false"
         ></button>
         <button
@@ -235,7 +235,7 @@
           pRipple
           icon="pi pi-check"
           class="p-button-text"
-          label="Yes"
+          [label]="'USERS.DELETE_DIALOG.CONFIRM_DIALOG' | transloco"
           (click)="confirmDeleteSelected()"
         ></button>
       </ng-template>

@@ -16,6 +16,7 @@ import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { TranslocoRootModule } from './transloco-root.module';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
 
 export const metaReducers: MetaReducer<any>[] = isDevMode()
   ? [storeFreeze]
@@ -29,6 +30,7 @@ export const metaReducers: MetaReducer<any>[] = isDevMode()
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    ButtonModule,
     StoreModule.forRoot({}, { metaReducers }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({

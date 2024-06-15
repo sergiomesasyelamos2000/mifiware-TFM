@@ -1,34 +1,71 @@
-{{ showLogin }}
-<nav *ngIf="!showLogin">
-  <div class="wrapper">
-    <div class="logo"><a href="#">Logo</a></div>
-    <input type="radio" name="slider" id="menu-btn" />
-    <input type="radio" name="slider" id="close-btn" />
-    <ul class="nav-links">
-      <label for="close-btn" class="btn close-btn"
-        ><i class="fas fa-times"></i
-      ></label>
-      <li><a href="#">Home</a></li>
-      <li><a (click)="goToLogin()">About</a></li>
-      <li>
-        <a href="#" class="desktop-item">Dropdown Menu</a>
-        <input type="checkbox" id="showDrop" />
-        <label for="showDrop" class="mobile-item">Dropdown Menu</label>
-        <ul class="drop-menu">
-          <li><a href="#">Drop menu 1</a></li>
-          <li><a href="#">Drop menu 2</a></li>
-          <li><a href="#">Drop menu 3</a></li>
-          <li><a href="#">Drop menu 4</a></li>
-        </ul>
-      </li>
-    </ul>
-    <label for="menu-btn" class="btn menu-btn"
-      ><i class="fas fa-bars"></i
-    ></label>
-  </div>
-</nav>
-
-<div class="body-text">
-  <!-- <div class="title">Responsive Dropdown and Mega Menu</div>
-  <div class="sub-title">using only HTML & CSS</div> -->
+<div class="p-d-flex p-flex-column p-ai-center p-m-4">
+  <header class="p-mb-4">
+    <h1 class="p-text-center">Bienvenido, [Nombre del Usuario]</h1>
+    <p class="p-text-center">
+      Esta es tu página de inicio. Aquí encontrarás un resumen de los datos más
+      importantes y accesos rápidos a las funcionalidades clave.
+    </p>
+  </header>
+  <section class="p-d-flex p-flex-wrap p-jc-center p-mb-4 summary">
+    <div class="p-card p-m-2 p-shadow-3">
+      <div class="p-card-body">
+        <h2 class="p-card-title">Sensores Activos</h2>
+        <p class="p-card-subtitle">25</p>
+      </div>
+    </div>
+    <div class="p-card p-m-2 p-shadow-3">
+      <div class="p-card-body">
+        <h2 class="p-card-title">Eventos Recientes</h2>
+        <p class="p-card-subtitle">5</p>
+      </div>
+    </div>
+    <div class="p-card p-m-2 p-shadow-3">
+      <div class="p-card-body">
+        <h2 class="p-card-title">Estado del Sistema</h2>
+        <p class="p-card-subtitle">Todo en orden</p>
+      </div>
+    </div>
+  </section>
+  <section class="p-d-flex p-flex-wrap p-jc-center p-mb-4 shortcuts">
+    <div class="p-card p-m-2 p-shadow-3">
+      <div class="p-card-body">
+        <h2 class="p-card-title">Dashboard de Sensores Binarios</h2>
+        <a href="/sensores-binarios" class="p-button p-component p-mt-2">
+          <span class="p-button-label">Ir al Dashboard</span>
+        </a>
+      </div>
+    </div>
+    <div class="p-card p-m-2 p-shadow-3">
+      <div class="p-card-body">
+        <h2 class="p-card-title">Dashboard de Sensores de Localización</h2>
+        <a href="/sensores-localizacion" class="p-button p-component p-mt-2">
+          <span class="p-button-label">Ir al Dashboard</span>
+        </a>
+      </div>
+    </div>
+    <div class="p-card p-m-2 p-shadow-3">
+      <div class="p-card-body">
+        <h2 class="p-card-title">Editar Perfil</h2>
+        <a href="/perfil" class="p-button p-component p-mt-2">
+          <span class="p-button-label">Editar Perfil</span>
+        </a>
+      </div>
+    </div>
+    <div class="p-card p-m-2 p-shadow-3">
+      <div class="p-card-body">
+        <h2 class="p-card-title">Lista de Usuarios</h2>
+        <a href="/lista-usuarios" class="p-button p-component p-mt-2">
+          <span class="p-button-label">Ver Lista</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="notifications p-mb-4">
+    <div class="p-card p-shadow-3">
+      <div class="p-card-body">
+        <h2 class="p-card-title">Notificaciones</h2>
+        <p>No hay nuevas notificaciones.</p>
+      </div>
+    </div>
+  </section>
 </div>

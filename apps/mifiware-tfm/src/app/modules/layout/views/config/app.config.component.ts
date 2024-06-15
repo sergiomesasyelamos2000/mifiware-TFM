@@ -101,6 +101,8 @@ export class AppConfigComponent {
   }
 
   applyScale() {
+    console.log('applyScale', this.scale);
+
     document.documentElement.style.fontSize = this.scale + 'px';
   }
 }

@@ -52,8 +52,6 @@ export class UsersComponent implements OnInit, OnDestroy {
       .selectTranslateObject('TABLE')
       .pipe(takeUntil(this.destroy$))
       .subscribe((translations) => {
-        console.log(translations);
-
         this.config.setTranslation(translations);
       });
     this.appStoreService
@@ -115,7 +113,7 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   openNew() {
     this.ref = this.dialogService.open(ProfileComponent, {
-      header: 'Select a User',
+      header: this.translocoService.translate('USERS.CREATE_USER.TITLE'),
       width: '70%',
       height: '67vh',
       styleClass: 'dialog',

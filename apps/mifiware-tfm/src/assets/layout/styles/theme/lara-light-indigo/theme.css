@@ -6295,3 +6295,8 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
 .p-datatable .p-datatable-tbody > tr.p-datatable-dragpoint-bottom > td {
   box-shadow: inset 0 -2px 0 0 #6366F1;
 }
+
+.p-button-link.span-button .p-button-label {
+  font-size: 1.5rem !important;
+  /* Cambia esto al tamaño de fuente que desees */
+}

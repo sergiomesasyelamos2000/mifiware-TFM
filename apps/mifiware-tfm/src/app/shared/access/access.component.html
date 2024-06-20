@@ -1,12 +1,10 @@
 <div
   class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"
 >
-  <div class="flex flex-column align-items-center justify-content-center">
-    <!--     <img
-      src="assets/images/access/logo-orange.svg"
-      alt="Sakai logo"
-      class="mb-5 w-6rem flex-shrink-0"
-    /> -->
+  <div
+    class="flex flex-column align-items-center justify-content-center w-full sm:w-8 md:w-8 lg:w-6 px-3"
+  >
+    <!-- <img src="assets/images/access/logo-orange.svg" alt="Sakai logo" class="mb-5 w-6rem flex-shrink-0" /> -->
     <div
       style="
         border-radius: 56px;
@@ -17,29 +15,29 @@
           rgba(247, 149, 48, 0) 30%
         );
       "
+      class="w-full"
     >
       <div
         class="w-full surface-card py-8 px-5 sm:px-8 flex flex-column align-items-center"
         style="border-radius: 53px"
       >
-        <div class="grid flex flex-column align-items-center">
+        <div class="flex flex-column align-items-center text-center w-full">
           <div
-            class="flex justify-content-center align-items-center bg-orange-500 border-circle"
+            class="flex justify-content-center align-items-center bg-orange-500 border-circle mb-4"
             style="width: 3.2rem; height: 3.2rem"
           >
-            <i class="text-50 pi pi-fw pi-lock text-2xl"></i>
+            <i class="text-white pi pi-fw pi-lock text-2xl"></i>
           </div>
-          <h1 class="text-900 font-bold text-4xl lg:text-5xl mb-2">
+          <h1 class="text-900 font-bold text-3xl md:text-4xl lg:text-5xl mb-2">
             {{ 'ACCESS_DENIED.TITLE' | transloco }}
           </h1>
-          <span class="text-600 mb-5">{{
-            'ACCESS_DENIED.SUBTITLE' | transloco
-          }}</span>
+          <span class="text-600 mb-5">
+            {{ 'ACCESS_DENIED.SUBTITLE' | transloco }}
+          </span>
           <img
             src="assets/images/access/asset-access.svg"
             [alt]="'ACCESS_DENIED.TITLE' | transloco"
-            class="mb-5"
-            width="80%"
+            class="mb-5 w-full md:w-8"
           />
           <button
             pButton

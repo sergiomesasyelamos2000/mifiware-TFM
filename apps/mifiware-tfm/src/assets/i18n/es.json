@@ -12,6 +12,16 @@
     "SIGN_UP": "Registrarse",
     "CREATE": "Crear"
   },
+  "HOME": {
+    "GO_TO_DASHBOARD": "Ir al dashboard",
+    "GO_TO_USERS": "Ir al listado",
+    "GO_TO_PROFILE": "Ir al perfil",
+    "TITLE": "Bienvenid@ a la aplicación de administración de sensores, {{name}}",
+    "DESCRIPTION": "Esta es tu página de inicio. Aquí encontrarás un resumen de los datos más importantes y accesos rápidos a las funcionalidades clave.",
+    "CARDS": {
+      "ACTIVE_SENSOR": "Sensores activos"
+    }
+  },
   "MENU": {
     "HOME": "Inicio",
     "DASHBOARD": {

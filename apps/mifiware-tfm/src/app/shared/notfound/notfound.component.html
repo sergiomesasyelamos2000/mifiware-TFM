@@ -1,7 +1,9 @@
 <div
   class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"
 >
-  <div class="flex flex-column align-items-center justify-content-center">
+  <div
+    class="flex flex-column align-items-center justify-content-center w-full md:w-6 px-3"
+  >
     <div
       style="
         border-radius: 56px;
@@ -12,26 +14,33 @@
           rgba(33, 150, 243, 0) 30%
         );
       "
+      class="w-full"
     >
       <div
-        class="w-full surface-card py-8 px-5 sm:px-8 flex flex-column align-items-center"
+        class="w-full surface-card py-8 px-5 sm:px-5 flex flex-column align-items-center"
         style="border-radius: 53px"
       >
-        <span class="font-bold text-8xl" style="color: #5000e5a3">404</span>
-        <h1 class="text-900 font-bold text-3xl lg:text-5xl mb-2">
+        <span class="font-bold text-6xl md:text-7xl" style="color: #5000e5a3"
+          >404</span
+        >
+        <h1
+          class="text-center text-900 font-bold text-2xl md:text-3xl lg:text-5xl mb-2"
+        >
           {{ 'NOT_FOUND.TITLE' | transloco }}
         </h1>
-        <div class="text-600 mb-5">{{ 'NOT_FOUND.SUBTITLE' | transloco }}</div>
+        <div class="text-600 mb-5 text-center">
+          {{ 'NOT_FOUND.SUBTITLE' | transloco }}
+        </div>
 
         <img
           src="assets/images/notfound/not-found.webp"
-          alt="Sakai logo"
-          class="w-full mt-6"
+          alt="Not found"
+          class="w-full md:w-9 mt-6"
         />
 
         <p-button
           label="{{ 'NOT_FOUND.BUTTON' | transloco }}"
-          styleClass="p-button-link span-button"
+          styleClass="p-button-link"
           icon="pi pi-arrow-left"
           [routerLink]="['/']"
         ></p-button>

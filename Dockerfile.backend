@@ -1,10 +1,10 @@
 FROM node:18.13.0
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm cache clean --force
-RUN npm install --legacy-peer-deps
+ENV NX_DAEMON=false
+RUN npm install --force
 COPY . .
 RUN npm rebuild bcrypt --build-from-source
-RUN npx nx build api --base-href /api/ --configuration=dev
+RUN npx nx build api --base-href /api/ --configuration=dev --verbose
 EXPOSE 3001
 CMD ["npm", "run", "serve:api"]

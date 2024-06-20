@@ -6,7 +6,7 @@ networks:
 services:
   mysql-db:
     container_name: mysql-db
-    image: mysql:5.7
+    image: mysql:8.0
     command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
     env_file: ./.env
@@ -44,6 +44,7 @@ services:
       - DB_PASSWORD=$MYSQLDB_PASSWORD
       - DB_DATABASE=$MYSQLDB_DATABASE
       - DB_PORT=$MYSQLDB_DOCKER_PORT
+      - NX_DAEMON=false
     stdin_open: true
     tty: true
     volumes:
@@ -53,7 +54,7 @@ services:
       - default
 
   nginx:
-    image: nginx:latest
+    image: arm64v8/nginx:latest
     depends_on:
       - api
       - mifiware-tfm
@@ -77,6 +78,8 @@ services:
       - 4601:80
     stdin_open: true
     tty: true
+    environment:
+      - NX_DAEMON=false
     volumes:
       - ./mifiware-tfm:/app
       - /app/node_modules

@@ -1,8 +1,8 @@
-FROM node:alpine as build
+FROM node:18.13.0 as build
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm cache clean --force
-RUN npm install --legacy-peer-deps
+ENV NX_DAEMON=false
+RUN npm install --force
 COPY . .
 RUN npx nx build mifiware-tfm --base-href /mifiware-tfm/ --configuration=dev
 

@@ -1,4 +1,12 @@
 <div class="layout-topbar">
+  <button
+    class="p-link layout-topbar-menu-button layout-topbar-button"
+    style="margin-left: auto"
+    (click)="layoutService.showProfileSidebar()"
+  >
+    <i class="pi pi-ellipsis-v"></i>
+  </button>
+
   <div
     #topbarmenu
     class="layout-topbar-menu"

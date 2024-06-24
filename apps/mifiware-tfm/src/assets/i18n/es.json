@@ -13,14 +13,19 @@
     "CREATE": "Crear"
   },
   "HOME": {
+    "BINARY_SENSOR": "Dashboard de Sensores Binarios",
+    "LOCATION_SENSOR": "Dashboard de Sensores de Localización",
     "GO_TO_DASHBOARD": "Ir al dashboard",
     "GO_TO_USERS": "Ir al listado",
     "GO_TO_PROFILE": "Ir al perfil",
+    "EDIT_PROFILE": "Editar perfil",
+    "USERS_LIST": "Listado de usuarios",
     "TITLE": "Bienvenid@ a la aplicación de administración de sensores, {{name}}",
     "DESCRIPTION": "Esta es tu página de inicio. Aquí encontrarás un resumen de los datos más importantes y accesos rápidos a las funcionalidades clave.",
-    "CARDS": {
-      "ACTIVE_SENSOR": "Sensores activos"
-    }
+    "ACTIVE_SENSOR": "Sensores activos",
+    "RECENTLY_EVENTS": "Eventos recientes",
+    "SYSTEM_HEALTH": "Estado del sistema",
+    "OK": "Todo correcto"
   },
   "MENU": {
     "HOME": "Inicio",

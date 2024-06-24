@@ -1,56 +1,67 @@
 .container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
 }
 
 header {
-    background: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
+  background: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
 }
 
 header h1 {
-    margin: 0;
+  margin: 0;
 }
 
 .summary,
 .shortcuts,
 .notifications {
-    margin: 20px 0;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    width: 22%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  width: 22%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 10px;
 }
 
 .card h2 {
-    margin: 0 0 10px;
+  margin: 0 0 10px;
 }
 
 .card p {
-    font-size: 1.5em;
-    margin: 0;
+  font-size: 1.5em;
+  margin: 0;
 }
 
 .card a {
-    display: block;
-    margin-top: 15px;
-    text-decoration: none;
-    color: #007BFF;
+  display: block;
+  margin-top: 15px;
+  text-decoration: none;
+  color: #007bff;
 }
 
 .notifications p {
-    text-align: center;
+  text-align: center;
+}
+
+#dashboard {
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.6)
+    ),
+    radial-gradient(77.36% 256.97% at 77.36% 57.52%, #ffc700 0%, #7daee9 100%);
+  color: black;
+  border-radius: 12px;
 }

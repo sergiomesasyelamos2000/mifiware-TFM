@@ -1,16 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { passwordMatchValidator } from '../../../../shared/password-match.directive';
-import { AuthService } from '../../auth.service';
-import { NotificationService } from '../../../../core/services/notification.service';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   LANGUAGES_ENUM,
   MessageSeverity,
 } from '@mifiware-tfm/entity-data-models';
+import { TranslocoService } from '@ngneat/transloco';
 import { LayoutService } from 'apps/mifiware-tfm/src/app/core/services/app.layout.service';
 import { OverlayPanel } from 'primeng/overlaypanel';
-import { TranslocoService } from '@ngneat/transloco';
-import { Router } from '@angular/router';
+import { NotificationService } from '../../../../core/services/notification.service';
+import { passwordMatchValidator } from '../../../../shared/password-match.directive';
+import { AuthService } from '../../auth.service';
 @Component({
   selector: 'mifiware-tfm-sign-up',
   templateUrl: './sign-up.component.html',
@@ -18,6 +18,10 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
   @ViewChild('op') op: OverlayPanel;
+  @ViewChild('topbarmenubutton') topbarMenuButton!: ElementRef;
+  @ViewChild('menubutton') menuButton!: ElementRef;
+  @ViewChild('topbarmenu') menu!: ElementRef;
+
   selectedLanguage: any;
   languages = Object.keys(LANGUAGES_ENUM);
   signUpForm!: FormGroup;

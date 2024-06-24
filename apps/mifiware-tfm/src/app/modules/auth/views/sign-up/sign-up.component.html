@@ -1,4 +1,12 @@
 <div class="layout-topbar">
+  <button
+    class="p-link layout-topbar-menu-button layout-topbar-button"
+    style="margin-left: auto"
+    (click)="layoutService.showProfileSidebar()"
+  >
+    <i class="pi pi-ellipsis-v"></i>
+  </button>
+
   <div
     #topbarmenu
     class="layout-topbar-menu"
@@ -29,7 +37,10 @@
 <div
   class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"
 >
-  <div class="flex flex-column align-items-center justify-content-center">
+  <div
+    class="flex flex-column align-items-center justify-content-center"
+    style="margin-top: 6%"
+  >
     <!-- <img
       src="assets/layout/images/{{
         layoutService.config.colorScheme === 'light'
@@ -51,7 +62,7 @@
       "
     >
       <div
-        class="w-full surface-card py-8 px-5 sm:px-8"
+        class="w-full surface-card py-6 px-5 sm:px-8"
         style="border-radius: 53px"
       >
         <div class="text-center mb-5">

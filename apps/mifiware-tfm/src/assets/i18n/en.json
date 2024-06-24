@@ -12,6 +12,21 @@
     "SIGN_UP": "Sign up",
     "CREATE": "Create"
   },
+  "HOME": {
+    "BINARY_SENSOR": "Binary Sensors Dashboard",
+    "LOCATION_SENSOR": "Location Sensors Dashboard",
+    "GO_TO_DASHBOARD": "Go to dashboard",
+    "GO_TO_USERS": "Go to list",
+    "GO_TO_PROFILE": "Go to profile",
+    "EDIT_PROFILE": "Edit profile",
+    "USERS_LIST": "List of users",
+    "TITLE": "Welcome to the sensor management application, {{name}}",
+    "DESCRIPTION": "This is your home page. Here you will find an overview of the most important data and quick access to key functionalities.",
+    "ACTIVE_SENSOR": "Active sensors",
+    "RECENTLY_EVENTS": "Recent events",
+    "SYSTEM_HEALTH": "System health",
+    "OK": "Everything is correct"
+  },
   "MENU": {
     "HOME": "Home",
     "DASHBOARD": {

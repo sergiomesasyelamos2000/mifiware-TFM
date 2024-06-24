@@ -24,9 +24,8 @@ import { LocationUser } from './entities/location-user.entity';
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private usersRepository: Repository<User>
-  ) /* @InjectModel(LocationUser.name) */
-  /* private locationUserModel: Model<any> */
+    private usersRepository: Repository<User> /* @InjectModel(LocationUser.name) */
+  ) /* private locationUserModel: Model<any> */
   {}
 
   /*  async onModuleInit() {
@@ -168,7 +167,7 @@ export class UserService {
     // Determina si el usuario es administrador
     const isAdmin = user.role === Role.SUPER_ADMIN;
     if (isAdmin) {
-      return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=All&from=1704063600000&to=1735685999999&`;
+      return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=All&from=1704063600000&to=1735685999999&kiosk=tv`;
     } else {
       return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=${userId}&from=1704063600000&to=1735685999999&kiosk`;
     }

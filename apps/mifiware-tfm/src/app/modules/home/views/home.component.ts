@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AppStoreService } from '../../../core/services/app-store.service';
 import { Subject, takeUntil } from 'rxjs';
 import { LayoutService } from '../../../core/services/app.layout.service';
+import { IUserState, User } from '@mifiware-tfm/entity-data-models';
 
 @Component({
   selector: 'mifiware-tfm-home',
@@ -13,7 +14,7 @@ import { LayoutService } from '../../../core/services/app.layout.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
-  data!: any;
+  user!: IUserState;
 
   showLogin: boolean = false;
   constructor(
@@ -28,6 +29,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((auth) => {
         this.showLogin = !!auth;
+      });
+    this.appStoreService
+      .loadMe$()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((me) => {
+        this.user = me;
       });
   }
 

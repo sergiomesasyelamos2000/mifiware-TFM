@@ -1,6 +1,6 @@
 import { LANGUAGES_ENUM } from '@mifiware-tfm/entity-data-models';
 
-const url = 'http://localhost:3001';
+const url = 'http://84.122.5.56:29001';
 
 export const environment = {
   production: true,

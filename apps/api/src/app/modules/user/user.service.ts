@@ -10,7 +10,6 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import * as fs from 'fs';
@@ -18,15 +17,13 @@ import * as fs from 'fs';
 import { Repository } from 'typeorm';
 import { AUTH_ERROR_EMAIL_ALREADY_EXISTS } from '../auth/auth.constants';
 import environment from './../../../environments/environment';
-import { LocationUser } from './entities/location-user.entity';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private usersRepository: Repository<User> /* @InjectModel(LocationUser.name) */
-  ) /* private locationUserModel: Model<any> */
-  {}
+    private usersRepository: Repository<User> /* @InjectModel(LocationUser.name) */ /* private locationUserModel: Model<any> */
+  ) {}
 
   /*  async onModuleInit() {
     await this.getAllUsers();
@@ -154,9 +151,9 @@ export class UserService {
     // Determina si el usuario es administrador
     const isAdmin = user.role === Role.SUPER_ADMIN;
     if (isAdmin) {
-      return `http://localhost:3003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1704063600000&to=1735685999999&kiosk=tv`;
+      return `http://84.122.5.56:30003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1704063600000&to=1735685999999&kiosk=tv`;
     } else {
-      return `http://localhost:3003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1704063600000&to=1735685999999&kiosk`;
+      return `http://84.122.5.56:30003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1704063600000&to=1735685999999&kiosk`;
     }
   }
 
@@ -167,9 +164,9 @@ export class UserService {
     // Determina si el usuario es administrador
     const isAdmin = user.role === Role.SUPER_ADMIN;
     if (isAdmin) {
-      return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=All&from=1704063600000&to=1735685999999&kiosk=tv`;
+      return `http://84.122.5.56:30003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=All&from=1704063600000&to=1735685999999&kiosk=tv`;
     } else {
-      return `http://localhost:3003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=${userId}&from=1704063600000&to=1735685999999&kiosk`;
+      return `http://84.122.5.56:30003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=${userId}&from=1704063600000&to=1735685999999&kiosk`;
     }
   }
 

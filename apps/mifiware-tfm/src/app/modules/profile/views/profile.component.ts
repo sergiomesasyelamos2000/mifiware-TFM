@@ -92,12 +92,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
         photoUrl: [''],
         uuid: [
           { value: '', disabled: !this.isNew },
-          [
+          /* [
             Validators.required,
             Validators.pattern(
               /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
             ),
-          ],
+          ], */
         ],
         name: [
           '',

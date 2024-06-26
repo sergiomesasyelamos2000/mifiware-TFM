@@ -10,7 +10,7 @@
               pRipple
               [label]="'USERS.LIST.ADD_BUTTON' | transloco"
               icon="pi pi-plus"
-              class="p-button-success mr-2"
+              class="new-user p-button-success mr-2"
               (click)="openNew()"
             ></button>
             <button
@@ -18,7 +18,7 @@
               pRipple
               [label]="'USERS.LIST.DELETE_BUTTON' | transloco"
               icon="pi pi-trash"
-              class="p-button-danger"
+              class="delete-user p-button-danger"
               (click)="deleteSelectedUsers()"
               [disabled]="!selectedUsers || !selectedUsers.length"
             ></button>
@@ -213,9 +213,10 @@
       [header]="'USERS.DELETE_DIALOG.CONFIRM_DIALOG' | transloco"
       [modal]="true"
       [style]="{ width: '450px' }"
+      class="delete-dialog"
       [draggable]="false"
       [resizable]="false"
-      [breakpoints]="{ '500px': '75vw' }"
+      [breakpoints]="{ '500px': '90vw' }"
     >
       <div class="flex align-items-center justify-content-center">
         <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>

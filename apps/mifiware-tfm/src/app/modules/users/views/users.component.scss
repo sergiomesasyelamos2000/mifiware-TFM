@@ -4,3 +4,20 @@
     width: 78vw !important;
   }
 }
+
+@media screen and (max-width: 430px) {
+  .new-user {
+    width: 100% !important;
+  }
+
+  .delete-user {
+    width: 100% !important;
+    margin-top: 10% !important;
+  }
+
+  .delete-dialog {
+    ::ng-deep .p-dialog .p-dialog-content {
+      padding: 2rem 1.5rem 2rem !important;
+    }
+  }
+}

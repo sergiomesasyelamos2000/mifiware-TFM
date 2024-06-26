@@ -4,3 +4,10 @@
   margin-right: 1rem;
   color: var(--primary-color) !important;
 }
+
+@media screen and (max-width: 430px) {
+  .sign-up {
+    min-height: 134vh !important;
+    margin-top: 6rem;
+  }
+}

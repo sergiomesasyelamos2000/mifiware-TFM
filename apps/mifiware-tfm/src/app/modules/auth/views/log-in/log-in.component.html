@@ -35,16 +35,17 @@
 </div>
 
 <div
-  class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"
+  class="login surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"
 >
   <div class="flex flex-column align-items-center justify-content-center">
     <img
+      class="img-responsive"
       src="assets/layout/images/{{
         layoutService.config.colorScheme === 'light'
           ? 'logo-dark'
           : 'logo-white'
       }}.png"
-      alt="Sakai logo"
+      alt="FIWARE logo"
       class="mb-5 w-15rem flex-shrink-0"
     />
 
@@ -64,12 +65,6 @@
         style="border-radius: 53px"
       >
         <div class="text-center mb-5">
-          <!--  <img
-            src="assets/images/login/avatar.png"
-            alt="Image"
-            height="50"
-            class="mb-3"
-          /> -->
           <div class="text-900 text-3xl font-medium mb-3">
             {{ 'LOGIN.TITLE' | transloco }}
           </div>
@@ -131,27 +126,6 @@
                 {{ 'LOGIN.PASSWORD.ERROR' | transloco }}
               </div>
             </small>
-
-            <!-- <div
-              class="flex align-items-center justify-content-between mb-5 gap-5"
-            >
-              <div class="flex align-items-center">
-                <p-checkbox
-                  id="rememberme"
-                  formControlName="rememberMe"
-                  [binary]="true"
-                  styleClass="mr-2"
-                ></p-checkbox>
-                <label for="rememberme">{{
-                  'LOGIN.REMEMBER' | transloco
-                }}</label>
-              </div>
-              <a
-                class="font-medium no-underline ml-2 text-right cursor-pointer"
-                style="color: var(--primary-color)"
-                >{{ 'LOGIN.FORGOT' | transloco }}</a
-              >
-            </div> -->
             <div class="mb-4">
               <span class="text-600 font-medium line-height-3">{{
                 'LOGIN.NOT_ACCOUNT' | transloco
@@ -177,109 +151,3 @@
     </div>
   </div>
 </div>
-
-<!-- <form
-  [formGroup]="loginForm"
-  class="surface-card p-4 shadow-2 border-round w-full lg:w-6"
-  (ngSubmit)="onSubmit()"
->
-  <div class="text-center mb-5">
-    <img
-      src="assets/layout/images/logo-white.png"
-      alt="Image"
-      height="50"
-      class="mb-3"
-    />
-    <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
-  </div>
-
-  <div>
-    <label for="email" class="block text-900 font-medium mb-2">Email</label>
-    <input
-      id="email"
-      type="text"
-      placeholder="Email address"
-      pInputText
-      class="w-full mb-3"
-      formControlName="email"
-    />
-
-    <small
-      *ngIf="
-        email.invalid &&
-        (email.dirty || email.touched)
-      "
-      class="block p-error"
-    >
-      <div *ngIf="email.errors?.['required']">
-        Email is required
-      </div>
-      <div *ngIf="email.errors?.['email']">
-        Email should be valid
-      </div>
-    </small>
-
-    <label for="password1" class="block text-900 font-medium mb-2"
-      >Password</label
-    >
-    <input
-      id="password1"
-      type="password"
-      placeholder="Password"
-      pInputText
-      class="w-full mb-3"
-      formControlName="password"
-    />
-
-    <small
-      *ngIf="
-        loginForm.get('password').invalid &&
-        (loginForm.get('password').dirty || loginForm.get('password').touched)
-      "
-      class="block p-error"
-    >
-      <div *ngIf="loginForm.get('password').errors?.['required']">
-        Password is required
-      </div>
-    </small>
-
-    <div class="flex align-items-center justify-content-between mb-6">
-      <div class="flex align-items-center">
-        <p-checkbox
-          id="rememberme"
-          [binary]="true"
-          styleClass="mr-2"
-        ></p-checkbox>
-        <label for="rememberme">Remember me</label>
-      </div>
-      <a
-        class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer"
-        >Forgot password?</a
-      >
-    </div>
-    <div class="mb-4">
-      <span class="text-600 font-medium line-height-3"
-        >Don't have an account?</span
-      >
-      <a
-        class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
-        routerLink="/auth/sign-up"
-        >Create account!</a
-      >
-    </div>
-
-    <button
-      pButton
-      pRipple
-      label="Sign In"
-      icon="pi pi-user"
-      class="w-full"
-      (onClick)="onSubmit()"
-      type="submit"
-      [disabled]="loginForm.invalid"
-    ></button>
-
-    <a routerLink="/auth/log-in">Log In</a>
-    <a routerLink="/auth/sign-up">Sign Up</a>
-  </div>
-</form> -->

@@ -53,39 +53,40 @@ export class UsersComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((translations) => {
         this.config.setTranslation(translations);
+
+        this.cols = [
+          {
+            field: 'name',
+            header: this.translocoService.translate('USERS.HEADERS.NAME'),
+            type: 'text',
+          },
+          {
+            field: 'surname',
+            header: this.translocoService.translate('USERS.HEADERS.SURNAME'),
+            type: 'text',
+          },
+          {
+            field: 'email',
+            header: this.translocoService.translate('USERS.HEADERS.EMAIL'),
+            type: 'text',
+          },
+          {
+            field: 'role',
+            header: this.translocoService.translate('USERS.HEADERS.ROLE'),
+            type: 'role',
+          },
+        ];
       });
+
     this.appStoreService
       .loadAuth$()
       .pipe(takeUntil(this.destroy$))
       .subscribe((auth) => {
         this.token = auth.accessToken;
+        if (this.token) {
+          this.findAllUsers(this.token);
+        }
       });
-    if (this.token) {
-      this.findAllUsers(this.token);
-    }
-
-    this.cols = [
-      {
-        field: 'name',
-        header: this.translocoService.translate('USERS.HEADERS.NAME'),
-        type: 'text',
-      },
-      {
-        field: 'surname',
-        header: this.translocoService.translate('USERS.HEADERS.SURNAME'),
-        type: 'text',
-      },
-      {
-        field: 'email',
-        header: this.translocoService.translate('USERS.HEADERS.EMAIL'),
-        type: 'text',
-      },
-      {
-        field: 'role',
-        header: this.translocoService.translate('USERS.HEADERS.ROLE'),
-        type: 'role',
-      },
-    ];
   }
 
   getCurrentPageReportTemplate(): string {

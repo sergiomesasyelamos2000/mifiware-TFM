@@ -151,9 +151,9 @@ export class UserService {
     // Determina si el usuario es administrador
     const isAdmin = user.role === Role.SUPER_ADMIN;
     if (isAdmin) {
-      return `http://84.122.5.56:30003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1704063600000&to=1735685999999&kiosk=tv`;
+      return `https://amaltea-ugr.es:30003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1704063600000&to=1735685999999&kiosk=tv`;
     } else {
-      return `http://84.122.5.56:30003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1704063600000&to=1735685999999&kiosk`;
+      return `https://amaltea-ugr.es:30003/d/fdez2ki4icmpsc/sensores-binarios?orgId=1&from=1704063600000&to=1735685999999&kiosk`;
     }
   }
 
@@ -164,9 +164,9 @@ export class UserService {
     // Determina si el usuario es administrador
     const isAdmin = user.role === Role.SUPER_ADMIN;
     if (isAdmin) {
-      return `http://84.122.5.56:30003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=All&from=1704063600000&to=1735685999999&kiosk=tv`;
+      return `https://amaltea-ugr.es:30003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=All&from=1704063600000&to=1735685999999&kiosk=tv`;
     } else {
-      return `http://84.122.5.56:30003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=${userId}&from=1704063600000&to=1735685999999&kiosk`;
+      return `https://amaltea-ugr.es:30003/d/a755de72-d8b9-42a8-86d4-53b2d2c378a3/sensores-de-localizacion?orgId=1&var-user_id=${userId}&from=1704063600000&to=1735685999999&kiosk`;
     }
   }
 

@@ -17,6 +17,7 @@ import * as rfs from 'rotating-file-stream';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { json } from 'body-parser';
+import { readFileSync } from 'fs';
 
 // Implicit requires to force adding these necesary libraries to the distribution package.json
 require('mysql2');
@@ -161,9 +162,18 @@ function initLogger(app: INestApplication) {
 export async function bootstrap(app?: NestExpressApplication) {
   // Create NestJS app
   if (environment.environment !== 'TEST') {
+    const httpsOptions = {
+      key: readFileSync('/etc/ssl/private/privkey.pem'),
+      cert: readFileSync('/etc/ssl/certs/fullchain.pem'),
+    };
+
     app = await NestFactory.create<NestExpressApplication>(AppModule, {
-      cors: environment.secure.enableCors, // { origin: ['http://localhost:4601'], methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', credentials: true },
+      cors: environment.secure.enableCors,
+      httpsOptions,
     });
+    /* app = await NestFactory.create<NestExpressApplication>(AppModule, {
+      cors: environment.secure.enableCors, // { origin: ['http://localhost:4601'], methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', credentials: true },
+    }); */
 
     // Agrega más opciones de CORS si lo deseas
     app.enableCors({

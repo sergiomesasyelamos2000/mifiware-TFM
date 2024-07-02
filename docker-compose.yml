@@ -50,6 +50,8 @@ services:
     volumes:
       - ./api:/app
       - /app/node_modules
+      - /etc/letsencrypt/live/amaltea-ugr.es/fullchain.pem:/etc/ssl/certs/fullchain.pem
+      - /etc/letsencrypt/live/amaltea-ugr.es/privkey.pem:/etc/ssl/private/privkey.pem
     networks:
       - default
 

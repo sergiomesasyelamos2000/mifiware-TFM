@@ -1,6 +1,6 @@
 import { LANGUAGES_ENUM } from '@mifiware-tfm/entity-data-models';
 
-const url = 'https://84.122.5.56:29001';
+const url = 'https://amaltea-ugr.es:29001';
 
 export const environment = {
   production: true,

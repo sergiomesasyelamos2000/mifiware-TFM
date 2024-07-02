@@ -13,7 +13,7 @@
     "CREATE": "Crear"
   },
   "HOME": {
-    "BINARY_SENSOR": "Dashboard de Sensores Binarios",
+    "BINARY_SENSOR": "Dashboard de Sensores Ambientales",
     "LOCATION_SENSOR": "Dashboard de Sensores de Localización",
     "GO_TO_DASHBOARD": "Ir al dashboard",
     "GO_TO_USERS": "Ir al listado",
@@ -165,7 +165,7 @@
   "DASHBOARD": {
     "TITLE": "Tablero",
     "BINARY": {
-      "TITLE": "Dashboard de sensores binarios",
+      "TITLE": "Dashboard de sensores ambientales",
       "TABLE": {
         "ID": "ID",
         "NAME": "Nombre",

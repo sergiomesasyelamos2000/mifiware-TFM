@@ -13,7 +13,7 @@
     "CREATE": "Create"
   },
   "HOME": {
-    "BINARY_SENSOR": "Binary Sensors Dashboard",
+    "BINARY_SENSOR": "Environmental Sensors Dashboard",
     "LOCATION_SENSOR": "Location Sensors Dashboard",
     "GO_TO_DASHBOARD": "Go to dashboard",
     "GO_TO_USERS": "Go to list",
@@ -31,7 +31,7 @@
     "HOME": "Home",
     "DASHBOARD": {
       "TITLE": "Visualizations",
-      "BINARY_DASHBOARD": "Binary Sensors",
+      "BINARY_DASHBOARD": "Environmental Sensors",
       "LOCATION_DASHBOARD": "Location Sensors"
     },
     "USERS": {

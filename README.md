@@ -29,7 +29,7 @@ Este proyecto es un entorno web completo que incluye backend, frontend, base de 
 
 ## Frontend App
 
-![image](cdn\images\home.png)
+![image](cdn/images/home.png)
 
 ## Instalación
 

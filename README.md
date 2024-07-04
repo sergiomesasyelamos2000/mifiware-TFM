@@ -15,6 +15,7 @@ Este proyecto es un entorno web completo que incluye backend, frontend, base de 
 # Índice
 
   - [Demo](#demo)
+  - [Arquitectura](#arquitectura)
   - [Frontend App](#frontend-app)
   - [Instalación](#instalación)
   - [Componentes](#componentes)
@@ -26,6 +27,18 @@ Este proyecto es un entorno web completo que incluye backend, frontend, base de 
 
 ## Demo
 - [Servidor UGR](https://amaltea.ugr.es/mifiware-tfm/auth/login)
+
+## Arquitectura
+
+A continuación, se presenta la arquitectura de la plataforma wb así como al conexión con la plataforma de FIWARE.
+
+### Arquitectura Web
+
+![image](cdn/images/arquitectura.png)
+
+### Arquitectura FIWARE
+
+![image](cdn/images/arquitectura-fiware.png)
 
 ## Frontend App
 

@@ -3,5 +3,8 @@
     "plaintext": "true",
     "markdown": "true",
     "scminput": "true"
-  }
+  },
+  "i18n-ally.localesPaths": [
+    "apps/mifiware-tfm/src/assets/i18n"
+  ]
 }

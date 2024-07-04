@@ -98,7 +98,7 @@ export const environment = {
       max: 500, // limit each IP to 500 requests per windowMs
     },
     enableCors: {
-      origin: ['https://amaltea-ugr.es'],
+      origin: ['https://amaltea.ugr.es'],
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
       credentials: true,
       allowedHeaders: ['Content-Type', 'Authorization'],

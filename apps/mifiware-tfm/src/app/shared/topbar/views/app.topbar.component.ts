@@ -52,7 +52,7 @@ export class AppTopBarComponent {
     this.replaceThemeLink(newHref, () => {
       this.layoutService.config.theme = theme;
       this.layoutService.config.colorScheme = colorScheme;
-      this.layoutService.config.scale = 16;
+      this.layoutService.config.scale = 12;
       this.layoutService.onConfigUpdate();
     });
   }

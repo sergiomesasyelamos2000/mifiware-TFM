@@ -14,16 +14,19 @@ Este proyecto es un entorno web completo que incluye backend, frontend, base de 
 
 # Índice
 
-  - [Demo](#demo)
-  - [Arquitectura](#arquitectura)
-  - [Frontend App](#frontend-app)
+- [Demo](#demo)
+- [Arquitectura](#arquitectura)
+  - [Arquitectura Web](#arquitectura-web)
+  - [Arquitectura FIWARE](#arquitectura-fiware)
+- [Frontend App](#frontend-app)
+- [Despliegue en entorno local](#despliegue-en-entorno-local)
   - [Instalación](#instalación)
+- [Despliegue en entorno Cloud](#despliegue-en-entorno-cloud)
   - [Componentes](#componentes)
   - [Requisitos](#requisitos)
   - [Despliegue](#despliegue)
   - [Notas Adicionales](#notas-adicionales)
-  - [Despliegue Local](#despliegue-local)
-  - [License](#license)
+- [License](#license)
 
 ## Demo
 - [Servidor UGR](https://amaltea.ugr.es/mifiware-tfm/auth/login)
@@ -44,11 +47,32 @@ A continuación, se presenta la arquitectura de la plataforma wb así como al co
 
 ![image](cdn/images/home.png)
 
+
+# Despliegue en entorno local
+
 ## Instalación
 
 ```bash
 npm install
 ```
+
+Para ejecutar el proyecto localmente, puedes utilizar los siguientes comandos:
+
+- **Frontend**:
+    ```bash
+    npm run serve:app
+    ```
+    Este comando inicia la aplicación frontend en el puerto `4601`.
+
+- **Backend**:
+    ```bash
+    npm run serve:api
+    ```
+    Este comando inicia el backend API en el modo de desarrollo.
+
+Asegúrate de tener todas las dependencias necesarias instaladas y configuradas correctamente antes de ejecutar estos comandos. Además, es necesario tener una base de datos MySQL creada con el nombre `tfm`, tal y como se especifica en el archivo de configuración de entorno (`environment`) de la API.
+
+# Despliegue en entorno Cloud
 
 ## Componentes
 
@@ -88,24 +112,6 @@ npm install
 - Personaliza el archivo `nginx.conf` según tus necesidades para la configuración del servidor web.
 
 Este proyecto proporciona una base sólida para el desarrollo y despliegue de aplicaciones web completas utilizando tecnologías modernas y contenedores Docker.
-
-## Despliegue Local
-
-Para ejecutar el proyecto localmente sin Docker, puedes utilizar los siguientes comandos:
-
-- **Frontend**:
-    ```bash
-    npm run serve:app
-    ```
-    Este comando inicia la aplicación frontend en el puerto `4601`.
-
-- **Backend**:
-    ```bash
-    npm run serve:api
-    ```
-    Este comando inicia el backend API en el modo de desarrollo.
-
-Asegúrate de tener todas las dependencias necesarias instaladas y configuradas correctamente antes de ejecutar estos comandos.
 
 ## License
 MIT License

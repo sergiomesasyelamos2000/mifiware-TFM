@@ -57,10 +57,10 @@ export class SignUpComponent implements OnInit {
       {
         name: [
           '',
-          [
+          /* [
             Validators.required,
             Validators.pattern(/^[a-zA-Z ]+(?:[a-zA-Z ]+)*$/),
-          ],
+          ], */
         ],
         surname: [
           '',

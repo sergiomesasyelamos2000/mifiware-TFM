@@ -163,8 +163,8 @@ export async function bootstrap(app?: NestExpressApplication) {
   // Create NestJS app
   if (environment.environment !== 'TEST') {
     const httpsOptions = {
-      key: readFileSync('/etc/ssl/private/privkey.pem'),
-      cert: readFileSync('/etc/ssl/certs/fullchain.pem'),
+      key: readFileSync('/etc/ssl/private/amaltea.ugr.es_privatekey.pem'),
+      cert: readFileSync('/etc/ssl/certs/amaltea_ugr_es.pem'),
     };
 
     app = await NestFactory.create<NestExpressApplication>(AppModule, {

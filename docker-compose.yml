@@ -60,6 +60,7 @@ services:
     volumes:
       - mifiware-tfm-dist:/var/www/html/mifiware-tfm
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - /home/aurora/ssl_certificates:/etc/nginx/ssl
     ports:
       - '80:80'
       - '443:443'
